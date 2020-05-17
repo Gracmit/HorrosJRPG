@@ -1,28 +1,95 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NSubstitute;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Player
 {
-    public class NewTestScript
+    public class Helpers
     {
-        // A Test behaves as an ordinary method
-        [Test]
-        public void NewTestScriptSimplePasses()
+        public static IEnumerator LoadMovementTestScene()
         {
-            // Use the Assert class to test conditions
+            var operation = SceneManager.LoadSceneAsync("MovementTest");
+            while (operation.isDone == false)
+                yield return null;
         }
 
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
-        [UnityTest]
-        public IEnumerator NewTestScriptWithEnumeratorPasses()
+        public static PlayerMovementController GetPlayerController()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
+            return GameObject.FindObjectOfType<PlayerMovementController>();
+        }
+    }
+
+
+    public class movement
+    {
+        [UnityTest]
+        public IEnumerator moves_forward()
+        {
+            yield return Helpers.LoadMovementTestScene();
+            var player = Helpers.GetPlayerController();
+
+            var startingPosition = player.transform.position;
+            PlayerInput.Instance = Substitute.For<IPlayerInput>();
+
+            PlayerInput.Instance.Vertical.Returns(1f);
+            yield return new WaitForSeconds(0.2f);
+
+            var endingPosition = player.transform.position;
+            Assert.Greater(endingPosition.z, startingPosition.z);
+        }
+
+        [UnityTest]
+        public IEnumerator moves_backward()
+        {
+            yield return Helpers.LoadMovementTestScene();
+            var player = Helpers.GetPlayerController();
+
+            var startingPosition = player.transform.position;
+            PlayerInput.Instance = Substitute.For<IPlayerInput>();
+
+            PlayerInput.Instance.Vertical.Returns(-1f);
+            yield return new WaitForSeconds(0.2f);
+
+            var endingPosition = player.transform.position;
+            Assert.Less(endingPosition.z, startingPosition.z);
+        }
+        
+        
+        [UnityTest]
+        public IEnumerator moves_right()
+        {
+            yield return Helpers.LoadMovementTestScene();
+            var player = Helpers.GetPlayerController();
+
+            var startingPosition = player.transform.position;
+            PlayerInput.Instance = Substitute.For<IPlayerInput>();
+            
+            PlayerInput.Instance.Horizontal.Returns(1f);
+            yield return new WaitForSeconds(0.2f);
+
+            var endingPosition = player.transform.position;
+            Assert.Greater(endingPosition.x, startingPosition.x);
+        }
+        
+        [UnityTest]
+        public IEnumerator moves_left()
+        {
+            yield return Helpers.LoadMovementTestScene();
+            var player = Helpers.GetPlayerController();
+
+            var startingPosition = player.transform.position;
+            PlayerInput.Instance = Substitute.For<IPlayerInput>();
+            
+            PlayerInput.Instance.Horizontal.Returns(-1f);
+            yield return new WaitForSeconds(0.2f);
+
+            var endingPosition = player.transform.position;
+            Assert.Less(endingPosition.x, startingPosition.x);
         }
     }
 }
