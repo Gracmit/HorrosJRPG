@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Numerics;
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private float _movementSpeed = 5;
 
     private CharacterController _controller;
 
@@ -13,8 +16,21 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
-        Vector3 movementInput = new Vector3(PlayerInput.Instance.Horizontal * movementSpeed, 0, PlayerInput.Instance.Vertical * movementSpeed);
-        Vector3 movement = transform.rotation * movementInput;
-        _controller.SimpleMove(movement);
+        CameraRelativeMovement();
+    }
+
+    private void CameraRelativeMovement()
+    {
+        Vector3 camForward = _camera.transform.forward;
+        Vector3 camRight = _camera.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
+        var desiredDir = camForward * PlayerInput.Instance.Vertical + camRight * PlayerInput.Instance.Horizontal;
+        _controller.SimpleMove(desiredDir * _movementSpeed);
+        if (desiredDir.normalized.magnitude > 0.1f)
+            transform.forward = desiredDir.normalized * 360;
     }
 }
