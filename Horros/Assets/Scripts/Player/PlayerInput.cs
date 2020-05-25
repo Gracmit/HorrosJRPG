@@ -9,6 +9,6 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
         Instance = this;
     }
     
-    public float Vertical => Input.GetAxis("Vertical");
-    public float Horizontal => Input.GetAxis("Horizontal");
+    public float Vertical => Input.GetAxisRaw("Vertical");
+    public float Horizontal => Input.GetAxisRaw("Horizontal");
 }
