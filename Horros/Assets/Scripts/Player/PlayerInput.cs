@@ -11,4 +11,5 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     
     public float Vertical => Input.GetAxisRaw("Vertical");
     public float Horizontal => Input.GetAxisRaw("Horizontal");
+    public float MouseX => Input.GetAxis("Mouse X");
 }

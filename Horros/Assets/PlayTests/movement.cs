@@ -91,5 +91,37 @@ namespace Player
             var endingPosition = player.transform.position;
             Assert.Less(endingPosition.x, startingPosition.x);
         }
+        
+        [UnityTest]
+        public IEnumerator rotates_right()
+        {
+            yield return Helpers.LoadMovementTestScene();
+            var player = Helpers.GetPlayerController();
+
+            var startingRotation = player.transform.rotation; 
+            PlayerInput.Instance = Substitute.For<IPlayerInput>();
+            
+            PlayerInput.Instance.Horizontal.Returns(1f);
+            yield return new WaitForSeconds(0.2f);
+
+            var endingRotation = player.transform.rotation;
+            Assert.Greater(endingRotation.y, startingRotation.y);
+        }
+        
+        [UnityTest]
+        public IEnumerator rotates_left()
+        {
+            yield return Helpers.LoadMovementTestScene();
+            var player = Helpers.GetPlayerController();
+
+            var startingRotation = player.transform.rotation; 
+            PlayerInput.Instance = Substitute.For<IPlayerInput>();
+            
+            PlayerInput.Instance.Horizontal.Returns(-1f);
+            yield return new WaitForSeconds(0.2f);
+
+            var endingRotation = player.transform.rotation;
+            Assert.Greater(endingRotation.y, startingRotation.y);
+        }
     }
 }
