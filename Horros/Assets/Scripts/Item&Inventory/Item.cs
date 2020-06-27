@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private int amount;
+    
+    
     private void OnTriggerEnter(Collider other)
     {
         var inventory = other.GetComponent<Inventory>();
