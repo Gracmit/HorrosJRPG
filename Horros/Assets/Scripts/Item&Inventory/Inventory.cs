@@ -4,7 +4,9 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private List<Item> _items = new List<Item>();
+    
     public int ItemsCount => _items.Count;
+    public List<Item> Items => _items;
 
     public int ItemAmount(Item item)
     {
@@ -35,4 +37,5 @@ public class Inventory : MonoBehaviour
         if (removedAll)
             _items.Remove(ogItem);
     }
+
 }
