@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private new string name;
     [SerializeField] private int amount = 0;
+
     public int Amount => amount;
 
     private void OnTriggerEnter(Collider other)
@@ -23,9 +24,9 @@ public class Item : MonoBehaviour
         amount += addedAmount;
     }
 
-    public bool SubstractItems(int substractedAmount)
+    public bool SubtractItems(int subtractedAmount)
     {
-        amount -= substractedAmount;
+        amount -= subtractedAmount;
         if (amount <= 0)
             return true;
 
@@ -36,12 +37,11 @@ public class Item : MonoBehaviour
 
 public class Equipment : Item
 {
-    [SerializeField] private EquipmentType equipmentType;
+    [SerializeField] private StatMod[] _statsMods;
 }
 
-public enum EquipmentType
+public class StatMod
 {
-    Weapon,
-    Armor,
-    Accessory
+    private StatType _statType;
+    private int _value;
 }

@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         if (ogItem == null)
             return;
 
-        bool removedAll = ogItem.SubstractItems(amount);
+        bool removedAll = ogItem.SubtractItems(amount);
         if (removedAll)
             _items.Remove(ogItem);
     }
