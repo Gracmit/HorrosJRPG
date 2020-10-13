@@ -13,6 +13,6 @@ public class UIBinding : MonoBehaviour
             player = FindObjectOfType<PlayerMovementController>();
         }
 
-        GetComponent<ItemsPanel>().BindInventory(player.GetComponent<Inventory>());
+        GetComponentInChildren<ItemsPanel>().BindInventory(player.GetComponent<Inventory>());
     }
 }

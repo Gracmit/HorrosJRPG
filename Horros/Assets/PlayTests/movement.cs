@@ -22,6 +22,13 @@ namespace Player
         {
             return GameObject.FindObjectOfType<PlayerMovementController>();
         }
+
+        public static IEnumerator LoadUIScene()
+        {
+            var operation = SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+            while (operation.isDone == false)
+                yield return null;
+        }
     }
 
 

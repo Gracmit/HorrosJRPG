@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemsPanel : MonoBehaviour
 {
-    [SerializeField] private GameObject button;
-
-    private List<Item> _items;
-    private List<GameObject> _buttons = new List<GameObject>();
+    private readonly List<GameObject> _buttons = new List<GameObject>();
     private Inventory _inventory;
+    private List<Item> _items;
+        
+    [SerializeField] private GameObject button;
+    public double ButtonsCount => _buttons.Count;
+    public string ButtonText(int i) => _buttons[i].GetComponent<ItemButton>().ButtonText;
 
     private void Awake()
     {
@@ -18,24 +18,37 @@ public class ItemsPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        _items = _inventory.Items;
-        for (int i = 0; i < _items.Count; i++)
-        {
-            GameObject newButton = Instantiate(button, transform);
-            _buttons.Add(newButton);
-            newButton.GetComponent<ItemButton>().SetItem(_items[i]);
-        }
+        UpdateItemsUI();
     }
 
 
     private void OnDisable()
     {
-        for (int i = 0; i < _buttons.Count; i++)
-        {
-            Destroy(_buttons[i]);
-        }
+        ClearItemButtons();
+    }
+
+    private void ClearItemButtons()
+    {
+        for (var i = 0; i < _buttons.Count; i++) Destroy(_buttons[i]);
 
         _buttons.Clear();
+    }
+
+
+    public void UpdateItemsUI()
+    {
+        if (_buttons.Count > 0) ClearItemButtons();
+
+        if (_inventory != null)
+        {
+            _items = _inventory.Items;
+            for (var i = 0; i < _items.Count; i++)
+            {
+                var newButton = Instantiate(button, transform);
+                _buttons.Add(newButton);
+                newButton.GetComponent<ItemButton>().SetItem(_items[i]);
+            }
+        }
     }
 
     public void BindInventory(Inventory inventory)
