@@ -1,7 +1,8 @@
-﻿public interface IPlayerInput
+﻿using UnityEngine;
+
+public interface IPlayerInput
 {
     float Vertical { get; }
     float Horizontal { get; }
-    float MouseX { get; }
-    
+    bool GetKeyDown(KeyCode keyCode);
 }
