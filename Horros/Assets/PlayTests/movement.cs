@@ -25,7 +25,7 @@ namespace Player
 
         public static IEnumerator LoadUIScene()
         {
-            var operation = SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+            var operation = SceneManager.LoadSceneAsync("UITest", LoadSceneMode.Additive);
             while (operation.isDone == false)
                 yield return null;
         }

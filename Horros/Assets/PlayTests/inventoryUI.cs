@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using NSubstitute;
 using NUnit.Framework;
 using Player;
 using UnityEditor;
@@ -15,6 +15,7 @@ public class inventoryUI
         yield return Helpers.LoadUIScene();
         Inventory inventory = new GameObject("Inventory").AddComponent<Inventory>();
         ItemsPanel itemsPanel = GameObject.FindObjectOfType<ItemsPanel>();
+
         
         itemsPanel.BindInventory(inventory);
         itemsPanel.UpdateItemsUI();
