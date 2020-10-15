@@ -30,15 +30,3 @@ public class Item : MonoBehaviour
         return false;
     }
 }
-
-
-public class Equipment : Item
-{
-    [SerializeField] private StatMod[] _statsMods;
-}
-
-public class StatMod
-{
-    private StatType _statType;
-    private int _value;
-}

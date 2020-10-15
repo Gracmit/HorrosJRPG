@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
-public class Stats : MonoBehaviour
+public class Stats
 {
-    private Dictionary<StatType, int> _stats = new Dictionary<StatType, int>();
+    private readonly Dictionary<StatType, int> _stats = new Dictionary<StatType, int>();
 
     public void Add(StatType statType, int value)
     {

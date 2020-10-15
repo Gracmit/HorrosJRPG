@@ -1,4 +1,5 @@
-﻿public class Accessory : Equipment
+﻿using UnityEngine;
+
+public class Accessory : Equipment
 {
-    
 }

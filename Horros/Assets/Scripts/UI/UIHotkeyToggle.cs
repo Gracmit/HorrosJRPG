@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIHotkeyToggle : MonoBehaviour
 {
@@ -14,3 +12,4 @@ public class UIHotkeyToggle : MonoBehaviour
         }
     }
 }
+
