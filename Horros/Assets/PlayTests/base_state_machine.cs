@@ -73,7 +73,5 @@ namespace Player
             stateMachine.Tick();
             Assert.AreSame(firstState, stateMachine.CurrentState);
         }
-
- 
     }
 }

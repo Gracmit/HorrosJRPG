@@ -79,22 +79,5 @@ namespace Player
             Assert.AreEqual(1, inventory.ItemsCount);
             Assert.AreEqual(7, inventory.ItemAmount(item));
         }
-
-        [Test]
-        public void can_equip_an_equipment()
-        {
-            var inventory = new GameObject("Inventory").AddComponent<Inventory>();
-            var weapon = new GameObject("Weapon").AddComponent<Weapon>();
-            var armor = new GameObject("Armor").AddComponent<Armor>();
-            var accessory = new GameObject("Accessory").AddComponent<Accessory>();
-            var member = new PartyMember();
-            
-            member.Equip(weapon);
-            Assert.AreEqual(weapon, member.Weapon);
-            member.Equip(armor);
-            Assert.AreEqual(armor, member.Armor);
-            member.Equip(accessory);
-            Assert.AreEqual(accessory, member.Accessory);
-        }
     }
 }

@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class ItemsPanel : MonoBehaviour
 {
+    [SerializeField] private GameObject button;
+    
     private readonly List<GameObject> _buttons = new List<GameObject>();
     private Inventory _inventory;
     private List<Item> _items;
         
-    [SerializeField] private GameObject button;
     public double ButtonsCount => _buttons.Count;
     public string ButtonText(int i) => _buttons[i].GetComponent<ItemButton>().ButtonText;
 

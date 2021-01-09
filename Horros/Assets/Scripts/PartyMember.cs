@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class PartyMember
+[Serializable]
+public class PartyMember 
 {
     private string _name;
     private Weapon _weapon;
