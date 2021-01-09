@@ -5,8 +5,9 @@ public class StateMachine
 {
     private Dictionary<IState, List<StateTransition>> _stateTransitions = new Dictionary<IState, List<StateTransition>>();
     
-    private List<IState> _states;
+    private List<IState> _states = new List<IState>();
     private IState _currentState;
+    public IState CurrentState => _currentState;
 
     public void AddState(IState state)
     {
