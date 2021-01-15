@@ -1,14 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PartyMember", menuName = "Party/Member")]
 [Serializable]
-public class PartyMember 
+public class PartyMember : ScriptableObject
 {
-    private string _name;
-    private Weapon _weapon;
-    private Armor _armor;
-    private Accessory _accessory;
-    private Stats _stats = new Stats();
+    [SerializeField]private string _name;
+    [SerializeField]private Weapon _weapon;
+    [SerializeField]private Armor _armor;
+    [SerializeField]private Accessory _accessory;
+    [SerializeField]private Stats _stats = new Stats();
 
     public Weapon Weapon => _weapon;
     public Armor Armor => _armor;
@@ -36,17 +37,17 @@ public class PartyMember
         _accessory = accessory;
     }
 
-    public void UnEquip(Weapon weapon)
+    public void UnEquipWeapon()
     {
         _weapon = null;
     }
     
-    public void UnEquip(Armor armor)
+    public void UnEquipArmor()
     {
         _armor = null;
     }
     
-    public void UnEquip(Accessory accessory)
+    public void UnEquipAccessory()
     {
         _accessory = null;
     }

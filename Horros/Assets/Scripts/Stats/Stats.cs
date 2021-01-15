@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+[Serializable]
 public class Stats
 {
     private readonly Dictionary<StatType, int> _stats = new Dictionary<StatType, int>();
