@@ -28,9 +28,9 @@ public class StatusManager : MonoBehaviour
     {
         List<PartyMember> members = partypool.Members;
         _statusData.member = members[0];
-        Vector3 enemyPosition = other.transform.position;
-        _statusData.position[0] = enemyPosition.x;
-        _statusData.position[1] = enemyPosition.y;
-        _statusData.position[2] = enemyPosition.z;
+        Vector3 playerPosition = other.transform.position;
+        _statusData.position[0] = playerPosition.x;
+        _statusData.position[1] = playerPosition.y;
+        _statusData.position[2] = playerPosition.z;
     }
 }
