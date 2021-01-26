@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
         return searchedItem.Amount;
     }
 
+    
     public void PickUpItem(Item item)
     {
         Item ogItem = _items.Find(x => x.name == item.name);
