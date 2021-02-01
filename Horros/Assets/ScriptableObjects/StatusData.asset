@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454f23413b9144f45ab45f6a3369a714, type: 3}
   m_Name: StatusData
   m_EditorClassIdentifier: 
+  member: {fileID: 11400000, guid: 2d19194772c71eb46a7015872bfcfe01, type: 2}
+  gameObject: {fileID: 3288747799319249410, guid: 010f92d937367b94b9ef51bb9cdefe59,
+    type: 3}
   position:
-  - 0
-  - 0
-  - 0
+  - 0.35459203
+  - 1.5799999
+  - 10.6044445

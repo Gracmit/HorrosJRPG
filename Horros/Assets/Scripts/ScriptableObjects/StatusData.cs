@@ -6,5 +6,6 @@ using UnityEngine;
 public class StatusData : ScriptableObject
 {
     public PartyMember member;
+    public GameObject gameObject;
     public float[] position = new float[3];
 }

@@ -11,6 +11,7 @@ public class StatusManager : MonoBehaviour
     [SerializeField] private StatusData _statusData;
     
     public static StatusManager Instance => _instance;
+    public StatusData StatusData => _statusData;
 
     private void Awake()
     {
