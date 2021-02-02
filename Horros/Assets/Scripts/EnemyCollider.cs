@@ -11,7 +11,7 @@ public class EnemyCollider : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             var partyPool = other.gameObject.GetComponent<PartyPool>();
-            StatusManager.Instance.setBattleData(other, partyPool);
+            StatusManager.Instance.SetBattleData(other, partyPool);
             LevelLoader.Instance.LoadLevelWithName("Combat");
         }
     }

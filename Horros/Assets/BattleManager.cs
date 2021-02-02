@@ -6,7 +6,6 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _playerSpawnpoints;
     [SerializeField] private List<Transform> _enemySpawnpoints;
-    // Start is called before the first frame update
     void Start()
     {
         InitializeBattleField();
@@ -15,6 +14,17 @@ public class BattleManager : MonoBehaviour
     private void InitializeBattleField()
     {
         var statusData = StatusManager.Instance.StatusData;
-        Instantiate(statusData.gameObject, _playerSpawnpoints[0]);
+        InstantiatePartyMembers(statusData);
+        
+    }
+
+    private void InstantiatePartyMembers(StatusData statusData)
+    {
+        var spawnpointCounter = 0;
+        foreach (var entity in statusData.partyStatus)
+        {
+            Instantiate(entity.model, _playerSpawnpoints[spawnpointCounter]);
+            spawnpointCounter++;
+        }
     }
 }

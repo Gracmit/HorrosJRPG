@@ -10,10 +10,12 @@ public class PartyMember : ScriptableObject
     [SerializeField]private Armor _armor;
     [SerializeField]private Accessory _accessory;
     [SerializeField]private Stats _stats = new Stats();
+    [SerializeField] private EntityStatus _memberStatus;
 
     public Weapon Weapon => _weapon;
     public Armor Armor => _armor;
     public Accessory Accessory => _accessory;
+    public EntityStatus MemberStatus => _memberStatus;
 
     public PartyMember()
     {

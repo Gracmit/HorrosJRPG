@@ -9,7 +9,7 @@ public class StatusManager : MonoBehaviour
     private static StatusManager _instance;
 
     [SerializeField] private StatusData _statusData;
-    
+
     public static StatusManager Instance => _instance;
     public StatusData StatusData => _statusData;
 
@@ -25,13 +25,28 @@ public class StatusManager : MonoBehaviour
         }
     }
 
-    public void setBattleData(Collider other, PartyPool partypool)
+    public void SetBattleData(Collider other, PartyPool partypool)
     {
-        List<PartyMember> members = partypool.Members;
-        _statusData.member = members[0];
+        SetPartyData(partypool);
+        
         Vector3 playerPosition = other.transform.position;
         _statusData.position[0] = playerPosition.x;
         _statusData.position[1] = playerPosition.y;
         _statusData.position[2] = playerPosition.z;
+    }
+
+    private void SetPartyData(PartyPool partypool)
+    {
+        List<PartyMember> members = partypool.Members;
+        List<EntityStatus> partyStatus = new List<EntityStatus>();
+        for (int i = 0; i < 3; i++)
+        {
+            if (members[i].MemberStatus != null)
+            {
+                partyStatus.Add(members[i].MemberStatus);
+            }
+        }
+        
+        _statusData.partyStatus = partyStatus;
     }
 }
