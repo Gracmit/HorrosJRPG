@@ -13,7 +13,7 @@ namespace Player
             
             pool.AddMember(member);
             
-            Assert.AreEqual(1, pool.MembersCount);
+            Assert.AreEqual(1, pool.MemberCount);
         }
         
         [Test]
@@ -26,7 +26,7 @@ namespace Player
             pool.AddMember(member);
             pool.AddMember(member2);
             
-            Assert.AreEqual(2, pool.MembersCount);
+            Assert.AreEqual(2, pool.MemberCount);
         }
         
         [Test]
@@ -37,7 +37,7 @@ namespace Player
             pool.AddMember(member);
             pool.AddMember(member);
             
-            Assert.AreEqual(1, pool.MembersCount);
+            Assert.AreEqual(1, pool.MemberCount);
         }
         
         [Test]
@@ -47,10 +47,10 @@ namespace Player
             var member = new PartyMember();
             pool.AddMember(member);
 
-            Assert.AreEqual(1, pool.MembersCount);
+            Assert.AreEqual(1, pool.MemberCount);
             
             pool.RemoveMember(member);
-            Assert.AreEqual(0, pool.MembersCount);
+            Assert.AreEqual(0, pool.MemberCount);
         }
         
         [Test]
@@ -61,10 +61,10 @@ namespace Player
             var member2 = new PartyMember();
             pool.AddMember(member);
 
-            Assert.AreEqual(1, pool.MembersCount);
+            Assert.AreEqual(1, pool.MemberCount);
             
             pool.RemoveMember(member2);
-            Assert.AreEqual(1, pool.MembersCount);
+            Assert.AreEqual(1, pool.MemberCount);
         }
         
         [Test]

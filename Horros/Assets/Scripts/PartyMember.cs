@@ -1,15 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PartyMember", menuName = "Party/Member")]
+[CreateAssetMenu(fileName = "PartyMember", menuName = "CombatEntity/Member")]
 [Serializable]
 public class PartyMember : ScriptableObject
 {
-    [SerializeField]private string _name;
-    [SerializeField]private Weapon _weapon;
-    [SerializeField]private Armor _armor;
-    [SerializeField]private Accessory _accessory;
-    [SerializeField]private Stats _stats = new Stats();
+    [SerializeField] private string _name;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private Armor _armor;
+    [SerializeField] private Accessory _accessory;
+    [SerializeField] private Stats _stats = new Stats();
     [SerializeField] private EntityStatus _memberStatus;
 
     public Weapon Weapon => _weapon;
@@ -24,35 +24,15 @@ public class PartyMember : ScriptableObject
         _armor = null;
         
     }
-    public void Equip(Weapon weapon)
-    {
-        _weapon = weapon;
-    }
+    public void Equip(Weapon weapon) => _weapon = weapon;
 
-    public void Equip(Armor armor)
-    {
-        _armor = armor;
-    }
-    
-    public void Equip(Accessory accessory)
-    {
-        _accessory = accessory;
-    }
+    public void Equip(Armor armor) => _armor = armor;
 
-    public void UnEquipWeapon()
-    {
-        _weapon = null;
-    }
-    
-    public void UnEquipArmor()
-    {
-        _armor = null;
-    }
-    
-    public void UnEquipAccessory()
-    {
-        _accessory = null;
-    }
+    public void Equip(Accessory accessory) => _accessory = accessory;
+
+    public void UnEquipWeapon() => _weapon = null;
+
+    public void UnEquipArmor() => _armor = null;
+
+    public void UnEquipAccessory() => _accessory = null;
 }
-
-

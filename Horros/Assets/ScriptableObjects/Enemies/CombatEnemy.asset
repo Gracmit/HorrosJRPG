@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f12507e417e5ed47a504324f289069c, type: 3}
-  m_Name: Test 3
+  m_Script: {fileID: 11500000, guid: 64b1029c10bd46e992243b78d8bf78bc, type: 3}
+  m_Name: CombatEnemy
   m_EditorClassIdentifier: 
-  _name: Test
-  _weapon: {fileID: 0}
-  _armor: {fileID: 0}
-  _accessory: {fileID: 0}
-  _memberStatus: {fileID: 11400000, guid: 0e68bd5edccf6524b9b9acaf19b6006b, type: 2}
+  _name: TestEnemy
+  _enemyStatus: {fileID: 11400000, guid: 11c6e5a048378f7428647de9a3311a57, type: 2}

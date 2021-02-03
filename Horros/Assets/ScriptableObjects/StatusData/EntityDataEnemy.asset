@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f12507e417e5ed47a504324f289069c, type: 3}
-  m_Name: Test 3
+  m_Script: {fileID: 11500000, guid: db70bae304ca4c944ad34b6cb9734a3e, type: 3}
+  m_Name: EntityDataEnemy
   m_EditorClassIdentifier: 
-  _name: Test
-  _weapon: {fileID: 0}
-  _armor: {fileID: 0}
-  _accessory: {fileID: 0}
-  _memberStatus: {fileID: 11400000, guid: 0e68bd5edccf6524b9b9acaf19b6006b, type: 2}
+  entityName: TestEnemy
+  model: {fileID: 3090649308442433487, guid: 1eaf5caabd5e7e94a9ed519a859e73e3, type: 3}

@@ -15,8 +15,9 @@ public class BattleManager : MonoBehaviour
     {
         var statusData = StatusManager.Instance.StatusData;
         InstantiatePartyMembers(statusData);
-        
+        InstantiateEnemies(statusData);
     }
+
 
     private void InstantiatePartyMembers(StatusData statusData)
     {
@@ -24,6 +25,16 @@ public class BattleManager : MonoBehaviour
         foreach (var entity in statusData.partyStatus)
         {
             Instantiate(entity.model, _playerSpawnpoints[spawnpointCounter]);
+            spawnpointCounter++;
+        }
+    }
+  
+    private void InstantiateEnemies(StatusData statusData)
+    {
+        var spawnpointCounter = 0;
+        foreach (var entity in statusData.enemyGroupStatus)
+        {
+            Instantiate(entity.model, _enemySpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
         }
     }

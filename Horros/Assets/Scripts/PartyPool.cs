@@ -4,7 +4,7 @@ using UnityEngine;
 public class PartyPool : MonoBehaviour
 {
     [SerializeField] private List<PartyMember> _members = new List<PartyMember>();
-    public double MembersCount => _members.Count;
+    public double MemberCount => _members.Count;
     public List<PartyMember> Members => _members;
 
     public void AddMember(PartyMember member)
