@@ -1,6 +1,7 @@
 ﻿using System;
+using UnityEngine;
 
-public class StartBattle : IState
+public class PlayerChoose : IState
 {
     public void Tick()
     {
@@ -9,7 +10,7 @@ public class StartBattle : IState
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        Debug.Log("Changed to PlayerChoose state");
     }
 
     public void OnExit()

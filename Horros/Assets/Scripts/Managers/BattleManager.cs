@@ -1,21 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _playerSpawnpoints;
     [SerializeField] private List<Transform> _enemySpawnpoints;
-    void Start()
+    private static BattleManager _instance;
+    private bool _initializationCompleted;
+
+    public static BattleManager Instance => _instance;
+    public bool Initialized() => _initializationCompleted;
+
+    private void Awake()
     {
-        InitializeBattleField();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 
-    private void InitializeBattleField()
+    public void InitializeBattleField()
     {
         var statusData = StatusManager.Instance.StatusData;
         InstantiatePartyMembers(statusData);
         InstantiateEnemies(statusData);
+        _initializationCompleted = true;
     }
 
 
@@ -38,4 +51,5 @@ public class BattleManager : MonoBehaviour
             spawnpointCounter++;
         }
     }
+
 }

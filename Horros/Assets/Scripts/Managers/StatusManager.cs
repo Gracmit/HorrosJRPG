@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class StatusManager : MonoBehaviour
@@ -30,7 +27,7 @@ public class StatusManager : MonoBehaviour
         var partyPool = other.gameObject.GetComponent<PartyPool>();
         SetPartyData(partyPool);
         SetEnemyGroupData(enemyPool);
-        
+
         Vector3 playerPosition = other.transform.position;
         _statusData.position[0] = playerPosition.x;
         _statusData.position[1] = playerPosition.y;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BattleStateMachine : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class BattleStateMachine : MonoBehaviour
     private void Awake()
     {
         _stateMachine = new StateMachine();
+        
         
         var start = new StartBattle();
         var enemyChoose = new EnemyChoose();
@@ -26,6 +25,13 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.AddState(win);
         _stateMachine.AddState(lose);
         
+        _stateMachine.AddTransition(start, playerChoose, BattleManager.Instance.Initialized);
+        
         _stateMachine.SetState(start);
+    }
+
+    private void Update()
+    {
+        _stateMachine.Tick();
     }
 }

@@ -8,7 +8,7 @@ public class StateTransition
 
     public StateTransition(IState from, IState to, Func<bool> condition)
     {
-        From = @from;
+        From = from;
         To = to;
         Condition = condition;
     }
