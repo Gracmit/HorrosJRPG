@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class PlayerAttack : IState
 {
@@ -9,7 +10,7 @@ public class PlayerAttack : IState
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        Debug.Log("Changed State to PlayerAttack");
     }
 
     public void OnExit()

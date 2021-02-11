@@ -26,6 +26,7 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.AddState(lose);
         
         _stateMachine.AddTransition(start, playerChoose, BattleManager.Instance.Initialized);
+        _stateMachine.AddTransition(playerChoose, playerAttack, BattleManager.Instance.AttackChosed);
         
         _stateMachine.SetState(start);
     }
