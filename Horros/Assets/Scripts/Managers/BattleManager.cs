@@ -7,11 +7,13 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> _enemySpawnpoints;
     private static BattleManager _instance;
     private bool _initializationCompleted;
-    private bool _attackChosed;
+    private bool _attackChosen;
+    private Queue<BattleEntity> _entityTurn;
+    private BattleEntity _activeEntity;
 
     public static BattleManager Instance => _instance;
     public bool Initialized() => _initializationCompleted;
-    public bool AttackChosed() => _attackChosed;
+    public bool AttackChosen() => _attackChosen;
 
     private void Awake()
     {
@@ -56,11 +58,18 @@ public class BattleManager : MonoBehaviour
 
     public void SaveChosenAttack()
     {
-        _attackChosed = true;
+        _attackChosen = true;
     }
 
     public void AttackNotChosed()
     {
-        _attackChosed = false;
+        _attackChosen = false;
     }
+}
+
+public class BattleEntity
+{
+    public string Name;
+    public Stats stats;
+    public bool partyMember;
 }

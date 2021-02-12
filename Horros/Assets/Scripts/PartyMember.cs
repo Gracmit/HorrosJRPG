@@ -3,7 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "PartyMember", menuName = "CombatEntity/Member")]
 [Serializable]
-public class PartyMember : ScriptableObject
+public class PartyMember : ScriptableObject, ICombatEntity
 {
     [SerializeField] private string _name;
     [SerializeField] private Weapon _weapon;
