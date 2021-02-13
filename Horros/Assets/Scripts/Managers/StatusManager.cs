@@ -24,8 +24,6 @@ public class StatusManager : MonoBehaviour
 
     public void SetBattleData(Collider other, EnemyPool enemyPool)
     {
-        var partyPool = other.gameObject.GetComponent<PartyPool>();
-        SetPartyData(partyPool);
         SetEnemyGroupData(enemyPool);
 
         Vector3 playerPosition = other.transform.position;
@@ -44,19 +42,5 @@ public class StatusManager : MonoBehaviour
         }
         
         _statusData.enemyGroupStatus = enemyStatus;
-    }
-    private void SetPartyData(PartyPool partyPool)
-    {
-        List<PartyMember> members = partyPool.Members;
-        List<EntityStatus> partyStatus = new List<EntityStatus>();
-        for (int i = 0; i < 3; i++)
-        {
-            if (members.Count > i)
-            {
-                partyStatus.Add(members[i].MemberStatus);
-            }
-        }
-        
-        _statusData.partyStatus = partyStatus;
     }
 }

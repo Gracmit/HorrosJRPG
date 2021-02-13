@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 [CreateAssetMenu(fileName = "PartyMember", menuName = "CombatEntity/Member")]
 [Serializable]
@@ -10,20 +11,23 @@ public class PartyMember : ScriptableObject, ICombatEntity
     [SerializeField] private Armor _armor;
     [SerializeField] private Accessory _accessory;
     [SerializeField] private Stats _stats = new Stats();
-    [SerializeField] private EntityStatus _memberStatus;
+    [SerializeField] private GameObject _model;
+    [SerializeField] private bool _active;
 
     public Weapon Weapon => _weapon;
     public Armor Armor => _armor;
     public Accessory Accessory => _accessory;
-    public EntityStatus MemberStatus => _memberStatus;
+    public bool Active => _active;
 
+    public GameObject Model => _model;
+    
     public PartyMember()
     {
         _weapon = null;
         _armor = null;
         _armor = null;
-        
     }
+
     public void Equip(Weapon weapon) => _weapon = weapon;
 
     public void Equip(Armor armor) => _armor = armor;
@@ -35,4 +39,6 @@ public class PartyMember : ScriptableObject, ICombatEntity
     public void UnEquipArmor() => _armor = null;
 
     public void UnEquipAccessory() => _accessory = null;
+
+    public void SetActive(bool active) => _active = active;
 }

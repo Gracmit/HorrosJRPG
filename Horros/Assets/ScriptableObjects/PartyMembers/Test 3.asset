@@ -16,4 +16,4 @@ MonoBehaviour:
   _weapon: {fileID: 0}
   _armor: {fileID: 0}
   _accessory: {fileID: 0}
-  _memberStatus: {fileID: 11400000, guid: 0e68bd5edccf6524b9b9acaf19b6006b, type: 2}
+  _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}

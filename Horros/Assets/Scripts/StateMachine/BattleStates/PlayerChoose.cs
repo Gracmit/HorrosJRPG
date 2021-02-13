@@ -14,6 +14,6 @@ public class PlayerChoose : IState
 
     public void OnExit()
     {
-        BattleManager.Instance.AttackNotChosed();
+        BattleManager.Instance.AttackNotChosen();
     }
 }

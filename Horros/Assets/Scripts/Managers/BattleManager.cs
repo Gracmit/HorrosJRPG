@@ -8,8 +8,8 @@ public class BattleManager : MonoBehaviour
     private static BattleManager _instance;
     private bool _initializationCompleted;
     private bool _attackChosen;
-    private Queue<BattleEntity> _entityTurn;
-    private BattleEntity _activeEntity;
+    private Queue<ICombatEntity> _turnQueue;
+    private ICombatEntity _activeEntity;
 
     public static BattleManager Instance => _instance;
     public bool Initialized() => _initializationCompleted;
@@ -30,18 +30,18 @@ public class BattleManager : MonoBehaviour
     public void InitializeBattleField()
     {
         var statusData = StatusManager.Instance.StatusData;
-        InstantiatePartyMembers(statusData);
+        InstantiatePartyMembers();
         InstantiateEnemies(statusData);
         _initializationCompleted = true;
     }
 
 
-    private void InstantiatePartyMembers(StatusData statusData)
+    private void InstantiatePartyMembers()
     {
         var spawnpointCounter = 0;
-        foreach (var entity in statusData.partyStatus)
+        foreach (var entity in GameManager.Instance.ActiveParty)
         {
-            Instantiate(entity.model, _playerSpawnpoints[spawnpointCounter]);
+            Instantiate(entity.Model, _playerSpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
         }
     }
@@ -61,15 +61,8 @@ public class BattleManager : MonoBehaviour
         _attackChosen = true;
     }
 
-    public void AttackNotChosed()
+    public void AttackNotChosen()
     {
         _attackChosen = false;
     }
-}
-
-public class BattleEntity
-{
-    public string Name;
-    public Stats stats;
-    public bool partyMember;
 }
