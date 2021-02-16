@@ -9,9 +9,17 @@ public class BattleManager : MonoBehaviour
     private bool _initializationCompleted;
     private bool _attackChosen;
     private Queue<ICombatEntity> _turnQueue;
+    private int _enemyAmount;
+    private int _partyCount;
     private ICombatEntity _activeEntity;
 
     public static BattleManager Instance => _instance;
+    public ICombatEntity NextTurn => _turnQueue.Peek();
+    public ICombatEntity ActiveEntity => _activeEntity;
+
+    public int EnemyAmount => _enemyAmount;
+    public int PartyCount => _partyCount;
+
     public bool Initialized() => _initializationCompleted;
     public bool AttackChosen() => _attackChosen;
 

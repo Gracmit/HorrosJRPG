@@ -13,6 +13,7 @@ public class PartyMember : ScriptableObject, ICombatEntity
     [SerializeField] private Stats _stats = new Stats();
     [SerializeField] private GameObject _model;
     [SerializeField] private bool _active;
+    private bool _attacked;
 
     public Weapon Weapon => _weapon;
     public Armor Armor => _armor;
@@ -41,4 +42,5 @@ public class PartyMember : ScriptableObject, ICombatEntity
     public void UnEquipAccessory() => _accessory = null;
 
     public void SetActive(bool active) => _active = active;
+    public bool Attacked => _attacked;
 }

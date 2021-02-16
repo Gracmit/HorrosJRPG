@@ -17,3 +17,4 @@ MonoBehaviour:
   _armor: {fileID: 0}
   _accessory: {fileID: 0}
   _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
+  _active: 1
