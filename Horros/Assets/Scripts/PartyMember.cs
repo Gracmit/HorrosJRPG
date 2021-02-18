@@ -14,6 +14,7 @@ public class PartyMember : ScriptableObject, ICombatEntity
     [SerializeField] private GameObject _model;
     [SerializeField] private bool _active;
     private bool _attacked;
+    private bool _alive;
 
     public Weapon Weapon => _weapon;
     public Armor Armor => _armor;
@@ -21,9 +22,12 @@ public class PartyMember : ScriptableObject, ICombatEntity
     public bool Active => _active;
 
     public GameObject Model => _model;
+    public bool Attacked => _attacked;
+    public bool Alive => _alive;
     
     public PartyMember()
     {
+        _alive = true;
         _weapon = null;
         _armor = null;
         _armor = null;
@@ -42,5 +46,18 @@ public class PartyMember : ScriptableObject, ICombatEntity
     public void UnEquipAccessory() => _accessory = null;
 
     public void SetActive(bool active) => _active = active;
-    public bool Attacked => _attacked;
+
+    public void TakeDamage()
+    {
+        Debug.Log("Damage Taken");
+        if (_stats.Get(StatType.HP) <= 0)
+        {
+            Died();
+        }
+    }
+
+    public void Died()
+    {
+        BattleManager.Instance.RemoveFromTurnQueue(this);
+    }
 }

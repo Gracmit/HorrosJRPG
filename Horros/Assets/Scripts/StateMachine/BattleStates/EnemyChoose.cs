@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class EnemyChoose : IState
 {
@@ -9,7 +10,8 @@ public class EnemyChoose : IState
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        BattleManager.Instance.ChangeToNextTurn();
+        Debug.Log("Changed to EnemyChoose state");
     }
 
     public void OnExit()

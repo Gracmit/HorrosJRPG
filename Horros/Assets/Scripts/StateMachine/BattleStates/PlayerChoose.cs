@@ -9,6 +9,7 @@ public class PlayerChoose : IState
 
     public void OnEnter()
     {
+        BattleManager.Instance.ChangeToNextTurn();
         Debug.Log("Changed to PlayerChoose state");
     }
 
