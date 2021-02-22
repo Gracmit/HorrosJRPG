@@ -1,19 +1,22 @@
 ﻿using System;
+using UnityEngine;
 
 public class EnemyAttack : IState
 {
     public void Tick()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        BattleManager.Instance.ActiveEntity.Attack();
+        Debug.Log("Changed State to EnemyAttack");
     }
 
     public void OnExit()
     {
-        throw new NotImplementedException();
+        BattleManager.Instance.ActiveEntity.ResetChosenAttack();
+        BattleManager.Instance.ChangeToNextTurn();
     }
 }

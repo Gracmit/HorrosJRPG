@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class Lose : IState
 {
@@ -9,7 +10,7 @@ public class Lose : IState
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        Debug.Log("Lost");
     }
 
     public void OnExit()

@@ -24,23 +24,11 @@ public class StatusManager : MonoBehaviour
 
     public void SetBattleData(Collider other, EnemyPool enemyPool)
     {
-        SetEnemyGroupData(enemyPool);
+        _statusData.enemyGroup = enemyPool.Enemies;
 
         Vector3 playerPosition = other.transform.position;
         _statusData.position[0] = playerPosition.x;
         _statusData.position[1] = playerPosition.y;
         _statusData.position[2] = playerPosition.z;
-    }
-
-    private void SetEnemyGroupData(EnemyPool enemyPool)
-    {
-        List<CombatEnemy> enemies = enemyPool.Enemies;
-        List<EntityStatus> enemyStatus = new List<EntityStatus>();
-        foreach (var enemy in enemies)
-        {
-            enemyStatus.Add(enemy.EnemyStatus);
-        }
-        
-        _statusData.enemyGroupStatus = enemyStatus;
     }
 }

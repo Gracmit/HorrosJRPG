@@ -8,13 +8,20 @@ public class BattleManager : MonoBehaviour
     private static BattleManager _instance;
     private bool _initializationCompleted;
     private bool _attackChosen;
-    private Queue<ICombatEntity> _turnQueue;
-    private Queue<ICombatEntity> _deadEntities;
+    private Queue<ICombatEntity> _turnQueue = new Queue<ICombatEntity>();
+    private Queue<ICombatEntity> _deadEntities = new Queue<ICombatEntity>();
     private int _enemyCount;
     private int _partyCount;
     private ICombatEntity _activeEntity;
 
     public static BattleManager Instance => _instance;
+
+    public ICombatEntity ActiveEntity => _activeEntity;
+
+    public int EnemyCount => _enemyCount;
+    public int PartyCount => _partyCount;
+
+    public bool Initialized() => _initializationCompleted;
     public ICombatEntity NextTurn
     {
         get
@@ -28,24 +35,18 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public ICombatEntity ActiveEntity => _activeEntity;
-
-    public int EnemyCount => _enemyCount;
-    public int PartyCount => _partyCount;
-
-    public bool Initialized() => _initializationCompleted;
-    public bool AttackChosen() => _attackChosen;
-
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
             _instance = this;
         }
+
+        _activeEntity = ScriptableObject.CreateInstance<PartyMember>();
     }
 
     public void InitializeBattleField()
@@ -53,6 +54,7 @@ public class BattleManager : MonoBehaviour
         var statusData = StatusManager.Instance.StatusData;
         InstantiatePartyMembers();
         InstantiateEnemies(statusData);
+        _activeEntity = _turnQueue.Dequeue();
         _initializationCompleted = true;
     }
 
@@ -64,6 +66,7 @@ public class BattleManager : MonoBehaviour
         {
             Instantiate(entity.Model, _playerSpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
+            _turnQueue.Enqueue(entity);
         }
 
         _partyCount = GameManager.Instance.ActiveParty.Count;
@@ -72,23 +75,19 @@ public class BattleManager : MonoBehaviour
     private void InstantiateEnemies(StatusData statusData)
     {
         var spawnpointCounter = 0;
-        foreach (var entity in statusData.enemyGroupStatus)
+        foreach (var entity in statusData.enemyGroup)
         {
-            Instantiate(entity.model, _enemySpawnpoints[spawnpointCounter]);
+            Instantiate(entity.Model, _enemySpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
+            _turnQueue.Enqueue(entity);
         }
 
-        _enemyCount = statusData.enemyGroupStatus.Count;
+        _enemyCount = statusData.enemyGroup.Count;
     }
 
     public void SaveChosenAttack()
     {
-        _attackChosen = true;
-    }
-
-    public void AttackNotChosen()
-    {
-        _attackChosen = false;
+        _activeEntity.ChooseAttack();
     }
 
     public void ChangeToNextTurn()
@@ -112,7 +111,5 @@ public class BattleManager : MonoBehaviour
     public void RemoveFromTurnQueue(CombatEnemy partyMember)
     {
         _enemyCount--;
-        
-        
     }
 }

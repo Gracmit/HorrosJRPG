@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StartBattle : IState
 {
@@ -15,6 +14,5 @@ public class StartBattle : IState
 
     public void OnExit()
     {
-        
     }
 }

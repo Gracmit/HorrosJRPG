@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 [CreateAssetMenu(fileName = "PartyMember", menuName = "CombatEntity/Member")]
 [Serializable]
@@ -15,6 +14,7 @@ public class PartyMember : ScriptableObject, ICombatEntity
     [SerializeField] private bool _active;
     private bool _attacked;
     private bool _alive;
+    private bool _attackChosen;
 
     public Weapon Weapon => _weapon;
     public Armor Armor => _armor;
@@ -22,6 +22,23 @@ public class PartyMember : ScriptableObject, ICombatEntity
     public bool Active => _active;
 
     public GameObject Model => _model;
+    public bool AttackChosen => _attackChosen;
+    public void ChooseAttack()
+    {
+        _attackChosen = true;
+    }
+
+    public void ResetChosenAttack()
+    {
+        _attacked = false;
+        _attackChosen = false;
+    }
+
+    public void Attack()
+    {
+        _attacked = true;
+    }
+
     public bool Attacked => _attacked;
     public bool Alive => _alive;
     
@@ -60,4 +77,5 @@ public class PartyMember : ScriptableObject, ICombatEntity
     {
         BattleManager.Instance.RemoveFromTurnQueue(this);
     }
+
 }

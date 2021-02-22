@@ -5,16 +5,17 @@ public class PlayerAttack : IState
 {
     public void Tick()
     {
-        throw new NotImplementedException();
     }
 
     public void OnEnter()
     {
+        BattleManager.Instance.ActiveEntity.Attack();
         Debug.Log("Changed State to PlayerAttack");
     }
 
     public void OnExit()
     {
-        throw new NotImplementedException();
+        BattleManager.Instance.ActiveEntity.ResetChosenAttack();
+        BattleManager.Instance.ChangeToNextTurn();
     }
 }

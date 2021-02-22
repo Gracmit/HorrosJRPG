@@ -7,8 +7,7 @@ public class BattleStateMachine : MonoBehaviour
     private void Awake()
     {
         _stateMachine = new StateMachine();
-        
-        
+
         var start = new StartBattle();
         var enemyChoose = new EnemyChoose();
         var enemyAttack = new EnemyAttack();
@@ -25,11 +24,10 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.AddState(win);
         _stateMachine.AddState(lose);
         
-        _stateMachine.AddTransition(start, playerChoose,
-            () => BattleManager.Instance.Initialized() && BattleManager.Instance.NextTurn.GetType() == typeof(PartyMember));
-        _stateMachine.AddTransition(start, enemyChoose,
-            () => BattleManager.Instance.Initialized() && BattleManager.Instance.NextTurn.GetType() == typeof(CombatEnemy));
-        _stateMachine.AddTransition(playerChoose, playerAttack, BattleManager.Instance.AttackChosen);
+        _stateMachine.AddTransition(start, playerChoose, () => BattleManager.Instance.Initialized() && BattleManager.Instance.ActiveEntity.GetType() == typeof(PartyMember));
+        _stateMachine.AddTransition(start, enemyChoose, () => BattleManager.Instance.Initialized() && BattleManager.Instance.ActiveEntity.GetType() == typeof(CombatEnemy));
+        _stateMachine.AddTransition(playerChoose, playerAttack, () => BattleManager.Instance.ActiveEntity.AttackChosen);
+        _stateMachine.AddTransition(enemyChoose, enemyAttack, () => BattleManager.Instance.ActiveEntity.AttackChosen);
         _stateMachine.AddTransition(
             playerAttack,
             playerChoose,

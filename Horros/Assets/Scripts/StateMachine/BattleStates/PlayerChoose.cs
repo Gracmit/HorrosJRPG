@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerChoose : IState
 {
@@ -9,12 +8,12 @@ public class PlayerChoose : IState
 
     public void OnEnter()
     {
-        BattleManager.Instance.ChangeToNextTurn();
+        BattleManager.Instance.ActiveEntity.ResetChosenAttack();
         Debug.Log("Changed to PlayerChoose state");
     }
 
     public void OnExit()
     {
-        BattleManager.Instance.AttackNotChosen();
+        
     }
 }

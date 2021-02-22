@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class Win : IState
 {
@@ -9,7 +10,7 @@ public class Win : IState
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        Debug.Log("Won");
     }
 
     public void OnExit()
