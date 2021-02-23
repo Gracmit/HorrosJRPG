@@ -16,6 +16,6 @@ public class PlayerAttack : IState
     public void OnExit()
     {
         BattleManager.Instance.ActiveEntity.ResetChosenAttack();
-        BattleManager.Instance.ChangeToNextTurn();
+        BattleManager.Instance.TurnManager.ChangeToNextTurn();
     }
 }
