@@ -4,11 +4,11 @@ public class StartBattle : IState
 {
     public void Tick()
     {
-        Debug.Log("Starting");
     }
 
     public void OnEnter()
     {
+        Debug.Log("Starting");
         BattleManager.Instance.InitializeBattleField();
     }
 

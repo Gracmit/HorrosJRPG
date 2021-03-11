@@ -2,6 +2,7 @@
 
 public class BattleStateMachine : MonoBehaviour
 {
+    [SerializeField] private GameObject _actionList;
     private StateMachine _stateMachine;
 
     private void Awake()
@@ -11,7 +12,7 @@ public class BattleStateMachine : MonoBehaviour
         var start = new StartBattle();
         var enemyChoose = new EnemyChoose();
         var enemyAttack = new EnemyAttack();
-        var playerChoose = new PlayerChoose();
+        var playerChoose = new PlayerChoose(_actionList);
         var playerAttack = new PlayerAttack();
         var win = new Win();
         var lose = new Lose();

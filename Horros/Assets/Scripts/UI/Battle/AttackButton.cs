@@ -6,6 +6,7 @@ public class AttackButton : MonoBehaviour
 {
     public void AttackChosen()
     {
-        BattleManager.Instance.SaveChosenAttack();
+        BattleUIManager.Instance.HighlightEnemy();
+        //BattleManager.Instance.SaveChosenAttack();
     }
 }

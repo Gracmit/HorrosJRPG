@@ -1,4 +1,5 @@
-﻿using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
@@ -20,9 +21,16 @@ public class LevelLoader : MonoBehaviour
     }
 
 
-    public void LoadLevelWithName(string levelName)
+    public IEnumerator LoadLevelWithName(string levelName)
     {
-        SceneManager.LoadSceneAsync(levelName);
-        SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+        var operation = SceneManager.LoadSceneAsync(levelName);
+        var operation2 = SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+
+        while (!operation.isDone && !operation2.isDone)
+        {
+            yield return null;
+        }
+
+        yield return null;
     }
 }

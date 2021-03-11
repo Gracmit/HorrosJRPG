@@ -42,4 +42,10 @@ public class CombatEnemy : ScriptableObject, ICombatEntity
     {
         _attacked = true;
     }
+
+    public void Highlight()
+    {
+        Debug.Log("Hihlighted enemy:" + _name);
+        //_model.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+    }
 }

@@ -68,6 +68,7 @@ public class BattleManager : MonoBehaviour
             Instantiate(entity.Model, _enemySpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
+            BattleUIManager.Instance.AddEnemy(entity);
         }
 
         _enemyCount = statusData.enemyGroup.Count;

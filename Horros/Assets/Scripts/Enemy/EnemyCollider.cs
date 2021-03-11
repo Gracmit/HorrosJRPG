@@ -8,7 +8,8 @@ public class EnemyCollider : MonoBehaviour
         {
             var enemyPool = this.GetComponent<EnemyPool>();
             StatusManager.Instance.SetBattleData(other, enemyPool);
-            LevelLoader.Instance.LoadLevelWithName("Combat");
+            
+            StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Combat"));
         }
     }
 }
