@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f12507e417e5ed47a504324f289069c, type: 3}
-  m_Name: Test 1
+  m_Script: {fileID: 11500000, guid: 711423dcc2929ad428d5a0620bd17615, type: 3}
+  m_Name: PartyMember 1
   m_EditorClassIdentifier: 
-  _name: Test
+  _name: Test 2
+  _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
   _weapon: {fileID: 0}
   _armor: {fileID: 0}
   _accessory: {fileID: 0}
-  _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
-  _active: 1

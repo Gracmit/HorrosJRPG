@@ -9,7 +9,8 @@ namespace Player
         public void can_add_member_to_party_pool()
         {
             var pool = new GameObject("PartyPool").AddComponent<PartyPool>();
-            var member = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
             
             pool.AddMember(member);
             
@@ -20,8 +21,9 @@ namespace Player
         public void can_add_multiple_members_to_party_pool()
         {
             var pool = new GameObject("PartyPool").AddComponent<PartyPool>();
-            var member = new PartyMember();
-            var member2 = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
+            var member2 = new PartyMember(data);
             
             pool.AddMember(member);
             pool.AddMember(member2);
@@ -33,7 +35,8 @@ namespace Player
         public void adds_same_member_only_once()
         {
             var pool = new GameObject("PartyPool").AddComponent<PartyPool>();
-            var member = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
             pool.AddMember(member);
             pool.AddMember(member);
             
@@ -44,7 +47,8 @@ namespace Player
         public void can_remove_a_member()
         {
             var pool = new GameObject("PartyPool").AddComponent<PartyPool>();
-            var member = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
             pool.AddMember(member);
 
             Assert.AreEqual(1, pool.MemberCount);
@@ -57,8 +61,9 @@ namespace Player
         public void does_not_remove_if_member_is_not_in_pool()
         {
             var pool = new GameObject("PartyPool").AddComponent<PartyPool>();
-            var member = new PartyMember();
-            var member2 = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
+            var member2 = new PartyMember(data);
             pool.AddMember(member);
 
             Assert.AreEqual(1, pool.MemberCount);
@@ -73,7 +78,8 @@ namespace Player
             var weapon = new GameObject("Weapon").AddComponent<Weapon>();
             var armor = new GameObject("Armor").AddComponent<Armor>();
             var accessory = new GameObject("Accessory").AddComponent<Accessory>();
-            var member = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
             
             member.Equip(weapon);
             Assert.AreEqual(weapon, member.Weapon);
@@ -89,7 +95,8 @@ namespace Player
             var weapon = new GameObject("Weapon").AddComponent<Weapon>();
             var armor = new GameObject("Armor").AddComponent<Armor>();
             var accessory = new GameObject("Accessory").AddComponent<Accessory>();
-            var member = new PartyMember();
+            var data = ScriptableObject.CreateInstance<PartyMemberData>();
+            var member = new PartyMember(data);
             
             member.Equip(weapon);
             member.Equip(armor);

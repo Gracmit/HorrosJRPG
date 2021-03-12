@@ -319,7 +319,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214224007}
-  m_LocalRotation: {x: 0.043223113, y: 0.0094327815, z: -0.00040811906, w: 0.9990209}
+  m_LocalRotation: {x: 0.043223113, y: 0.009432785, z: -0.00040811923, w: 0.9990209}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -735,7 +735,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946646046}
-  m_LocalRotation: {x: 0.0613397, y: 0.009423811, z: -0.00057918095, w: 0.9980723}
+  m_LocalRotation: {x: 0.061339695, y: 0.009423845, z: -0.00057918305, w: 0.9980723}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -820,7 +820,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.061339706, y: 0.009423795, z: -0.0005791693, w: 0.9980723}
+  m_LocalRotation: {x: 0.061339702, y: 0.009423864, z: -0.0005791735, w: 0.9980723}
   m_LocalPosition: {x: 0, y: 3.71, z: -10.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1090,8 +1090,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemies:
   - {fileID: 11400000, guid: 0798c03eaf9ad0b4ca50a1ef637fd295, type: 2}
-  - {fileID: 11400000, guid: 0798c03eaf9ad0b4ca50a1ef637fd295, type: 2}
-  - {fileID: 11400000, guid: 0798c03eaf9ad0b4ca50a1ef637fd295, type: 2}
+  - {fileID: 11400000, guid: 898b2a3ae8f03b245b91245a613db792, type: 2}
+  - {fileID: 11400000, guid: 5d366bc8650c946479e62f8c8592c072, type: 2}
 --- !u!1 &1410382865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,10 +1177,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _members:
-  - {fileID: 11400000, guid: 2d19194772c71eb46a7015872bfcfe01, type: 2}
-  - {fileID: 11400000, guid: 3bb7ce2bb9fa44642a2b62c0444e34b6, type: 2}
-  - {fileID: 11400000, guid: 80cd06dc6ed6333499e4c6d8f820d411, type: 2}
-  - {fileID: 11400000, guid: 5f40c7ba2b5198e41be073b730f2e340, type: 2}
+  - _data: {fileID: 11400000, guid: 925cf33457831a74ea7f05e1514fa5c7, type: 2}
+    _active: 1
+  - _data: {fileID: 11400000, guid: bf88688220778304aa8b69146167192d, type: 2}
+    _active: 1
+  - _data: {fileID: 11400000, guid: 0577afca848042c429cc64fefbbb1e4a, type: 2}
+    _active: 1
+  - _data: {fileID: 11400000, guid: 4c26421990218934daad8239ee22d236, type: 2}
+    _active: 0
 --- !u!1 &1514386132
 GameObject:
   m_ObjectHideFlags: 3

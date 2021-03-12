@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField] private List<CombatEnemy> _enemies = new List<CombatEnemy>();
+    [SerializeField] private List<CombatEnemyData> _enemies = new List<CombatEnemyData>();
     public double EnemyCount => _enemies.Count;
-    public List<CombatEnemy> Enemies => _enemies;
+    public List<CombatEnemyData> Enemies => _enemies;
 }

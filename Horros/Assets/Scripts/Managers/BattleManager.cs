@@ -34,7 +34,7 @@ public class BattleManager : MonoBehaviour
         }
 
         _turnManager = new TurnManager();
-        _activeEntity = ScriptableObject.CreateInstance<PartyMember>();
+        _activeEntity = new PartyMember(ScriptableObject.CreateInstance<PartyMemberData>());
     }
 
     public void InitializeBattleField()
@@ -63,12 +63,13 @@ public class BattleManager : MonoBehaviour
     private void InstantiateEnemies(StatusData statusData)
     {
         var spawnpointCounter = 0;
-        foreach (var entity in statusData.enemyGroup)
+        foreach (var entityData in statusData.enemyGroup)
         {
-            Instantiate(entity.Model, _enemySpawnpoints[spawnpointCounter]);
+            var enemy = new CombatEnemy(entityData);
+            Instantiate(entityData.Model, _enemySpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
-            _turnManager.AddEntity(entity);
-            BattleUIManager.Instance.AddEnemy(entity);
+            _turnManager.AddEntity(enemy);
+            BattleUIManager.Instance.AddEnemy(enemy);
         }
 
         _enemyCount = statusData.enemyGroup.Count;

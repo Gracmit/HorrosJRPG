@@ -6,7 +6,7 @@ public class EnemyCollider : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            var enemyPool = this.GetComponent<EnemyPool>();
+            var enemyPool = GetComponent<EnemyPool>();
             StatusManager.Instance.SetBattleData(other, enemyPool);
             
             StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Combat"));
