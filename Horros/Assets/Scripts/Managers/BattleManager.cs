@@ -7,17 +7,20 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> _enemySpawnpoints;
     private static BattleManager _instance;
     private TurnManager _turnManager;
+    private AttackHandler _attackHandler = new AttackHandler();
     private bool _initializationCompleted;
-    private bool _attackChosen;
     private ICombatEntity _activeEntity;
     private int _enemyCount;
-    private int _partyCount;
-    
+    private List<PartyMember> _activeParty = new List<PartyMember>();
+
     public static BattleManager Instance => _instance;
     public ICombatEntity ActiveEntity => _activeEntity;
     public int EnemyCount => _enemyCount;
-    public int PartyCount => _partyCount;
+    public int PartyCount => _activeParty.Count;
     public TurnManager TurnManager => _turnManager;
+
+    public AttackHandler AttackHandler => _attackHandler;
+    public List<PartyMember> Party => _activeParty;
 
     public bool Initialized() => _initializationCompleted;
 
@@ -55,9 +58,8 @@ public class BattleManager : MonoBehaviour
             Instantiate(entity.Model, _playerSpawnpoints[spawnpointCounter]);
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
+            _activeParty.Add(entity);
         }
-
-        _partyCount = GameManager.Instance.ActiveParty.Count;
     }
 
     private void InstantiateEnemies(StatusData statusData)
@@ -78,17 +80,19 @@ public class BattleManager : MonoBehaviour
     public void SetActiveEntity(ICombatEntity entity)
     {
         _activeEntity = entity;
+        _attackHandler.SaveAttacker(_activeEntity);
+        Debug.Log(_activeEntity.Data.Name);
     }
 
     public void SaveChosenAttack()
     {
-        _activeEntity.ChooseAttack();
+        _attackHandler.SaveAttack();
     }
 
 
     public void RemoveFromTurnQueue(PartyMember partyMember)
     {
-        _partyCount--;
+        _activeParty.Remove(partyMember);
     }
 
     public void RemoveFromTurnQueue(CombatEnemy partyMember)

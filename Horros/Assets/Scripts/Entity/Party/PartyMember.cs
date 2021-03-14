@@ -7,9 +7,7 @@ public class PartyMember : ICombatEntity
 {
     [SerializeField] private PartyMemberData _data;
     [SerializeField] private bool _active;
-    private bool _attacked;
     private bool _alive;
-    private bool _attackChosen;
 
     public Weapon Weapon => _data.Weapon;
     public Armor Armor => _data.Armor;
@@ -17,26 +15,10 @@ public class PartyMember : ICombatEntity
     public bool Active => _active;
 
     public GameObject Model => _data.Model;
-    public bool AttackChosen => _attackChosen;
-    public void ChooseAttack()
-    {
-        _attackChosen = true;
-    }
 
-    public void ResetChosenAttack()
-    {
-        _attacked = false;
-        _attackChosen = false;
-    }
-
-    public void Attack()
-    {
-        _attacked = true;
-    }
-
-    public bool Attacked => _attacked;
     public bool Alive => _alive;
-    
+    public EntityData Data => _data;
+
     public PartyMember(PartyMemberData data)
     {
         _alive = true;

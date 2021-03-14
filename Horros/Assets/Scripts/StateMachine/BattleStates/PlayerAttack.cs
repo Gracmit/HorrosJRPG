@@ -9,13 +9,12 @@ public class PlayerAttack : IState
 
     public void OnEnter()
     {
-        BattleManager.Instance.ActiveEntity.Attack();
         Debug.Log("Changed State to PlayerAttack");
+        BattleManager.Instance.AttackHandler.Attack();
     }
 
     public void OnExit()
     {
-        BattleManager.Instance.ActiveEntity.ResetChosenAttack();
         BattleManager.Instance.TurnManager.ChangeToNextTurn();
     }
 }

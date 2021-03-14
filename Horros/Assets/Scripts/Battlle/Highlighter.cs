@@ -19,9 +19,9 @@ public class Highlighter
             NextEnemy();
         }
 
-        if (_canHighlight && PlayerInput.Instance.GetKeyDown(KeyCode.Space))
+        if (_canHighlight && PlayerInput.Instance.GetKeyDown(KeyCode.Q))
         {
-            // TODO pick an enemy
+            BattleManager.Instance.AttackHandler.SaveTarget(_enemies[_activeIndex]);
         }
     }
 

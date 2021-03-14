@@ -2,7 +2,6 @@
 
 public class BattleStateMachine : MonoBehaviour
 {
-    [SerializeField] private GameObject _actionList;
     private StateMachine _stateMachine;
 
     private void Awake()
@@ -12,7 +11,7 @@ public class BattleStateMachine : MonoBehaviour
         var start = new StartBattle();
         var enemyChoose = new EnemyChoose();
         var enemyAttack = new EnemyAttack();
-        var playerChoose = new PlayerChoose(_actionList);
+        var playerChoose = new PlayerChoose();
         var playerAttack = new PlayerAttack();
         var win = new Win();
         var lose = new Lose();
@@ -27,25 +26,25 @@ public class BattleStateMachine : MonoBehaviour
         
         _stateMachine.AddTransition(start, playerChoose, () => BattleManager.Instance.Initialized() && BattleManager.Instance.ActiveEntity.GetType() == typeof(PartyMember));
         _stateMachine.AddTransition(start, enemyChoose, () => BattleManager.Instance.Initialized() && BattleManager.Instance.ActiveEntity.GetType() == typeof(CombatEnemy));
-        _stateMachine.AddTransition(playerChoose, playerAttack, () => BattleManager.Instance.ActiveEntity.AttackChosen);
-        _stateMachine.AddTransition(enemyChoose, enemyAttack, () => BattleManager.Instance.ActiveEntity.AttackChosen);
+        _stateMachine.AddTransition(playerChoose, playerAttack, () => BattleManager.Instance.AttackHandler.Target != null);
+        _stateMachine.AddTransition(enemyChoose, enemyAttack, () => BattleManager.Instance.AttackHandler.Target != null);
         _stateMachine.AddTransition(
             playerAttack,
             playerChoose,
-            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(PartyMember) &&  BattleManager.Instance.ActiveEntity.Attacked);
+            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(PartyMember) &&  BattleManager.Instance.AttackHandler.Attacked);
         _stateMachine.AddTransition(
             playerAttack,
             enemyChoose,
-            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(CombatEnemy) &&  BattleManager.Instance.ActiveEntity.Attacked);
+            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(CombatEnemy) &&  BattleManager.Instance.AttackHandler.Attacked);
 
         _stateMachine.AddTransition(
             enemyAttack,
             enemyChoose,
-            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(CombatEnemy) &&  BattleManager.Instance.ActiveEntity.Attacked);
+            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(CombatEnemy) &&  BattleManager.Instance.AttackHandler.Attacked);
         _stateMachine.AddTransition(
             enemyAttack,
             playerChoose,
-            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(PartyMember) &&  BattleManager.Instance.ActiveEntity.Attacked);
+            () => BattleManager.Instance.TurnManager.NextTurn.GetType() == typeof(PartyMember) &&  BattleManager.Instance.AttackHandler.Attacked);
         _stateMachine.AddTransition(playerAttack, win, () => BattleManager.Instance.EnemyCount <= 0);
         _stateMachine.AddTransition(playerAttack, lose, () => BattleManager.Instance.PartyCount <= 0);
         _stateMachine.AddTransition(enemyAttack, lose, () => BattleManager.Instance.PartyCount <= 0);

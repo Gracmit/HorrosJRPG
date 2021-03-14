@@ -11,7 +11,8 @@ public class EnemyChoose : IState
     public void OnEnter()
     {
         Debug.Log("Changed to EnemyChoose state");
-        BattleManager.Instance.ActiveEntity.ChooseAttack();
+        var activeEntity = (CombatEnemy)BattleManager.Instance.ActiveEntity;
+        activeEntity.ChooseAttack();
     }
 
     public void OnExit()

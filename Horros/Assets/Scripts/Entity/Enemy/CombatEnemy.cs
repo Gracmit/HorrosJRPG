@@ -3,12 +3,9 @@
 public class CombatEnemy : ICombatEntity
 {
     private CombatEnemyData _data;
-    private bool _attacked;
-    private bool _attackChosen;
     public GameObject Model => _data.Model;
-    public bool Attacked => _attacked;
-    public bool AttackChosen => _attackChosen;
     public bool Alive => true;
+    public EntityData Data => _data;
 
     public CombatEnemy(CombatEnemyData data)
     {
@@ -31,18 +28,13 @@ public class CombatEnemy : ICombatEntity
 
     public void ChooseAttack()
     {
-        _attackChosen = true;
+        BattleManager.Instance.AttackHandler.SaveAttack();
+        BattleManager.Instance.AttackHandler.SaveTarget(ChooseTarget());
     }
 
-    public void ResetChosenAttack()
+    private PartyMember ChooseTarget()
     {
-        _attacked = false;
-        _attackChosen = false;
-    }
-
-    public void Attack()
-    {
-        _attacked = true;
+        return BattleManager.Instance.Party[0];
     }
 
     public void Highlight()
