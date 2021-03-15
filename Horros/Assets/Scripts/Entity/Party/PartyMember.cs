@@ -42,7 +42,7 @@ public class PartyMember : ICombatEntity
     public void TakeDamage()
     {
         Debug.Log("Damage Taken");
-        if (_data.Stats.Get(StatType.HP) <= 0)
+        if (_data.Stats.GetValue(StatType.HP) <= 0)
         {
             Died();
         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711423dcc2929ad428d5a0620bd17615, type: 3}
   m_Name: PartyMember
   m_EditorClassIdentifier: 
-  _name: Test 1
+  _name: PartyTest 1
   _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
   _weapon: {fileID: 0}
   _armor: {fileID: 0}
