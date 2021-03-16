@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CombatEnemy 1
   m_EditorClassIdentifier: 
   _name: Test 2
+  _stats: {fileID: 11400000, guid: fda955954ade3124d89a9fee5f8635bb, type: 2}
   _model: {fileID: 3090649308442433487, guid: 1eaf5caabd5e7e94a9ed519a859e73e3, type: 3}

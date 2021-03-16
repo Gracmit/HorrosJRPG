@@ -12,7 +12,7 @@ public class Stats : ScriptableObject
     {
         var stat = _stats.Find(x => x.StatType == statType);
         if (stat != null)
-            stat.Value = value;
+            stat.Value += value;
         else
         {
             var newStat = new Stat {StatType = statType, Value = value};
@@ -30,5 +30,12 @@ public class Stats : ScriptableObject
     public int GetValue(StatType statType)
     {
         return _stats.Find(x => x.StatType == statType).Value;
+    }
+
+    public void FullHeal()
+    {
+        var hp = _stats.Find(x => x.StatType == StatType.HP);
+        var maxHp = _stats.Find(x => x.StatType == StatType.MaxHP);
+        hp.Value = maxHp.Value;    
     }
 }

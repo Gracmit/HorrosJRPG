@@ -6,7 +6,7 @@ public class stats : MonoBehaviour
     [Test]
     public void can_add()
     {
-        Stats stats = new Stats();
+        Stats stats = ScriptableObject.CreateInstance<Stats>();
         stats.Add(StatType.Attack, 3);
         Assert.AreEqual(3, stats.GetValue(StatType.Attack));
         stats.Add(StatType.Attack, 5);
@@ -19,7 +19,7 @@ public class stats : MonoBehaviour
     [Test]
     public void can_remove()
     {
-        Stats stats = new Stats();
+        Stats stats = ScriptableObject.CreateInstance<Stats>();
         stats.Add(StatType.Attack, 3);
         stats.Add(StatType.Defence, 3);
         stats.Remove(StatType.Attack, 2);

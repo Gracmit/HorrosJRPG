@@ -7,11 +7,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> _enemySpawnpoints;
     private static BattleManager _instance;
     private TurnManager _turnManager;
-    private AttackHandler _attackHandler = new AttackHandler();
     private bool _initializationCompleted;
     private ICombatEntity _activeEntity;
     private int _enemyCount;
-    private List<PartyMember> _activeParty = new List<PartyMember>();
+    private readonly AttackHandler _attackHandler = new AttackHandler();
+    private readonly List<PartyMember> _activeParty = new List<PartyMember>();
 
     public static BattleManager Instance => _instance;
     public ICombatEntity ActiveEntity => _activeEntity;
@@ -37,7 +37,6 @@ public class BattleManager : MonoBehaviour
         }
 
         _turnManager = new TurnManager();
-        _activeEntity = new PartyMember(ScriptableObject.CreateInstance<PartyMemberData>());
     }
 
     public void InitializeBattleField()
@@ -55,7 +54,10 @@ public class BattleManager : MonoBehaviour
         var spawnpointCounter = 0;
         foreach (var entity in GameManager.Instance.ActiveParty)
         {
-            Instantiate(entity.Model, _playerSpawnpoints[spawnpointCounter]);
+            var model = Instantiate(entity.Model, _playerSpawnpoints[spawnpointCounter]);
+            entity.CombatAvatar = model;
+            entity.FullHeal();
+            entity.Alive = true;
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
             _activeParty.Add(entity);
@@ -68,7 +70,9 @@ public class BattleManager : MonoBehaviour
         foreach (var entityData in statusData.enemyGroup)
         {
             var enemy = new CombatEnemy(entityData);
-            Instantiate(entityData.Model, _enemySpawnpoints[spawnpointCounter]);
+            var model = Instantiate(entityData.Model, _enemySpawnpoints[spawnpointCounter]);
+            enemy.CombatAvatar = model;
+            enemy.FullHeal();
             spawnpointCounter++;
             _turnManager.AddEntity(enemy);
             BattleUIManager.Instance.AddEnemy(enemy);
@@ -95,8 +99,9 @@ public class BattleManager : MonoBehaviour
         _activeParty.Remove(partyMember);
     }
 
-    public void RemoveFromTurnQueue(CombatEnemy partyMember)
+    public void RemoveFromTurnQueue(CombatEnemy enemy)
     {
         _enemyCount--;
+        BattleUIManager.Instance.RemoveEnemyFromHighlighter(enemy);
     }
 }

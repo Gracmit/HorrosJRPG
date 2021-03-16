@@ -5,29 +5,26 @@ public class TurnManager
     private Queue<ICombatEntity> _turnQueue = new Queue<ICombatEntity>();
     private Queue<ICombatEntity> _deadEntities = new Queue<ICombatEntity>();
 
-
-    public ICombatEntity NextTurn
+    public ICombatEntity NextTurn()
     {
-        get
+        while (!_turnQueue.Peek().Alive)
         {
-            if (!_turnQueue.Peek().Alive)
-            {
-                var entity = _turnQueue.Dequeue();
-                _deadEntities.Enqueue(entity);
-            }
-
-            return _turnQueue.Peek();
+            var entity = _turnQueue.Dequeue();
+            _deadEntities.Enqueue(entity);
         }
+
+        return _turnQueue.Peek();
     }
 
     public void ChangeToNextTurn()
     {
         if (BattleManager.Instance.ActiveEntity != null)
             _turnQueue.Enqueue(BattleManager.Instance.ActiveEntity);
-        
+
         BattleManager.Instance.SetActiveEntity(_turnQueue.Dequeue());
-        foreach (var entity in _deadEntities)
+        while (_deadEntities.Count > 0)
         {
+            var entity = _deadEntities.Dequeue();
             if (entity.GetType() == typeof(PartyMember))
             {
                 _turnQueue.Enqueue(entity);

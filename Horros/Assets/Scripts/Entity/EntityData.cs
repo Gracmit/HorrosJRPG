@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class EntityData : ScriptableObject
 {
     [SerializeField] private string _name;
@@ -8,5 +10,5 @@ public class EntityData : ScriptableObject
     
     public GameObject Model => _model;
     public string Name => _name;
-    public Stats Stats { get; set; }
+    public Stats Stats => _stats;
 }

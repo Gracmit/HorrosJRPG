@@ -19,7 +19,7 @@ public class Highlighter
             NextEnemy();
         }
 
-        if (_canHighlight && PlayerInput.Instance.GetKeyDown(KeyCode.Q))
+        if (_canHighlight && PlayerInput.Instance.GetKeyDown(KeyCode.Space))
         {
             BattleManager.Instance.AttackHandler.SaveTarget(_enemies[_activeIndex]);
         }
@@ -65,5 +65,12 @@ public class Highlighter
     private void Highlight()
     {
         _enemies[_activeIndex].Highlight();
+    }
+
+    public void RemoveEnemy(CombatEnemy enemy)
+    {
+        _enemies.Remove(enemy);
+        if (_activeIndex >= _enemies.Count)
+            _activeIndex--;
     }
 }

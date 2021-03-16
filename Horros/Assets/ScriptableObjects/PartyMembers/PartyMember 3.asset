@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PartyMember 3
   m_EditorClassIdentifier: 
   _name: PartyTest 4
+  _stats: {fileID: 11400000, guid: 0025a29c50bd1ec419aaf2c8320834d9, type: 2}
   _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
   _weapon: {fileID: 0}
   _armor: {fileID: 0}

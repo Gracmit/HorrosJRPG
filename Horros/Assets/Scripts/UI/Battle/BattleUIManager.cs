@@ -43,4 +43,10 @@ public class BattleUIManager : MonoBehaviour
     {
         _actionList.SetActive(active);
     }
+
+    public void RemoveEnemyFromHighlighter(CombatEnemy enemy)
+    {
+        _highlighter.RemoveEnemy(enemy);
+
+    }
 }

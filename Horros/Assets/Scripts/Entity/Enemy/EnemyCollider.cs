@@ -4,7 +4,7 @@ public class EnemyCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             var enemyPool = GetComponent<EnemyPool>();
             StatusManager.Instance.SetBattleData(other, enemyPool);

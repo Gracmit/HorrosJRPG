@@ -26,6 +26,7 @@ public class AttackHandler
 
     public void Attack()
     {
+        _target.TakeDamage();
         Debug.Log($"{_attacker.Data.Name} attacked {_target.Data.Name} with force of {_temporaryAttack} hp");
         _target = null;
         _attacker = null;

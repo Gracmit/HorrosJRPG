@@ -5,7 +5,6 @@ public class Win : IState
 {
     public void Tick()
     {
-        throw new NotImplementedException();
     }
 
     public void OnEnter()
@@ -15,6 +14,5 @@ public class Win : IState
 
     public void OnExit()
     {
-        throw new NotImplementedException();
     }
 }

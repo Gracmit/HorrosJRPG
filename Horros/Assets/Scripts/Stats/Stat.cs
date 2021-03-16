@@ -2,11 +2,20 @@
 using UnityEngine;
 
 [Serializable]
-public class Stat 
+public class Stat
 {
     [SerializeField] private StatType _statType;
     [SerializeField] private int _value;
 
-    public StatType StatType { get; set; }
-    public int Value { get; set; }
+    public StatType StatType
+    {
+        get => _statType;
+        set => _statType = value;
+    }
+
+    public int Value
+    {
+        get => _value;
+        set => _value = value;
+    }
 }
