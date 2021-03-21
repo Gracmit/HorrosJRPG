@@ -14,6 +14,5 @@ public class StartBattle : IState
 
     public void OnExit()
     {
-        BattleManager.Instance.TurnManager.ChangeToNextTurn();
     }
 }

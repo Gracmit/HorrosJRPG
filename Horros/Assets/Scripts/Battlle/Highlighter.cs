@@ -22,6 +22,7 @@ public class Highlighter
         if (_canHighlight && PlayerInput.Instance.GetKeyDown(KeyCode.Space))
         {
             BattleManager.Instance.AttackHandler.SaveTarget(_enemies[_activeIndex]);
+            _canHighlight = false;
         }
     }
 

@@ -51,17 +51,18 @@ public class PartyMember : ICombatEntity
 
     public void TakeDamage()
     {
-        _data.Stats.Remove(StatType.HP, 1);
+        _data.Stats.Remove(StatType.HP, 70);
         Debug.Log($"{_data.Name} took 10 damage. {_data.Stats.GetValue(StatType.HP)} HP remaining");
         if (_data.Stats.GetValue(StatType.HP) <= 0)
         {
-            Died();
+            Die();
         }
     }
 
-    public void Died()
+    public void Die()
     {
         BattleManager.Instance.RemoveFromTurnQueue(this);
+        _combatAvatar.SetActive(false);
     }
     
     public void FullHeal()

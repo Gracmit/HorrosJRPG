@@ -7,5 +7,5 @@ public interface ICombatEntity
 
     GameObject CombatAvatar { get; set; }
     void TakeDamage();
-    void Died();
+    void Die();
 }
