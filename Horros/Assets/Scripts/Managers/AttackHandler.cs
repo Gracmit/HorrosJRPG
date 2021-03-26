@@ -4,14 +4,14 @@ public class AttackHandler
 {
     private ICombatEntity _attacker;
     private ICombatEntity _target;
-    private int _temporaryAttack;
+    private Skill _skill;
     private bool _attacked;
     public bool Attacked => _attacked;
     public object Target => _target;
 
-    public void SaveAttack()
+    public void SaveAttack(Skill skill)
     {
-        _temporaryAttack = 10;
+        _skill = skill;
     }
 
     public void SaveTarget(ICombatEntity target)
@@ -26,12 +26,20 @@ public class AttackHandler
 
     public void Attack()
     {
-        _target.TakeDamage();
-        Debug.Log($"{_attacker.Data.Name} attacked {_target.Data.Name} with force of {_temporaryAttack} hp");
+        var damage = CountDamage();
+        _target.TakeDamage(damage);
+        Debug.Log($"{_attacker.Data.Name} attacked {_target.Data.Name} with skill {_skill.Name}");
         _target = null;
         _attacker = null;
-        _temporaryAttack = 0;
+        _skill = null;
         _attacked = true;
-        
+    }
+
+    private int CountDamage()
+    {
+        var attackPower = _attacker.Data.Stats.GetValue(_skill.AttackType);
+        var targetDefence = _target.Data.Stats.GetValue(_skill.DefenceType);
+        var skillPower = _skill.Power;
+        return attackPower * skillPower / 2 - targetDefence;
     }
 }

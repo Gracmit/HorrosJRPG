@@ -49,10 +49,10 @@ public class PartyMember : ICombatEntity
 
     public void SetActive(bool active) => _active = active;
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        _data.Stats.Remove(StatType.HP, 70);
-        Debug.Log($"{_data.Name} took 10 damage. {_data.Stats.GetValue(StatType.HP)} HP remaining");
+        _data.Stats.Remove(StatType.HP, damage);
+        Debug.Log($"{_data.Name} took {damage} damage. {_data.Stats.GetValue(StatType.HP)} HP remaining");
         if (_data.Stats.GetValue(StatType.HP) <= 0)
         {
             Die();

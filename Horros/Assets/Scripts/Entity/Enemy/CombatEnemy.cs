@@ -20,10 +20,10 @@ public class CombatEnemy : ICombatEntity
         _data = data;
     }
     
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        _data.Stats.Remove(StatType.HP, 10);
-        Debug.Log($"{_data.Name} took 10 damage. {_data.Stats.GetValue(StatType.HP)} HP remaining");
+        _data.Stats.Remove(StatType.HP, damage);
+        Debug.Log($"{_data.Name} took {damage} damage. {_data.Stats.GetValue(StatType.HP)} HP remaining");
         if (_data.Stats.GetValue(StatType.HP) <= 0)
         {
             Die();
@@ -40,7 +40,7 @@ public class CombatEnemy : ICombatEntity
 
     public void ChooseAttack()
     {
-        BattleManager.Instance.AttackHandler.SaveAttack();
+        //BattleManager.Instance.AttackHandler.SaveAttack();
         BattleManager.Instance.AttackHandler.SaveTarget(ChooseTarget());
     }
 

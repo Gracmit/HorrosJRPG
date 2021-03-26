@@ -88,9 +88,9 @@ public class BattleManager : MonoBehaviour
         Debug.Log(_activeEntity.Data.Name);
     }
 
-    public void SaveChosenAttack()
+    public void SaveChosenAttack(Skill skill)
     {
-        _attackHandler.SaveAttack();
+        _attackHandler.SaveAttack(skill);
     }
 
 

@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
 
 public class AttackButton : MonoBehaviour
 {
+    [SerializeField] private Skill _skill;
+    
     public void AttackChosen()
     {
         BattleUIManager.Instance.HighlightEnemy();
-        BattleManager.Instance.SaveChosenAttack();
+        BattleManager.Instance.SaveChosenAttack(_skill);
     }
 }
