@@ -6,6 +6,8 @@ public interface ICombatEntity
     EntityData Data { get; }
 
     GameObject CombatAvatar { get; set; }
+    ElementType Element { get;}
     void TakeDamage(int damage);
     void Die();
+    void ChangeElement(ElementType element);
 }

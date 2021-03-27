@@ -12,7 +12,7 @@ public class EnemyChoose : IState
     {
         Debug.Log("Changed to EnemyChoose state");
         var activeEntity = (CombatEnemy)BattleManager.Instance.ActiveEntity;
-        activeEntity.ChooseAttack();
+        activeEntity.PrepareAttack();
     }
 
     public void OnExit()

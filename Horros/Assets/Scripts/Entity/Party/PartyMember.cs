@@ -7,6 +7,7 @@ public class PartyMember : ICombatEntity
 {
     [SerializeField] private PartyMemberData _data;
     [SerializeField] private bool _active;
+    private ElementType _element = ElementType.None;
     private bool _alive = true;
     private GameObject _combatAvatar;
 
@@ -48,6 +49,7 @@ public class PartyMember : ICombatEntity
     public void UnEquipAccessory() => _data.Accessory = null;
 
     public void SetActive(bool active) => _active = active;
+    public ElementType Element => _element;
 
     public void TakeDamage(int damage)
     {
@@ -64,7 +66,12 @@ public class PartyMember : ICombatEntity
         BattleManager.Instance.RemoveFromTurnQueue(this);
         _combatAvatar.SetActive(false);
     }
-    
+
+    public void ChangeElement(ElementType element)
+    {
+        _element = element;
+    }
+
     public void FullHeal()
     {
         _data.Stats.FullHeal();

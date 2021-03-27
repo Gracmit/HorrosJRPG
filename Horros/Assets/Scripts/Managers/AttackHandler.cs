@@ -27,6 +27,16 @@ public class AttackHandler
     public void Attack()
     {
         var damage = CountDamage();
+        bool affected = false;
+        if (_skill.StatusEffect.EffectType != EffectType.None)
+        {
+            affected = EffectWorked();
+        }
+
+        if (affected)
+        {
+            _target.ChangeElement(_skill.StatusEffect.Element);
+        }
         _target.TakeDamage(damage);
         Debug.Log($"{_attacker.Data.Name} attacked {_target.Data.Name} with skill {_skill.Name}");
         _target = null;
@@ -35,11 +45,24 @@ public class AttackHandler
         _attacked = true;
     }
 
+    private bool EffectWorked()
+    {
+        var number = Random.Range(1, 100);
+        return _skill.StatusEffect.Chance >= number;
+    }
+
     private int CountDamage()
     {
         var attackPower = _attacker.Data.Stats.GetValue(_skill.AttackType);
         var targetDefence = _target.Data.Stats.GetValue(_skill.DefenceType);
         var skillPower = _skill.Power;
-        return attackPower * skillPower / 2 - targetDefence;
+        var damage = attackPower * skillPower / 2 - targetDefence;
+        if (_target.Element == ElementType.None)
+            return damage;
+        if (_skill.Strength == _target.Element)
+            damage *= 2;
+        if (_skill.Weakness == _target.Element)
+            damage /= 2;
+        return damage;
     }
 }

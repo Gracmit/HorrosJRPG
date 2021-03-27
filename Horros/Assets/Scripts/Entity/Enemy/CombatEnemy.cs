@@ -3,6 +3,7 @@
 public class CombatEnemy : ICombatEntity
 {
     private CombatEnemyData _data;
+    private ElementType _element = ElementType.None;
     private bool _alive = true;
     private GameObject _combatAvatar;
     public GameObject Model => _data.Model;    
@@ -19,7 +20,9 @@ public class CombatEnemy : ICombatEntity
     {
         _data = data;
     }
-    
+
+    public ElementType Element => _element;
+
     public void TakeDamage(int damage)
     {
         _data.Stats.Remove(StatType.HP, damage);
@@ -38,15 +41,28 @@ public class CombatEnemy : ICombatEntity
         
     }
 
-    public void ChooseAttack()
+    public void ChangeElement(ElementType element)
     {
-        //BattleManager.Instance.AttackHandler.SaveAttack();
+        _element = element;
+    }
+
+    public void PrepareAttack()
+    {
+        BattleManager.Instance.AttackHandler.SaveAttack(ChooseAttack());
         BattleManager.Instance.AttackHandler.SaveTarget(ChooseTarget());
+    }
+
+    private Skill ChooseAttack()
+    {
+        
+        var index = Random.Range(0, _data.Skills.Count);
+        return _data.Skills[index];
     }
 
     private PartyMember ChooseTarget()
     {
-        return BattleManager.Instance.Party[0];
+        var index = Random.Range(0, BattleManager.Instance.PartyCount);
+        return BattleManager.Instance.Party[index];
     }
 
     public void Highlight()

@@ -13,4 +13,5 @@ public class EntityData : ScriptableObject
     public GameObject Model => _model;
     public string Name => _name;
     public Stats Stats => _stats;
+    public List<Skill> Skills => _skills;
 }
