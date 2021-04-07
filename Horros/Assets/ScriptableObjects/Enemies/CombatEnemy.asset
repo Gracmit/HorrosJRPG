@@ -15,3 +15,5 @@ MonoBehaviour:
   _name: Test 1
   _stats: {fileID: 11400000, guid: c87807d804138d147a665349e04ae1d8, type: 2}
   _model: {fileID: 3090649308442433487, guid: 1eaf5caabd5e7e94a9ed519a859e73e3, type: 3}
+  _skills:
+  - {fileID: 11400000, guid: 73518d98f1016854db52b77cde017089, type: 2}

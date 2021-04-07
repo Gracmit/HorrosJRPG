@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CombatEnemy : ICombatEntity
 {
@@ -6,6 +7,7 @@ public class CombatEnemy : ICombatEntity
     private ElementType _element = ElementType.None;
     private bool _alive = true;
     private GameObject _combatAvatar;
+    private Dictionary<StatType, BuffCounter> _activeBuffs;
     public GameObject Model => _data.Model;    
     public bool Alive => _alive;
     public EntityData Data => _data;
@@ -69,6 +71,19 @@ public class CombatEnemy : ICombatEntity
     {
         Debug.Log("Hihlighted enemy:" + _data.Name);
         //1§ c_model.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+    }
+    
+    public void AddBuff(BuffSkillData buff)
+    {
+        if (_activeBuffs.ContainsKey(buff.Stat))
+        {
+            if (!_activeBuffs[buff.Stat].ModifyBuff(buff))
+                _activeBuffs.Remove(buff.Stat);
+        }
+        else
+        {
+            _activeBuffs.Add(buff.Stat, new BuffCounter(buff.Multiplier, buff.Lenght));
+        }
     }
 
     public void FullHeal()

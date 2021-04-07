@@ -10,4 +10,5 @@ public interface ICombatEntity
     void TakeDamage(int damage);
     void Die();
     void ChangeElement(ElementType element);
+    void AddBuff(BuffSkillData buff);
 }

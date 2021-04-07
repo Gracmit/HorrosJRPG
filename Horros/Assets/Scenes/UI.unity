@@ -4682,7 +4682,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _skill
       value: 
-      objectReference: {fileID: 11400000, guid: 7f3464acd779bb7439178cbd092fb2a0,
+      objectReference: {fileID: 11400000, guid: 73518d98f1016854db52b77cde017089,
+        type: 2}
+    - target: {fileID: 4180697134437353456, guid: 248ca9ec2c091724e85d89e8690379c1,
+        type: 3}
+      propertyPath: _skillData
+      value: 
+      objectReference: {fileID: 11400000, guid: 73518d98f1016854db52b77cde017089,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248ca9ec2c091724e85d89e8690379c1, type: 3}

@@ -3,8 +3,9 @@
 
 public class AttackButton : MonoBehaviour
 {
-    [SerializeField] private Skill _skill;
-    
+    [SerializeField] private OffensiveSkill _skill;
+
+
     public void AttackChosen()
     {
         BattleUIManager.Instance.HighlightEnemy();
