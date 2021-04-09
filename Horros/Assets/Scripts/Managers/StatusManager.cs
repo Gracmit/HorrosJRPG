@@ -21,11 +21,16 @@ public class StatusManager : MonoBehaviour
         }
     }
 
-    public void SetBattleData(Collider other, EnemyPool enemyPool)
+    public void SetStatusData(StatusData data)
+    {
+        _statusData = data;
+    }
+
+    public void SetBattleData(GameObject player, EnemyPool enemyPool)
     {
         _statusData.enemyGroup = enemyPool.Enemies;
 
-        Vector3 playerPosition = other.transform.position;
+        Vector3 playerPosition = player.transform.position;
         _statusData.position[0] = playerPosition.x;
         _statusData.position[1] = playerPosition.y;
         _statusData.position[2] = playerPosition.z;
