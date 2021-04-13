@@ -10,7 +10,7 @@ public class BuffSkill : Skill
 {
     [SerializeField] private BuffSkillData _data;
 
-    public BuffSkillData Data => _data;
+    public override SkillData Data => _data;
     
     public BuffSkill(BuffSkillData data)
     {

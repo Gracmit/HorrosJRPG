@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _actionList;
+    [SerializeField] private SkillList _skillList;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
 
@@ -44,9 +46,19 @@ public class BattleUIManager : MonoBehaviour
         _actionList.SetActive(active);
     }
 
+    public void ToggleSkillList(bool active)
+    {
+        _skillList.gameObject.SetActive(active);
+    }
+
     public void RemoveEnemyFromHighlighter(CombatEnemy enemy)
     {
         _highlighter.RemoveEnemy(enemy);
 
+    }
+
+    public void InstantiateSkillButtons(List<Skill> skills)
+    {
+        _skillList.InstantiateButtons(skills);
     }
 }

@@ -10,7 +10,7 @@ public class OffensiveSkill : Skill
 {
     [SerializeField] private OffensiveSkillData _data;
 
-    public OffensiveSkillData Data => _data;
+    public override SkillData Data => _data;
 
     public OffensiveSkill(OffensiveSkillData data)
     {
