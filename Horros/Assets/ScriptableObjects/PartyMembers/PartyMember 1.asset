@@ -15,7 +15,8 @@ MonoBehaviour:
   _name: PartyTest 2
   _stats: {fileID: 11400000, guid: 34d014c81e671914fbdf48168d2dd5e1, type: 2}
   _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
-  _skills: []
+  _skills:
+  - {fileID: 11400000, guid: a7e552cc10e936946a5bacf344616968, type: 2}
   _weapon: {fileID: 0}
   _armor: {fileID: 0}
   _accessory: {fileID: 0}

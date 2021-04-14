@@ -61,6 +61,7 @@ public class BattleManager : MonoBehaviour
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
             _activeParty.Add(entity);
+            BattleUIManager.Instance.InstantiateStatusPanel(entity);
         }
     }
 

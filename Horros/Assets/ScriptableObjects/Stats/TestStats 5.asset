@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
   - _statType: 0
-    _value: 50
+    _value: -8
   - _statType: 1
     _value: 30
   - _statType: 2
-    _value: 3
+    _value: 20
   - _statType: 3
-    _value: 2
+    _value: 20
   - _statType: 4
     _value: 4
   - _statType: 5
