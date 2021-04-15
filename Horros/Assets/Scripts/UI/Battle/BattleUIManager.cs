@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleUIManager : MonoBehaviour
@@ -43,4 +42,6 @@ public class BattleUIManager : MonoBehaviour
     public void InstantiateSkillButtons(List<Skill> skills) => _skillList.InstantiateButtons(skills);
 
     public void InstantiateStatusPanel(PartyMember member) => _statusList.InstantiateStatusPanel(member);
+
+    public void UpdateStatusPanel(PartyMember member) => _statusList.UpdatePanel(member);
 }

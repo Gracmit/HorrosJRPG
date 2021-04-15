@@ -26,6 +26,15 @@ public class AttackHandler
     public void Attack()
     {
         _skill.HandleAttack(_attacker, _target);
+        if (_target.GetType() == typeof(PartyMember))
+        {
+            BattleUIManager.Instance.UpdateStatusPanel((PartyMember)_target);
+        }
+
+        if (_attacker.GetType() == typeof(PartyMember))
+        {
+            BattleUIManager.Instance.UpdateStatusPanel((PartyMember)_attacker);
+        }
         
         _target = null;
         _attacker = null;
