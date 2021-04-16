@@ -63,7 +63,7 @@ public class CombatEnemy : ICombatEntity
 
     private PartyMember ChooseTarget()
     {
-        var index = Random.Range(0, BattleManager.Instance.PartyCount);
+        var index = Random.Range(0, BattleManager.Instance.PartyCount); 
         return BattleManager.Instance.Party[index];
     }
 

@@ -14,5 +14,6 @@ public class StartBattle : IState
 
     public void OnExit()
     {
+        BattleUIManager.Instance.ToggleStatusPanels(true);
     }
 }
