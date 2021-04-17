@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class BattleUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _actionList;
     [SerializeField] private SkillList _skillList;
     [SerializeField] private StatusList _statusList;
+    [SerializeField] private InfoPanel _infoPanel;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
 
@@ -23,7 +25,7 @@ public class BattleUIManager : MonoBehaviour
             DontDestroyOnLoad(_instance);
         }
 
-        _highlighter = new Highlighter();
+        _highlighter = new Highlighter(_infoPanel);
     }
 
     private void Update() => _highlighter.Tick();

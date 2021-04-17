@@ -6,6 +6,12 @@ public class Highlighter
     private List<CombatEnemy> _enemies = new List<CombatEnemy>();
     private int _activeIndex = 0;
     private bool _canHighlight;
+    private InfoPanel _infoPanel;
+
+    public Highlighter(InfoPanel infoPanel)
+    {
+        _infoPanel = infoPanel;
+    }
 
     public void Tick()
     {
@@ -24,6 +30,7 @@ public class Highlighter
             BattleManager.Instance.AttackHandler.SaveTarget(_enemies[_activeIndex]);
             BattleUIManager.Instance.ToggleSkillList(false);
             _canHighlight = false;
+            _infoPanel.gameObject.SetActive(false);
         }
     }
 
@@ -35,6 +42,7 @@ public class Highlighter
     public void CanHighlight()
     {
         _canHighlight = true;
+        _infoPanel.gameObject.SetActive(true);
         Highlight();
     }
 
@@ -67,6 +75,7 @@ public class Highlighter
     private void Highlight()
     {
         _enemies[_activeIndex].Highlight();
+        _infoPanel.UpdateText(_enemies[_activeIndex]);
     }
 
     public void RemoveEnemy(CombatEnemy enemy)
