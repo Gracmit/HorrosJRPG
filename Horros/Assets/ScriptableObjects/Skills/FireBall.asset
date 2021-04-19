@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Fireball
   _description: Basic fire magic
+  _mpCost: 10
   _power: 10
   _element: 3
   _weakness: 4

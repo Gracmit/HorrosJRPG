@@ -27,6 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Icicle
   _description: Basic Ice magic
+  _mpCost: 20
   _power: 10
   _element: 4
   _weakness: 3

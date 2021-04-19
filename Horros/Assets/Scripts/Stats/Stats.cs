@@ -20,11 +20,17 @@ public class Stats : ScriptableObject
         }
     }
     
-    public void Remove(StatType statType, int value)
+    public void Subtract(StatType statType, int value)
     {
         var stat = _stats.Find(x => x.StatType == statType);
         if (stat != null)
+        {
             stat.Value -= value;
+            if (stat.Value < 0)
+            {
+                stat.Value = 0;
+            }
+        }
     }
 
     public int GetValue(StatType statType)

@@ -22,8 +22,8 @@ public class stats : MonoBehaviour
         Stats stats = ScriptableObject.CreateInstance<Stats>();
         stats.Add(StatType.Attack, 3);
         stats.Add(StatType.Defence, 3);
-        stats.Remove(StatType.Attack, 2);
-        stats.Remove(StatType.Defence, 1);
+        stats.Subtract(StatType.Attack, 2);
+        stats.Subtract(StatType.Defence, 1);
         Assert.AreEqual(1, stats.GetValue(StatType.Attack));
         Assert.AreEqual(2, stats.GetValue(StatType.Defence));
     }

@@ -21,6 +21,7 @@ public class OffensiveSkill : Skill
     public override void HandleAttack(ICombatEntity attacker, ICombatEntity target)
     {
         var damage = CountDamage(attacker, target);
+        SubtractMP(attacker);
         bool affected = false;
         if (_data.StatusEffect.EffectType != EffectType.None)
         {
@@ -34,6 +35,11 @@ public class OffensiveSkill : Skill
 
         Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
         target.TakeDamage(damage);
+    }
+
+    private void SubtractMP(ICombatEntity attacker)
+    {
+        attacker.Data.Stats.Subtract(StatType.MP, Data.MpCost);
     }
 
     private int CountDamage(ICombatEntity attacker, ICombatEntity target)

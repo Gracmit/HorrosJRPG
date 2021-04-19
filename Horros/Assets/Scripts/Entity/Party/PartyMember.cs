@@ -58,7 +58,7 @@ public class PartyMember : ICombatEntity
 
     public void TakeDamage(int damage)
     {
-        _data.Stats.Remove(StatType.HP, damage);
+        _data.Stats.Subtract(StatType.HP, damage);
         Debug.Log($"{_data.Name} took {damage} damage. {_data.Stats.GetValue(StatType.HP)} HP remaining");
         if (_data.Stats.GetValue(StatType.HP) <= 0)
         {
