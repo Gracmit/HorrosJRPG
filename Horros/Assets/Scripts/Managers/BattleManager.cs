@@ -42,8 +42,8 @@ public class BattleManager : MonoBehaviour
     public void InitializeBattleField()
     {
         var statusData = StatusManager.Instance.StatusData;
-        InstantiatePartyMembers();
         InstantiateEnemies(statusData);
+        InstantiatePartyMembers();
         SetActiveEntity(_turnManager.GetNextEntity());
         _initializationCompleted = true;
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 public class AttackButton : MonoBehaviour
@@ -8,7 +9,13 @@ public class AttackButton : MonoBehaviour
 
     public void AttackChosen()
     {
-        BattleUIManager.Instance.HighlightEnemy();
         BattleManager.Instance.SaveChosenAttack(_skill);
+        StartCoroutine(Highlight());
+    }
+
+    private IEnumerator Highlight()
+    {
+        yield return null;
+        BattleUIManager.Instance.HighlightEnemy();
     }
 }

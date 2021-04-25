@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,13 @@ public class SkillButton : MonoBehaviour
 
     public void AttackChosen()
     {
-        BattleUIManager.Instance.HighlightEnemy();
         BattleManager.Instance.SaveChosenAttack(_skill);
+        StartCoroutine(Highlight());
+    }
+    
+    private IEnumerator Highlight()
+    {
+        yield return null;
+        BattleUIManager.Instance.HighlightEnemy();
     }
 }

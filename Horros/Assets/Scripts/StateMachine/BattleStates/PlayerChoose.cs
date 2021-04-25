@@ -17,5 +17,6 @@ public class PlayerChoose : IState
     public void OnExit()
     {
         BattleUIManager.Instance.ToggleActionList(false);
+        BattleUIManager.Instance.StackHandler.ClearStack();
     }
 }

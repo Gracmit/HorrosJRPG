@@ -43,7 +43,13 @@ public class Highlighter
     {
         _canHighlight = true;
         _infoPanel.gameObject.SetActive(true);
+        BattleUIManager.Instance.StackHandler.PushToStack(_infoPanel.gameObject);
         Highlight();
+    }
+
+    public void TurnHighlighterOff()
+    {
+        _canHighlight = false;
     }
 
     private void PreviousEnemy()

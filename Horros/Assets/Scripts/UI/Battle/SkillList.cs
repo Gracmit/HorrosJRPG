@@ -35,4 +35,9 @@ public class SkillList : MonoBehaviour
             Destroy(button);
         }
     }
+
+    private void OnEnable()
+    {
+        BattleUIManager.Instance.EventHandler.ActivateSkillButton(_buttons[0]);
+    }
 }

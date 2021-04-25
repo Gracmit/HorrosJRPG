@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class BattleUIManager : MonoBehaviour
 {
@@ -10,8 +9,12 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private InfoPanel _infoPanel;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
+    private BattleEventSystemHandler _eventHandler;
+    private BattleUIStackHandler _stackHandler;
 
     public static BattleUIManager Instance => _instance;
+    public BattleEventSystemHandler EventHandler => _eventHandler;
+    public BattleUIStackHandler StackHandler => _stackHandler;
 
     private void Awake()
     {
@@ -26,16 +29,64 @@ public class BattleUIManager : MonoBehaviour
         }
 
         _highlighter = new Highlighter(_infoPanel);
+        _eventHandler = GetComponent<BattleEventSystemHandler>();
+        _stackHandler = new BattleUIStackHandler();
     }
 
-    private void Update() => _highlighter.Tick();
+
+    private void Update()
+    {
+        _highlighter.Tick();
+
+        if (PlayerInput.Instance.GetKeyDown(KeyCode.Q))
+        {
+            ReturnToPreviousUIObject();
+        }
+    }
+
+    private void ReturnToPreviousUIObject()
+    {
+        
+        var x = _stackHandler.GetLastUIObject();
+        var activeObject = _stackHandler.GetLastUIObject();
+        if (activeObject == null)
+        {
+            return;
+        }
+                
+        x.SetActive(false);
+        activeObject.SetActive(true);
+        _stackHandler.PushToStack(activeObject);
+        _highlighter.TurnHighlighterOff();
+    }
 
     public void AddEnemy(CombatEnemy entity) => _highlighter.AddEnemy(entity);
 
-    public void HighlightEnemy() => _highlighter.CanHighlight();
+    public void HighlightEnemy()
+    {
+        _highlighter.CanHighlight();
+        _actionList.SetActive(false);
+        _skillList.gameObject.SetActive(false);
+    }
 
-    public void ToggleActionList(bool active) => _actionList.SetActive(active);
-    public void ToggleSkillList(bool active) => _skillList.gameObject.SetActive(active);
+    public void ToggleActionList(bool active)
+    {
+        _actionList.SetActive(active);
+        if (_actionList.activeInHierarchy)
+        {
+            _stackHandler.PushToStack(_actionList);
+        }
+    }
+
+    public void ToggleSkillList(bool active)
+    {
+        _skillList.gameObject.SetActive(active);
+        if (_skillList.gameObject.activeInHierarchy)
+        {
+            _stackHandler.PushToStack(_skillList.gameObject);
+        }
+    }
+
     public void ToggleStatusPanels(bool active) => _statusList.gameObject.SetActive(active);
 
     public void RemoveEnemyFromHighlighter(CombatEnemy enemy) => _highlighter.RemoveEnemy(enemy);
@@ -45,5 +96,27 @@ public class BattleUIManager : MonoBehaviour
     public void InstantiateStatusPanel(PartyMember member) => _statusList.InstantiateStatusPanel(member);
 
     public void UpdateStatusPanel(PartyMember member) => _statusList.UpdatePanel(member);
+    
+}
 
+public class BattleUIStackHandler
+{
+    private Stack<GameObject> _uiStack = new Stack<GameObject>();
+
+    public GameObject GetLastUIObject()
+    {
+        if(_uiStack.Count <= 0)
+        {
+            return null;
+        }
+
+        return _uiStack.Pop();
+    }
+
+    public void ClearStack() => _uiStack.Clear();
+
+    public void PushToStack(GameObject objectToAdd)
+    {
+        _uiStack.Push(objectToAdd);
+    }
 }
