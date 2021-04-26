@@ -6,4 +6,5 @@ public class StatusData : ScriptableObject
 {
     public List<CombatEnemyData> enemyGroup;
     public float[] position = new float[3];
+    public string sceneName;
 }

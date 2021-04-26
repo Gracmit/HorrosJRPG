@@ -45,6 +45,7 @@ public class CombatEnemy : ICombatEntity
 
     public void ChangeElement(ElementType element)
     {
+        Debug.Log($"Element changed to {element}");
         _element = element;
     }
 
@@ -69,7 +70,6 @@ public class CombatEnemy : ICombatEntity
 
     public void Highlight()
     {
-        Debug.Log("Hihlighted enemy:" + _data.Name);
         //1§ c_model.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
     }
     

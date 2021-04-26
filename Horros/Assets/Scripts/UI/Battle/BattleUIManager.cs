@@ -7,6 +7,8 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private SkillList _skillList;
     [SerializeField] private StatusList _statusList;
     [SerializeField] private InfoPanel _infoPanel;
+    [SerializeField] private GameObject _victoryScreen;
+    [SerializeField] private GameObject _defeatScreen;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
     private BattleEventSystemHandler _eventHandler;
@@ -96,27 +98,15 @@ public class BattleUIManager : MonoBehaviour
     public void InstantiateStatusPanel(PartyMember member) => _statusList.InstantiateStatusPanel(member);
 
     public void UpdateStatusPanel(PartyMember member) => _statusList.UpdatePanel(member);
+
+    public void ToggleVictoryScreen(bool active)
+    {
+        _victoryScreen.SetActive(active);
+    }
+
+    public void ToggleDefeatScreen(bool active)
+    {
+        _defeatScreen.SetActive(active);
+    }
     
-}
-
-public class BattleUIStackHandler
-{
-    private Stack<GameObject> _uiStack = new Stack<GameObject>();
-
-    public GameObject GetLastUIObject()
-    {
-        if(_uiStack.Count <= 0)
-        {
-            return null;
-        }
-
-        return _uiStack.Pop();
-    }
-
-    public void ClearStack() => _uiStack.Clear();
-
-    public void PushToStack(GameObject objectToAdd)
-    {
-        _uiStack.Push(objectToAdd);
-    }
 }

@@ -27,7 +27,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Basic Attack
   _description: The most basic of basic attacks
-  _power: 10
+  _mpCost: 0
+  _power: 5
   _element: 1
   _weakness: 0
   _strength: 0

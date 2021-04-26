@@ -9,6 +9,8 @@ public class Win : IState
 
     public void OnEnter()
     {
+        BattleUIManager.Instance.ToggleStatusPanels(false);
+        BattleUIManager.Instance.ToggleVictoryScreen(true);
         Debug.Log("Won");
     }
 

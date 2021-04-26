@@ -10,6 +10,8 @@ public class Lose : IState
 
     public void OnEnter()
     {
+        BattleUIManager.Instance.ToggleStatusPanels(false);
+        BattleUIManager.Instance.ToggleDefeatScreen(true);
         Debug.Log("Lost");
     }
 

@@ -70,6 +70,7 @@ public class PartyMember : ICombatEntity
     {
         BattleManager.Instance.RemoveFromTurnQueue(this);
         _combatAvatar.SetActive(false);
+        _alive = false;
     }
 
     public void ChangeElement(ElementType element)

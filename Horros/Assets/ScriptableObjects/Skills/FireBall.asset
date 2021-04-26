@@ -24,7 +24,7 @@ MonoBehaviour:
   _statusEffect:
     _type: 1
     _effectElement: 3
-    _chance: 30
+    _chance: 100
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

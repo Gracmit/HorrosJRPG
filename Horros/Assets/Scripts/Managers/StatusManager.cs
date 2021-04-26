@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StatusManager : MonoBehaviour
 {
@@ -34,5 +35,7 @@ public class StatusManager : MonoBehaviour
         _statusData.position[0] = playerPosition.x;
         _statusData.position[1] = playerPosition.y;
         _statusData.position[2] = playerPosition.z;
+
+        _statusData.sceneName = SceneManager.GetActiveScene().name;
     }
 }
