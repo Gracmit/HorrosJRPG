@@ -11,4 +11,6 @@ public interface ICombatEntity
     void Die();
     void ChangeElement(ElementType element);
     void AddBuff(BuffSkillData buff);
+    void Attack();
+    void SetAttackHandler();
 }

@@ -8,6 +8,7 @@ public class CombatEnemy : ICombatEntity
     private bool _alive = true;
     private GameObject _combatAvatar;
     private Dictionary<StatType, BuffCounter> _activeBuffs;
+    private AttackHandler _attackHandler;
     public GameObject Model => _data.Model;    
     public bool Alive => _alive;
     public EntityData Data => _data;
@@ -51,8 +52,8 @@ public class CombatEnemy : ICombatEntity
 
     public void PrepareAttack()
     {
-        BattleManager.Instance.AttackHandler.SaveAttack(ChooseAttack());
-        BattleManager.Instance.AttackHandler.SaveTarget(ChooseTarget());
+        _attackHandler.SaveAttack(ChooseAttack());
+        _attackHandler.SaveTarget(ChooseTarget());
     }
 
     private Skill ChooseAttack()
@@ -84,6 +85,17 @@ public class CombatEnemy : ICombatEntity
         {
             _activeBuffs.Add(buff.Stat, new BuffCounter(buff.Multiplier, buff.Lenght));
         }
+    }
+
+    public void Attack()
+    {
+        _attackHandler.Attack();
+    }
+
+    public void SetAttackHandler()
+    {
+        _attackHandler = new AttackHandler();
+        _attackHandler.SetAttacker(this);
     }
 
     public void FullHeal()

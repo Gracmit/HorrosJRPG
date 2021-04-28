@@ -1,12 +1,15 @@
-﻿
+﻿using System;
+using UnityEngine;
+
+[Serializable]
 public class AttackHandler
 {
     private ICombatEntity _attacker;
     private ICombatEntity _target;
     private Skill _skill;
-    private bool _attacked;
-    public bool Attacked => _attacked;
-    public object Target => _target;
+    private bool _attackChosen;
+    
+    public bool AttackChosen => _attackChosen;
 
     public void SaveAttack(Skill skill)
     {
@@ -16,15 +19,19 @@ public class AttackHandler
     public void SaveTarget(ICombatEntity target)
     {
         _target = target;
+        _attackChosen = true;
+        Debug.Log(_attacker.Data.Name);
     }
 
-    public void SaveAttacker(ICombatEntity attacker)
+    public void SetAttacker(ICombatEntity attacker)
     {
         _attacker = attacker;
     }
 
     public void Attack()
     {
+        if (_target == null)
+            return;
         _skill.HandleAttack(_attacker, _target);
         if (_target.GetType() == typeof(PartyMember))
         {
@@ -37,9 +44,13 @@ public class AttackHandler
         }
         
         _target = null;
-        _attacker = null;
         _skill = null;
-        _attacked = true;
+        _attackChosen = false;
     }
 
+    public void ResetAttack()
+    {
+        _target = null;
+        _skill = null;
+    }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -8,19 +10,24 @@ public class BattleManager : MonoBehaviour
     private static BattleManager _instance;
     private TurnManager _turnManager;
     private bool _initializationCompleted;
-    private ICombatEntity _activeEntity;
+    private bool _enemiesReady;
+    private PartyMember _activeMember;
     private int _enemyCount;
-    private readonly AttackHandler _attackHandler = new AttackHandler();
-    private readonly List<PartyMember> _activeParty = new List<PartyMember>();
+    private readonly List<PartyMember> _party = new List<PartyMember>();
+    private readonly List<CombatEnemy> _enemies = new List<CombatEnemy>();
+    private int _partyIndex;
+    private bool _partyReady;
 
     public static BattleManager Instance => _instance;
-    public ICombatEntity ActiveEntity => _activeEntity;
+    public PartyMember ActiveMember => _activeMember;
     public int EnemyCount => _enemyCount;
-    public int PartyCount => _activeParty.Count;
+    public int PartyCount => _party.Count;
     public TurnManager TurnManager => _turnManager;
+    public List<PartyMember> Party => _party;
+    public bool EnemiesReady => _enemiesReady;
 
-    public AttackHandler AttackHandler => _attackHandler;
-    public List<PartyMember> Party => _activeParty;
+    public int PartyIndex => _partyIndex;
+    public bool PartyReady => _partyReady;
 
     public bool Initialized() => _initializationCompleted;
 
@@ -44,7 +51,7 @@ public class BattleManager : MonoBehaviour
         var statusData = StatusManager.Instance.StatusData;
         InstantiateEnemies(statusData);
         InstantiatePartyMembers();
-        SetActiveEntity(_turnManager.GetNextEntity());
+        _partyIndex = 0;
         _initializationCompleted = true;
     }
 
@@ -58,9 +65,10 @@ public class BattleManager : MonoBehaviour
             entity.CombatAvatar = model;
             entity.FullHeal();
             entity.Alive = true;
+            entity.SetAttackHandler();
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
-            _activeParty.Add(entity);
+            _party.Add(entity);
             BattleUIManager.Instance.InstantiateStatusPanel(entity);
         }
     }
@@ -75,6 +83,8 @@ public class BattleManager : MonoBehaviour
             enemy.CombatAvatar = model;
             enemy.FullHeal();
             spawnpointCounter++;
+            enemy.SetAttackHandler();
+            _enemies.Add(enemy);
             _turnManager.AddEntity(enemy);
             BattleUIManager.Instance.AddEnemy(enemy);
         }
@@ -82,27 +92,51 @@ public class BattleManager : MonoBehaviour
         _enemyCount = statusData.enemyGroup.Count;
     }
 
-    public void SetActiveEntity(ICombatEntity entity)
+    public void SetActiveEntity()
     {
-        _activeEntity = entity;
-        _attackHandler.SaveAttacker(_activeEntity);
-        Debug.Log(_activeEntity.Data.Name);
+        _activeMember = _party[_partyIndex];
+        Debug.Log(_activeMember.Data.Name);
+        _partyIndex++;
+
+        while (_partyIndex != _party.Count && !_party[_partyIndex].Alive)
+        {
+            _partyIndex++;
+        }
+
+        if (_partyIndex == _party.Count)
+            _partyReady = true;
     }
 
-    public void SaveChosenAttack(Skill skill)
+    public void ResetPartyIndex()
     {
-        _attackHandler.SaveAttack(skill);
+        _partyIndex = 0;
+        _partyReady = false;
     }
 
-
-    public void RemoveFromTurnQueue(PartyMember partyMember)
-    {
-        _activeParty.Remove(partyMember);
-    }
+    public void SaveChosenAttack(Skill skill) => _activeMember.AttackHandler.SaveAttack(skill);
 
     public void RemoveFromTurnQueue(CombatEnemy enemy)
     {
         _enemyCount--;
         BattleUIManager.Instance.RemoveEnemyFromHighlighter(enemy);
     }
+
+    public void ChooseEnemyAttacks()
+    {
+        StartCoroutine(Wait());
+        foreach (var enemy in _enemies)
+        {
+            enemy.PrepareAttack();
+        }
+
+        
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        _enemiesReady = true;
+    }
+
+    public void EnemiesNotReady() => _enemiesReady = false;
 }

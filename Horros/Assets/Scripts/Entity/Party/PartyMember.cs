@@ -13,6 +13,7 @@ public class PartyMember : ICombatEntity
     private Dictionary<StatType, BuffCounter> _activeBuffs;
     private bool _alive = true;
     private GameObject _combatAvatar;
+    private AttackHandler _attackHandler;
 
     public Weapon Weapon => _data.Weapon;
     public Armor Armor => _data.Armor;
@@ -20,6 +21,7 @@ public class PartyMember : ICombatEntity
     public bool Active => _active;
 
     public GameObject Model => _data.Model;
+    public AttackHandler AttackHandler => _attackHandler;
 
     public bool Alive
     {
@@ -68,8 +70,8 @@ public class PartyMember : ICombatEntity
 
     public void Die()
     {
-        BattleManager.Instance.RemoveFromTurnQueue(this);
         _combatAvatar.SetActive(false);
+        _attackHandler.ResetAttack();
         _alive = false;
     }
 
@@ -91,9 +93,20 @@ public class PartyMember : ICombatEntity
         }
     }
 
+    public void Attack()
+    {
+        _attackHandler.Attack();
+    }
+
     public void FullHeal()
     {
         _data.Stats.FullHeal();
+    }
+
+    public void SetAttackHandler()
+    {
+        _attackHandler = new AttackHandler();
+        _attackHandler.SetAttacker(this);
     }
 }
 

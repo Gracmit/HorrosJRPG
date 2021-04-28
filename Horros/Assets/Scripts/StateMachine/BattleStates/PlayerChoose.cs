@@ -9,14 +9,15 @@ public class PlayerChoose : IState
 
     public void OnEnter()
     {
+        BattleManager.Instance.SetActiveEntity();
         BattleUIManager.Instance.ToggleActionList(true);
-        BattleUIManager.Instance.InstantiateSkillButtons(BattleManager.Instance.ActiveEntity.Data.Skills);
+        BattleUIManager.Instance.InstantiateSkillButtons(BattleManager.Instance.ActiveMember.Data.Skills);
         Debug.Log("Changed to PlayerChoose state");
     }
 
     public void OnExit()
     {
-        BattleUIManager.Instance.ToggleActionList(false);
+        //BattleUIManager.Instance.ToggleActionList(false);
         BattleUIManager.Instance.StackHandler.ClearStack();
     }
 }

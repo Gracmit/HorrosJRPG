@@ -24,9 +24,6 @@ public class StateMachine
 
     public void SetState(IState state)
     {
-        if (_currentState == state)
-            return;
-        
         _currentState?.OnExit();
         
         _currentState = state;

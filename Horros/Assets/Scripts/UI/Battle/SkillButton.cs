@@ -19,7 +19,7 @@ public class SkillButton : MonoBehaviour
     {
         _skill = skill;
         _text.SetText(skill.Data.Name);
-        var remainingMP = BattleManager.Instance.ActiveEntity.Data.Stats.GetValue(StatType.MP);
+        var remainingMP = BattleManager.Instance.ActiveMember.Data.Stats.GetValue(StatType.MP);
         if (remainingMP < _skill.Data.MpCost)
         {
             _button.interactable = false;

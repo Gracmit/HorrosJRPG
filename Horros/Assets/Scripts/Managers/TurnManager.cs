@@ -1,44 +1,49 @@
 ﻿using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class TurnManager
 {
-    private Queue<ICombatEntity> _turnQueue = new Queue<ICombatEntity>();
-    private Queue<ICombatEntity> _deadEntities = new Queue<ICombatEntity>();
+    private List<ICombatEntity> _entities = new List<ICombatEntity>();
+    private bool _attacked;
 
-    public ICombatEntity NextTurn()
-    {
-        while (!_turnQueue.Peek().Alive)
-        {
-            var entity = _turnQueue.Dequeue();
-            _deadEntities.Enqueue(entity);
-        }
-
-        return _turnQueue.Peek();
-    }
-
-    public void ChangeToNextTurn()
-    {
-        if (BattleManager.Instance.ActiveEntity != null)
-            _turnQueue.Enqueue(BattleManager.Instance.ActiveEntity);
-
-        BattleManager.Instance.SetActiveEntity(_turnQueue.Dequeue());
-        while (_deadEntities.Count > 0)
-        {
-            var entity = _deadEntities.Dequeue();
-            if (entity.GetType() == typeof(PartyMember))
-            {
-                _turnQueue.Enqueue(entity);
-            }
-        }
-    }
+    public bool Attacked => _attacked;
 
     public void AddEntity(ICombatEntity entity)
     {
-        _turnQueue.Enqueue(entity);
+        _entities.Add(entity);
     }
 
-    public ICombatEntity GetNextEntity()
+    public void SortEntities()
     {
-        return _turnQueue.Dequeue();
+        _entities.Sort(CompareSpeed);
+    }
+
+    private int CompareSpeed(ICombatEntity x, ICombatEntity y)
+    {
+        var xSpeed = x.Data.Stats.GetValue(StatType.Speed);
+        var ySpeed = y.Data.Stats.GetValue(StatType.Speed);
+
+        if (xSpeed > ySpeed)
+            return 1;
+
+        if (xSpeed < ySpeed)
+            return -1;
+        
+        return Random.Range(-1, 2);
+    }
+
+    public void Attack()
+    {
+        foreach (var entity in _entities)
+        {
+            entity.Attack();
+        }
+
+        _attacked = true;
+    }
+
+    public void ResetAttacks()
+    {
+        _attacked = false;
     }
 }
