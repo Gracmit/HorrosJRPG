@@ -18,10 +18,16 @@ MonoBehaviour:
   - _statType: 1
     _value: 30
   - _statType: 2
-    _value: 970
+    _value: 910
   - _statType: 3
     _value: 20
   - _statType: 4
     _value: 4
   - _statType: 5
+    _value: 1
+  - _statType: 6
+    _value: 1
+  - _statType: 7
+    _value: 1
+  - _statType: 8
     _value: 1

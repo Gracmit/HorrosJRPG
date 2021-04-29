@@ -39,7 +39,7 @@ public class CombatEnemy : ICombatEntity
     public void Die()
     {
         _alive = false;
-        BattleManager.Instance.RemoveFromTurnQueue(this);
+        BattleManager.Instance.EnemyDied(this);
         GameObject.Destroy(_combatAvatar);
         
     }

@@ -72,6 +72,7 @@ public class PartyMember : ICombatEntity
     {
         _combatAvatar.SetActive(false);
         _attackHandler.ResetAttack();
+        BattleManager.Instance.PartyMemberDied();
         _alive = false;
     }
 

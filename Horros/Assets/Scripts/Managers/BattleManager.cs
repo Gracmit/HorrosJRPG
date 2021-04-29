@@ -9,10 +9,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> _enemySpawnpoints;
     private static BattleManager _instance;
     private TurnManager _turnManager;
+    private PartyMember _activeMember;
     private bool _initializationCompleted;
     private bool _enemiesReady;
-    private PartyMember _activeMember;
     private int _enemyCount;
+    private int _partyCount;
     private readonly List<PartyMember> _party = new List<PartyMember>();
     private readonly List<CombatEnemy> _enemies = new List<CombatEnemy>();
     private int _partyIndex;
@@ -21,7 +22,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance => _instance;
     public PartyMember ActiveMember => _activeMember;
     public int EnemyCount => _enemyCount;
-    public int PartyCount => _party.Count;
+    public int PartyCount => _partyCount;
     public TurnManager TurnManager => _turnManager;
     public List<PartyMember> Party => _party;
     public bool EnemiesReady => _enemiesReady;
@@ -71,6 +72,8 @@ public class BattleManager : MonoBehaviour
             _party.Add(entity);
             BattleUIManager.Instance.InstantiateStatusPanel(entity);
         }
+
+        _partyCount = _party.Count;
     }
 
     private void InstantiateEnemies(StatusData statusData)
@@ -115,7 +118,7 @@ public class BattleManager : MonoBehaviour
 
     public void SaveChosenAttack(Skill skill) => _activeMember.AttackHandler.SaveAttack(skill);
 
-    public void RemoveFromTurnQueue(CombatEnemy enemy)
+    public void EnemyDied(CombatEnemy enemy)
     {
         _enemyCount--;
         BattleUIManager.Instance.RemoveEnemyFromHighlighter(enemy);
@@ -139,4 +142,9 @@ public class BattleManager : MonoBehaviour
     }
 
     public void EnemiesNotReady() => _enemiesReady = false;
+
+    public void PartyMemberDied()
+    {
+        _partyCount--;
+    }
 }

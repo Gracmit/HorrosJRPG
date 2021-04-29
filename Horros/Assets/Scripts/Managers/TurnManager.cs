@@ -36,6 +36,7 @@ public class TurnManager
     {
         foreach (var entity in _entities)
         {
+            if(entity.Alive)
             entity.Attack();
         }
 
