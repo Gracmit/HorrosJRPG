@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -32,6 +33,10 @@ public class AttackHandler
     {
         if (_target == null)
             return;
+
+        if (!_target.Alive)
+            FindNewTarget();
+            
         _skill.HandleAttack(_attacker, _target);
         if (_target.GetType() == typeof(PartyMember))
         {
@@ -46,6 +51,28 @@ public class AttackHandler
         _target = null;
         _skill = null;
         _attackChosen = false;
+    }
+
+    private void FindNewTarget()
+    {
+        if (_target.GetType() == typeof(PartyMember))
+        {
+            foreach (var member in BattleManager.Instance.Party.Where(member => member.Alive))
+            {
+                _target = member;
+                return;
+            }
+        }
+        else
+        {
+            foreach (var enemy in BattleManager.Instance.Enemies.Where(enemy => enemy.Alive))
+            {
+                _target = enemy;
+                return;
+            }
+        }
+
+        _target = null;
     }
 
     public void ResetAttack()

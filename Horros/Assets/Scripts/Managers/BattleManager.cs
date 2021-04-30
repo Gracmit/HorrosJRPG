@@ -25,6 +25,7 @@ public class BattleManager : MonoBehaviour
     public int PartyCount => _partyCount;
     public TurnManager TurnManager => _turnManager;
     public List<PartyMember> Party => _party;
+    public List<CombatEnemy> Enemies => _enemies;
     public bool EnemiesReady => _enemiesReady;
 
     public int PartyIndex => _partyIndex;
