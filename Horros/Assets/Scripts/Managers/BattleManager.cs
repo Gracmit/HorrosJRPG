@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,8 +26,7 @@ public class BattleManager : MonoBehaviour
     public List<PartyMember> Party => _party;
     public List<CombatEnemy> Enemies => _enemies;
     public bool EnemiesReady => _enemiesReady;
-
-    public int PartyIndex => _partyIndex;
+    
     public bool PartyReady => _partyReady;
 
     public bool Initialized() => _initializationCompleted;
@@ -85,6 +83,7 @@ public class BattleManager : MonoBehaviour
             var enemy = new CombatEnemy(entityData);
             var model = Instantiate(entityData.Model, _enemySpawnpoints[spawnpointCounter]);
             enemy.CombatAvatar = model;
+            enemy.SetRenderer();
             enemy.FullHeal();
             spawnpointCounter++;
             enemy.SetAttackHandler();

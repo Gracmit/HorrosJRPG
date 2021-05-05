@@ -33,8 +33,12 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.AddTransition(
             attack,
             enemyChoose,
-            () => BattleManager.Instance.TurnManager.Attacked);
+            () => BattleManager.Instance.TurnManager.ActiveEntity.Attacked && BattleManager.Instance.TurnManager.NextEntity == null);
         
+        _stateMachine.AddTransition(
+            attack,
+            attack,
+            () => BattleManager.Instance.TurnManager.ActiveEntity.Attacked && BattleManager.Instance.TurnManager.NextEntity != null);
         
         _stateMachine.SetState(start);
     }

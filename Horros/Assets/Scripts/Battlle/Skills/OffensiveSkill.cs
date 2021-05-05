@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEditor;
 #endif
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,11 +19,12 @@ public class OffensiveSkill : Skill
     }
 
     
-    public override void HandleAttack(ICombatEntity attacker, ICombatEntity target)
+    public override IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
     {
+            
         var damage = CountDamage(attacker, target);
         SubtractMP(attacker);
-        bool affected = false;
+        var affected = false;
         if (_data.StatusEffect.EffectType != EffectType.None)
         {
             affected = EffectWorked();
@@ -32,16 +34,24 @@ public class OffensiveSkill : Skill
         {
             target.ChangeElement(_data.StatusEffect.Element);
         }
-
+        
+        attacker.CombatAvatar.transform.position += Vector3.up / 2;
+        target.CombatAvatar.transform.position += Vector3.down / 2;
+        yield return new WaitForSeconds(2f);
+        attacker.CombatAvatar.transform.position += Vector3.down / 2;
+        target.CombatAvatar.transform.position += Vector3.up / 2;
+        
         Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
         target.TakeDamage(damage);
     }
 
+    
     private void SubtractMP(ICombatEntity attacker)
     {
         attacker.Data.Stats.Subtract(StatType.MP, Data.MpCost);
     }
 
+    
     private int CountDamage(ICombatEntity attacker, ICombatEntity target)
     {
         var attackPower = attacker.Data.Stats.GetValue(_data.AttackType);

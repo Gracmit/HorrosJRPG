@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public class AttackHandler
+public class AttackHandler : MonoBehaviour
 {
     private ICombatEntity _attacker;
     private ICombatEntity _target;
     private Skill _skill;
     private bool _attackChosen;
+    private bool _attacked;
     
     public bool AttackChosen => _attackChosen;
+    public bool Attacked => _attacked;
 
     public void SaveAttack(Skill skill)
     {
@@ -27,17 +30,23 @@ public class AttackHandler
     public void SetAttacker(ICombatEntity attacker)
     {
         _attacker = attacker;
+        _attacked = false;
     }
 
     public void Attack()
     {
         if (_target == null)
             return;
-
+        
         if (!_target.Alive)
             FindNewTarget();
-            
-        _skill.HandleAttack(_attacker, _target);
+        
+        StartCoroutine(HandleAttack());
+    }
+
+    public IEnumerator HandleAttack()
+    {
+        yield return StartCoroutine(_skill.HandleAttack(_attacker, _target));
         if (_target.GetType() == typeof(PartyMember))
         {
             BattleUIManager.Instance.UpdateStatusPanel((PartyMember)_target);
@@ -51,6 +60,7 @@ public class AttackHandler
         _target = null;
         _skill = null;
         _attackChosen = false;
+        _attacked = true;
     }
 
     private void FindNewTarget()
@@ -79,5 +89,6 @@ public class AttackHandler
     {
         _target = null;
         _skill = null;
+        _attacked = false;
     }
 }

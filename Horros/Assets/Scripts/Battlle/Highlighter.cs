@@ -29,6 +29,7 @@ public class Highlighter
         {
             BattleManager.Instance.ActiveMember.AttackHandler.SaveTarget(_enemies[_activeIndex]);
             BattleUIManager.Instance.ToggleSkillList(false);
+            _enemies[_activeIndex].UnHighlight();
             _canHighlight = false;
             _infoPanel.gameObject.SetActive(false);
         }
@@ -54,6 +55,7 @@ public class Highlighter
 
     private void PreviousEnemy()
     {
+        _enemies[_activeIndex].UnHighlight();
         if (_activeIndex == 0)
         {
             _activeIndex = _enemies.Count - 1;
@@ -67,6 +69,7 @@ public class Highlighter
     
     private void NextEnemy()
     {
+        _enemies[_activeIndex].UnHighlight();
         if (_activeIndex == _enemies.Count - 1)
         {
             _activeIndex = 0;
@@ -77,7 +80,7 @@ public class Highlighter
         }
         Highlight();
     }
-    
+
     private void Highlight()
     {
         _enemies[_activeIndex].Highlight();

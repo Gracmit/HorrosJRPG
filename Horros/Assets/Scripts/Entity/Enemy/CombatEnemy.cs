@@ -9,6 +9,7 @@ public class CombatEnemy : ICombatEntity
     private GameObject _combatAvatar;
     private Dictionary<StatType, BuffCounter> _activeBuffs;
     private AttackHandler _attackHandler;
+    private MeshRenderer _renderer;
     public GameObject Model => _data.Model;    
     public bool Alive => _alive;
     public EntityData Data => _data;
@@ -22,9 +23,11 @@ public class CombatEnemy : ICombatEntity
     public CombatEnemy(CombatEnemyData data)
     {
         _data = data;
+        _combatAvatar = _data.Model;
     }
 
     public ElementType Element => _element;
+    public bool Attacked => _attackHandler.Attacked;
 
     public void TakeDamage(int damage)
     {
@@ -40,7 +43,7 @@ public class CombatEnemy : ICombatEntity
     {
         _alive = false;
         BattleManager.Instance.EnemyDied(this);
-        GameObject.Destroy(_combatAvatar);
+        Object.Destroy(_combatAvatar);
         
     }
 
@@ -71,7 +74,12 @@ public class CombatEnemy : ICombatEntity
 
     public void Highlight()
     {
-        //1§ c_model.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+        _renderer.material.color = new Color(255, 255, 255);
+    }
+
+    public void UnHighlight()
+    {
+        _renderer.material.color = new Color(219, 0, 0);
     }
     
     public void AddBuff(BuffSkillData buff)
@@ -94,12 +102,23 @@ public class CombatEnemy : ICombatEntity
 
     public void SetAttackHandler()
     {
-        _attackHandler = new AttackHandler();
+        _combatAvatar.AddComponent<AttackHandler>();
+        _attackHandler = _combatAvatar.GetComponent<AttackHandler>();
         _attackHandler.SetAttacker(this);
+    }
+
+    public void ResetAttack()
+    {
+        _attackHandler.ResetAttack();
     }
 
     public void FullHeal()
     {
         _data.Stats.FullHeal();
+    }
+
+    public void SetRenderer()
+    {
+        _renderer = _combatAvatar.GetComponent<MeshRenderer>();
     }
 }

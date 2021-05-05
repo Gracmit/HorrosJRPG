@@ -7,10 +7,13 @@ public interface ICombatEntity
 
     GameObject CombatAvatar { get; set; }
     ElementType Element { get;}
+    bool Attacked{ get;}
+
     void TakeDamage(int damage);
     void Die();
     void ChangeElement(ElementType element);
     void AddBuff(BuffSkillData buff);
     void Attack();
     void SetAttackHandler();
+    void ResetAttack();
 }

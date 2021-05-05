@@ -17,6 +17,7 @@ public class Attack : IState
 
     public void OnExit()
     {
-        BattleManager.Instance.TurnManager.ResetAttacks();
+        BattleManager.Instance.TurnManager.ResetAttack();
+        BattleManager.Instance.TurnManager.NextTurn();
     }
 }

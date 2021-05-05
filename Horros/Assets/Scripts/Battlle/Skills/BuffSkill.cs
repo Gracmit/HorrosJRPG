@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEditor;
 #endif
-
+using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BuffSkill", menuName = "Skill/BuffSkill")]
@@ -16,9 +16,10 @@ public class BuffSkill : Skill
     {
         _data = data;
     }
-    public override void HandleAttack(ICombatEntity attacker, ICombatEntity target)
+    public override IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
     {
         target.AddBuff(_data);
+        yield return null;
     }
     
     

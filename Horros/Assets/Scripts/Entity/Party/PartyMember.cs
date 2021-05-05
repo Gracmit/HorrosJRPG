@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 
@@ -57,6 +56,7 @@ public class PartyMember : ICombatEntity
 
     public void SetActive(bool active) => _active = active;
     public ElementType Element => _element;
+    public bool Attacked => _attackHandler.Attacked;
 
     public void TakeDamage(int damage)
     {
@@ -106,8 +106,14 @@ public class PartyMember : ICombatEntity
 
     public void SetAttackHandler()
     {
-        _attackHandler = new AttackHandler();
+        _combatAvatar.AddComponent<AttackHandler>();
+        _attackHandler = _combatAvatar.GetComponent<AttackHandler>();
         _attackHandler.SetAttacker(this);
+    }
+
+    public void ResetAttack()
+    {
+        _attackHandler.ResetAttack();
     }
 }
 
@@ -131,6 +137,5 @@ public class BuffCounter
         }
 
         return false;
-
     }
 }

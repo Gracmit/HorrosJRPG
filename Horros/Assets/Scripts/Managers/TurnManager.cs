@@ -5,8 +5,11 @@ public class TurnManager
 {
     private List<ICombatEntity> _entities = new List<ICombatEntity>();
     private bool _attacked;
+    private int _activeIndex = 0;
 
     public bool Attacked => _attacked;
+    public ICombatEntity ActiveEntity => _entities[_activeIndex];
+    public ICombatEntity NextEntity => _entities[_activeIndex + 1];
 
     public void AddEntity(ICombatEntity entity)
     {
@@ -15,7 +18,8 @@ public class TurnManager
 
     public void SortEntities()
     {
-        _entities.Sort(CompareSpeed);
+        if (_activeIndex == 0)
+            _entities.Sort(CompareSpeed);
     }
 
     private int CompareSpeed(ICombatEntity x, ICombatEntity y)
@@ -28,23 +32,31 @@ public class TurnManager
 
         if (xSpeed < ySpeed)
             return -1;
-        
+
         return Random.Range(-1, 2);
     }
 
     public void Attack()
     {
-        foreach (var entity in _entities)
-        {
-            if(entity.Alive)
-            entity.Attack();
-        }
-
-        _attacked = true;
+        if (_entities[_activeIndex].Alive)
+            _entities[_activeIndex].Attack();
+        //foreach (var entity in _entities)
+        //{
+        //    if(entity.Alive)
+        //        entity.Attack();
+        //}
     }
 
-    public void ResetAttacks()
+    public void ResetAttack()
     {
-        _attacked = false;
+        _entities[_activeIndex].ResetAttack();
+    }
+
+    public void NextTurn()
+    {
+        if (_activeIndex >= _entities.Count - 1)
+            _activeIndex = 0;
+        else
+            _activeIndex++;
     }
 }
