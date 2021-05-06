@@ -96,7 +96,10 @@ public class PartyMember : ICombatEntity
 
     public void Attack()
     {
-        _attackHandler.Attack();
+        if (_alive)
+            _attackHandler.Attack();
+        else
+            _attackHandler.ToggleAttacked();
     }
 
     public void FullHeal()

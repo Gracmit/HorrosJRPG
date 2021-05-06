@@ -91,4 +91,9 @@ public class AttackHandler : MonoBehaviour
         _skill = null;
         _attacked = false;
     }
+
+    public void ToggleAttacked()
+    {
+        _attacked = true;
+    }
 }

@@ -10,12 +10,12 @@ public class CombatEnemy : ICombatEntity
     private Dictionary<StatType, BuffCounter> _activeBuffs;
     private AttackHandler _attackHandler;
     private MeshRenderer _renderer;
-    public GameObject Model => _data.Model;    
+    public GameObject Model => _data.Model;
     public bool Alive => _alive;
     public EntityData Data => _data;
+
     public GameObject CombatAvatar
     {
-        
         get => _combatAvatar;
         set => _combatAvatar = value;
     }
@@ -44,7 +44,6 @@ public class CombatEnemy : ICombatEntity
         _alive = false;
         BattleManager.Instance.EnemyDied(this);
         Object.Destroy(_combatAvatar);
-        
     }
 
     public void ChangeElement(ElementType element)
@@ -61,14 +60,13 @@ public class CombatEnemy : ICombatEntity
 
     private Skill ChooseAttack()
     {
-        
         var index = Random.Range(0, _data.Skills.Count);
         return _data.Skills[index];
     }
 
     private PartyMember ChooseTarget()
     {
-        var index = Random.Range(0, BattleManager.Instance.PartyCount); 
+        var index = Random.Range(0, BattleManager.Instance.PartyCount);
         return BattleManager.Instance.Party[index];
     }
 
@@ -81,7 +79,7 @@ public class CombatEnemy : ICombatEntity
     {
         _renderer.material.color = new Color(219, 0, 0);
     }
-    
+
     public void AddBuff(BuffSkillData buff)
     {
         if (_activeBuffs.ContainsKey(buff.Stat))
@@ -97,7 +95,10 @@ public class CombatEnemy : ICombatEntity
 
     public void Attack()
     {
-        _attackHandler.Attack();
+        if (_alive)
+            _attackHandler.Attack();
+        else
+            _attackHandler.ToggleAttacked();
     }
 
     public void SetAttackHandler()

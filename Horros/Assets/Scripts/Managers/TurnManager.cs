@@ -9,7 +9,16 @@ public class TurnManager
 
     public bool Attacked => _attacked;
     public ICombatEntity ActiveEntity => _entities[_activeIndex];
-    public ICombatEntity NextEntity => _entities[_activeIndex + 1];
+    public ICombatEntity NextEntity
+    {
+        get
+        {
+            if (_activeIndex + 1 >= _entities.Count)
+                return null;
+            
+            return _entities[_activeIndex + 1];
+        }
+    }
 
     public void AddEntity(ICombatEntity entity)
     {
@@ -38,8 +47,7 @@ public class TurnManager
 
     public void Attack()
     {
-        if (_entities[_activeIndex].Alive)
-            _entities[_activeIndex].Attack();
+        _entities[_activeIndex].Attack();
         //foreach (var entity in _entities)
         //{
         //    if(entity.Alive)
