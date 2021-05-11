@@ -37,6 +37,7 @@ public class OffensiveSkill : Skill
         
         attacker.CombatAvatar.transform.position += Vector3.up / 2;
         target.CombatAvatar.transform.position += Vector3.down / 2;
+        DamagePopUpInstantiator.Instance.InstantiatePopUp(target, damage);
         yield return new WaitForSeconds(2f);
         attacker.CombatAvatar.transform.position += Vector3.down / 2;
         target.CombatAvatar.transform.position += Vector3.up / 2;
