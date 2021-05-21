@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> _playerSpawnpoints;
     [SerializeField] private List<Transform> _enemySpawnpoints;
+    [SerializeField] private List<CinemachineVirtualCamera> _chooseCameras;
     private static BattleManager _instance;
     private TurnManager _turnManager;
     private PartyMember _activeMember;
@@ -66,6 +68,11 @@ public class BattleManager : MonoBehaviour
             entity.FullHeal();
             entity.Alive = true;
             entity.SetAttackHandler();
+            
+            var chooseCamera = _chooseCameras[spawnpointCounter];
+            chooseCamera.gameObject.SetActive(false);
+            entity.SetCameras(chooseCamera);
+            
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
             _party.Add(entity);
@@ -98,15 +105,16 @@ public class BattleManager : MonoBehaviour
     public void SetActiveEntity()
     {
         _activeMember = _party[_partyIndex];
+        BattleCameraManager.Instance.SetCamera(_activeMember.ChooseCamera);
         Debug.Log(_activeMember.Data.Name);
         _partyIndex++;
 
-        while (_partyIndex != _party.Count && !_party[_partyIndex].Alive)
+        while (_partyIndex != _party.Count && !_party[_partyIndex].Alive) // if there is PartyMembers left on the list and next partyMember in not alive
         {
             _partyIndex++;
         }
 
-        if (_partyIndex == _party.Count)
+        if (_partyIndex == _party.Count) // if reached the end of the partyMemberList
             _partyReady = true;
     }
 

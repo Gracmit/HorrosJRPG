@@ -9,6 +9,7 @@ public class Attack : IState
 
     public void OnEnter()
     {
+        BattleCameraManager.Instance.SetOverviewCamera();
         BattleManager.Instance.ResetPartyIndex();
         Debug.Log("Changed State to PlayerAttack");
         BattleManager.Instance.TurnManager.SortEntities();

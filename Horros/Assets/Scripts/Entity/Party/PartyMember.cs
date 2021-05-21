@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 
@@ -13,6 +14,7 @@ public class PartyMember : ICombatEntity
     private bool _alive = true;
     private GameObject _combatAvatar;
     private AttackHandler _attackHandler;
+    private CinemachineVirtualCamera _chooseCamera;
 
     public Weapon Weapon => _data.Weapon;
     public Armor Armor => _data.Armor;
@@ -21,6 +23,8 @@ public class PartyMember : ICombatEntity
 
     public GameObject Model => _data.Model;
     public AttackHandler AttackHandler => _attackHandler;
+
+    public CinemachineVirtualCamera ChooseCamera => _chooseCamera;
 
     public bool Alive
     {
@@ -117,6 +121,11 @@ public class PartyMember : ICombatEntity
     public void ResetAttack()
     {
         _attackHandler.ResetAttack();
+    }
+
+    public void SetCameras(CinemachineVirtualCamera chooseCamera)
+    {
+        _chooseCamera = chooseCamera;
     }
 }
 
