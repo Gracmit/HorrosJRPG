@@ -16,4 +16,6 @@ public interface ICombatEntity
     void Attack();
     void SetAttackHandler();
     void ResetAttack();
+    void Highlight();
+    void UnHighlight();
 }

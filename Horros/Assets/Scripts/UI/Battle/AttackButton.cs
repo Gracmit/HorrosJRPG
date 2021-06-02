@@ -16,6 +16,6 @@ public class AttackButton : MonoBehaviour
     private IEnumerator Highlight()
     {
         yield return null;
-        BattleUIManager.Instance.HighlightEnemy();
+        BattleUIManager.Instance.HighlightEntity();
     }
 }

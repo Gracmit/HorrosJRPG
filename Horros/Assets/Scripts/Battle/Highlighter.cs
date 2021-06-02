@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Highlighter
 {
-    private List<CombatEnemy> _enemies = new List<CombatEnemy>();
+    private List<ICombatEntity> _entities = new List<ICombatEntity>();
     private int _activeIndex = 0;
     private bool _canHighlight;
     private InfoPanel _infoPanel;
@@ -27,17 +27,17 @@ public class Highlighter
 
         if (_canHighlight && PlayerInput.Instance.GetKeyDown(KeyCode.Space))
         {
-            BattleManager.Instance.ActiveMember.AttackHandler.SaveTarget(_enemies[_activeIndex]);
+            BattleManager.Instance.ActiveMember.AttackHandler.SaveTarget(_entities[_activeIndex]);
             BattleUIManager.Instance.ToggleSkillList(false);
-            _enemies[_activeIndex].UnHighlight();
+            _entities[_activeIndex].UnHighlight();
             _canHighlight = false;
             _infoPanel.gameObject.SetActive(false);
         }
     }
 
-    public void AddEnemy(CombatEnemy enemy)
+    public void AddEnemy(ICombatEntity entity)
     {
-        _enemies.Add(enemy);
+        _entities.Add(entity);
     }
     
     public void CanHighlight()
@@ -55,10 +55,10 @@ public class Highlighter
 
     private void PreviousEnemy()
     {
-        _enemies[_activeIndex].UnHighlight();
+        _entities[_activeIndex].UnHighlight();
         if (_activeIndex == 0)
         {
-            _activeIndex = _enemies.Count - 1;
+            _activeIndex = _entities.Count - 1;
         }
         else
         {
@@ -69,8 +69,8 @@ public class Highlighter
     
     private void NextEnemy()
     {
-        _enemies[_activeIndex].UnHighlight();
-        if (_activeIndex == _enemies.Count - 1)
+        _entities[_activeIndex].UnHighlight();
+        if (_activeIndex == _entities.Count - 1)
         {
             _activeIndex = 0;
         }
@@ -83,14 +83,15 @@ public class Highlighter
 
     private void Highlight()
     {
-        _enemies[_activeIndex].Highlight();
-        _infoPanel.UpdateText(_enemies[_activeIndex]);
+        BattleCameraManager.Instance.SetTarget(_entities[_activeIndex]);
+        _entities[_activeIndex].Highlight();
+        _infoPanel.UpdateText(_entities[_activeIndex]);
     }
 
     public void RemoveEnemy(CombatEnemy enemy)
     {
-        _enemies.Remove(enemy);
-        if (_activeIndex >= _enemies.Count)
+        _entities.Remove(enemy);
+        if (_activeIndex >= _entities.Count)
             _activeIndex--;
     }
 }

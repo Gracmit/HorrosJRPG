@@ -15,6 +15,7 @@ public class PartyMember : ICombatEntity
     private GameObject _combatAvatar;
     private AttackHandler _attackHandler;
     private CinemachineVirtualCamera _chooseCamera;
+    private MeshRenderer _renderer;
 
     public Weapon Weapon => _data.Weapon;
     public Armor Armor => _data.Armor;
@@ -44,6 +45,7 @@ public class PartyMember : ICombatEntity
     {
         _alive = true;
         _data = data;
+        _combatAvatar = _data.Model;
     }
 
     public void Equip(Weapon weapon) => _data.Weapon = weapon;
@@ -123,9 +125,24 @@ public class PartyMember : ICombatEntity
         _attackHandler.ResetAttack();
     }
 
+    public void Highlight()
+    {
+        _renderer.material.color = new Color(1, 1, 255);
+    }
+
+    public void UnHighlight()
+    {
+        _renderer.material.color = new Color(0.15f, 0.39f, 1f);
+    }
+
     public void SetCameras(CinemachineVirtualCamera chooseCamera)
     {
         _chooseCamera = chooseCamera;
+    }
+    
+    public void SetRenderer()
+    {
+        _renderer = _combatAvatar.GetComponent<MeshRenderer>();
     }
 }
 

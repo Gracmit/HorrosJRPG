@@ -62,9 +62,9 @@ public class BattleUIManager : MonoBehaviour
         _highlighter.TurnHighlighterOff();
     }
 
-    public void AddEnemy(CombatEnemy entity) => _highlighter.AddEnemy(entity);
+    public void AddEnemyToHighlighter(ICombatEntity entity) => _highlighter.AddEnemy(entity);
 
-    public void HighlightEnemy()
+    public void HighlightEntity()
     {
         _highlighter.CanHighlight();
         _actionList.SetActive(false);

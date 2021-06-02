@@ -9,4 +9,5 @@ public abstract class Skill : ScriptableObject
     }
 
     public virtual SkillData Data { get; }
+    
 }

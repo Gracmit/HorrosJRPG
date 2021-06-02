@@ -72,12 +72,12 @@ public class CombatEnemy : ICombatEntity
 
     public void Highlight()
     {
-        _renderer.material.color = new Color(255, 255, 255);
+        _renderer.material.color = new Color(255, 1, 1);
     }
 
     public void UnHighlight()
     {
-        _renderer.material.color = new Color(219, 0, 0);
+        _renderer.material.color = new Color(219, 0, 0, 255);
     }
 
     public void AddBuff(BuffSkillData buff)

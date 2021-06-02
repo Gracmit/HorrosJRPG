@@ -37,4 +37,9 @@ public class BattleCameraManager : MonoBehaviour
         _activeCamera = _overviewCamera;
         _activeCamera.gameObject.SetActive(true);        
     }
+
+    public void SetTarget(ICombatEntity enemy)
+    {
+        _activeCamera.m_LookAt = enemy.CombatAvatar.transform;
+    }
 }

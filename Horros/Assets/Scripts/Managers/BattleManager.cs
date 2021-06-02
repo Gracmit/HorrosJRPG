@@ -68,6 +68,7 @@ public class BattleManager : MonoBehaviour
             entity.FullHeal();
             entity.Alive = true;
             entity.SetAttackHandler();
+            entity.SetRenderer();
             
             var chooseCamera = _chooseCameras[spawnpointCounter];
             chooseCamera.gameObject.SetActive(false);
@@ -77,6 +78,7 @@ public class BattleManager : MonoBehaviour
             _turnManager.AddEntity(entity);
             _party.Add(entity);
             BattleUIManager.Instance.InstantiateStatusPanel(entity);
+            BattleUIManager.Instance.AddEnemyToHighlighter(entity);
         }
 
         _partyCount = _party.Count;
@@ -96,7 +98,7 @@ public class BattleManager : MonoBehaviour
             enemy.SetAttackHandler();
             _enemies.Add(enemy);
             _turnManager.AddEntity(enemy);
-            BattleUIManager.Instance.AddEnemy(enemy);
+            BattleUIManager.Instance.AddEnemyToHighlighter(enemy);
         }
 
         _enemyCount = statusData.enemyGroup.Count;
