@@ -70,4 +70,24 @@ public class SkillModificationProsessor : UnityEditor.AssetModificationProcessor
         var fileName = Path.GetFileNameWithoutExtension(destinationPath);
         skill.name = fileName;
     }
+    
+    private static void CheckReviveSkillMoveResult(string sourcePath, string destinationPath)
+    {
+        var skill = AssetDatabase.LoadMainAssetAtPath(sourcePath) as ReviveSkill;
+        if (skill == null)
+        {
+            return;
+        }
+
+        var sourceDirectory = Path.GetDirectoryName(sourcePath);
+        var destinationDirectory = Path.GetDirectoryName(destinationPath);
+
+        if (sourceDirectory != destinationDirectory)
+        {
+            return;
+        }
+
+        var fileName = Path.GetFileNameWithoutExtension(destinationPath);
+        skill.name = fileName;
+    }
 }

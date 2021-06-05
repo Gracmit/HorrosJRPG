@@ -76,10 +76,17 @@ public class PartyMember : ICombatEntity
 
     public void Die()
     {
-        _combatAvatar.SetActive(false);
+        _alive = false;
+        _combatAvatar.transform.position += Vector3.down / 2;
         _attackHandler.ResetAttack();
         BattleManager.Instance.PartyMemberDied();
-        _alive = false;
+    }
+
+    public void Revive()
+    {
+        _combatAvatar.transform.position += Vector3.up / 2;
+        BattleManager.Instance.PartyMemberRevived();
+        _alive = true;
     }
 
     public void ChangeElement(ElementType element)
@@ -102,7 +109,7 @@ public class PartyMember : ICombatEntity
 
     public void Attack()
     {
-        if (_alive)
+        if (_alive && _attackHandler.Skill != null)
             _attackHandler.Attack();
         else
             _attackHandler.ToggleAttacked();

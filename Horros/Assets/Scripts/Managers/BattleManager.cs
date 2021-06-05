@@ -28,7 +28,7 @@ public class BattleManager : MonoBehaviour
     public List<PartyMember> Party => _party;
     public List<CombatEnemy> Enemies => _enemies;
     public bool EnemiesReady => _enemiesReady;
-    
+
     public bool PartyReady => _partyReady;
 
     public bool Initialized() => _initializationCompleted;
@@ -69,11 +69,11 @@ public class BattleManager : MonoBehaviour
             entity.Alive = true;
             entity.SetAttackHandler();
             entity.SetRenderer();
-            
+
             var chooseCamera = _chooseCameras[spawnpointCounter];
             chooseCamera.gameObject.SetActive(false);
             entity.SetCameras(chooseCamera);
-            
+
             spawnpointCounter++;
             _turnManager.AddEntity(entity);
             _party.Add(entity);
@@ -106,12 +106,23 @@ public class BattleManager : MonoBehaviour
 
     public void SetActiveEntity()
     {
+        if (!_party[_partyIndex].Alive)
+        {
+            while (
+                _partyIndex != _party.Count &&
+                !_party[_partyIndex].Alive) // if there is PartyMembers left on the list and next partyMember in not alive
+            {
+                _partyIndex++;
+            }
+        }
         _activeMember = _party[_partyIndex];
         BattleCameraManager.Instance.SetCamera(_activeMember.ChooseCamera);
         Debug.Log(_activeMember.Data.Name);
         _partyIndex++;
 
-        while (_partyIndex != _party.Count && !_party[_partyIndex].Alive) // if there is PartyMembers left on the list and next partyMember in not alive
+        while (
+            _partyIndex != _party.Count &&
+            !_party[_partyIndex].Alive) // if there is PartyMembers left on the list and next partyMember in not alive
         {
             _partyIndex++;
         }
@@ -141,8 +152,6 @@ public class BattleManager : MonoBehaviour
         {
             enemy.PrepareAttack();
         }
-
-        
     }
 
     private IEnumerator Wait()
@@ -156,5 +165,10 @@ public class BattleManager : MonoBehaviour
     public void PartyMemberDied()
     {
         _partyCount--;
+    }
+
+    public void PartyMemberRevived()
+    {
+        _partyCount++;
     }
 }

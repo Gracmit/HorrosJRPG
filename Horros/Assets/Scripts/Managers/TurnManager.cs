@@ -48,11 +48,6 @@ public class TurnManager
     public void Attack()
     {
         _entities[_activeIndex].Attack();
-        //foreach (var entity in _entities)
-        //{
-        //    if(entity.Alive)
-        //        entity.Attack();
-        //}
     }
 
     public void ResetAttack()

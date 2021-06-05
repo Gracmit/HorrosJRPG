@@ -14,6 +14,7 @@ public class AttackHandler : MonoBehaviour
     
     public bool AttackChosen => _attackChosen;
     public bool Attacked => _attacked;
+    public Skill Skill => _skill;
 
     public void SaveAttack(Skill skill)
     {
@@ -38,7 +39,7 @@ public class AttackHandler : MonoBehaviour
         if (_target == null)
             return;
         
-        if (!_target.Alive)
+        if (!_target.Alive && _skill.GetType() != typeof(ReviveSkill))
             FindNewTarget();
         
         StartCoroutine(HandleAttack());
@@ -90,6 +91,7 @@ public class AttackHandler : MonoBehaviour
         _target = null;
         _skill = null;
         _attacked = false;
+        _attackChosen = false;
     }
 
     public void ToggleAttacked()
