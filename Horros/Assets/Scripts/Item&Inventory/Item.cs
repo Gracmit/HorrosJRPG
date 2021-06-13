@@ -1,32 +1,30 @@
 ﻿using UnityEngine;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "Item", menuName = "Item/Item")]
+public class Item : ScriptableObject
 {
-    [SerializeField] private new string name;
-    [SerializeField] private int amount = 0;
+    [SerializeField] private string _name;
+    [SerializeField] private int _amount;
 
-    public int Amount => amount;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var inventory = other.GetComponent<Inventory>();
-        if (inventory != null)
-        {
-            inventory.PickUpItem(this);
-        }
-    }
+    public int Amount => _amount;
+    public string Name => _name;
 
     public void AddItems(int addedAmount)
     {
-        amount += addedAmount;
+        _amount += addedAmount;
     }
 
     public bool SubtractItems(int subtractedAmount)
     {
-        amount -= subtractedAmount;
-        if (amount <= 0)
+        _amount -= subtractedAmount;
+        if (_amount <= 0)
             return true;
 
         return false;
+    }
+
+    public void ChangeName(string newName)
+    {
+        _name = newName;
     }
 }

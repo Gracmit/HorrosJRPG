@@ -171,4 +171,17 @@ public class BattleManager : MonoBehaviour
     {
         _partyCount++;
     }
+
+    public void GiveLoot()
+    {
+        var inventory = FindObjectOfType<Inventory>();
+        foreach (var enemy in _enemies)
+        {
+            var enemyLoot = enemy.EnemyData.Loot;
+            foreach (var loot in enemyLoot)
+            {
+                inventory.PickUpItem(loot);
+            }
+        }
+    }
 }

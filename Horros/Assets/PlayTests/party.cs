@@ -75,9 +75,12 @@ namespace Player
         [Test]
         public void can_equip_an_equipment_for_member()
         {
-            var weapon = new GameObject("Weapon").AddComponent<Weapon>();
-            var armor = new GameObject("Armor").AddComponent<Armor>();
-            var accessory = new GameObject("Accessory").AddComponent<Accessory>();
+            var weapon = ScriptableObject.CreateInstance<Weapon>();
+            weapon.ChangeName("Weapon");
+            var armor = ScriptableObject.CreateInstance<Armor>();
+            armor.ChangeName("Armor");
+            var accessory = ScriptableObject.CreateInstance<Accessory>();
+            accessory.ChangeName("Accessory");
             var data = ScriptableObject.CreateInstance<PartyMemberData>();
             var member = new PartyMember(data);
             
@@ -92,9 +95,12 @@ namespace Player
         [Test]
         public void can_unequip_an_equipment_for_member()
         {
-            var weapon = new GameObject("Weapon").AddComponent<Weapon>();
-            var armor = new GameObject("Armor").AddComponent<Armor>();
-            var accessory = new GameObject("Accessory").AddComponent<Accessory>();
+            var weapon = ScriptableObject.CreateInstance<Weapon>();
+            weapon.ChangeName("Weapon");
+            var armor = ScriptableObject.CreateInstance<Armor>();
+            armor.ChangeName("Armor");
+            var accessory = ScriptableObject.CreateInstance<Accessory>();
+            accessory.ChangeName("Accessory");
             var data = ScriptableObject.CreateInstance<PartyMemberData>();
             var member = new PartyMember(data);
             

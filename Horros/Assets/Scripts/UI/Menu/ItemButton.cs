@@ -9,7 +9,7 @@ public class ItemButton : MonoBehaviour
     
     public void SetItem(Item item)
     {
-        transform.GetComponentInChildren<TextMeshProUGUI>().text = item.name + " " + item.Amount;
+        transform.GetComponentInChildren<TextMeshProUGUI>().text = item.Name + " " + item.Amount;
         _item = item;
     }
     

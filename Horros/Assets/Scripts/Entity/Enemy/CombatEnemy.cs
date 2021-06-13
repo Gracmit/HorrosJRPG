@@ -13,6 +13,7 @@ public class CombatEnemy : ICombatEntity
     public GameObject Model => _data.Model;
     public bool Alive => _alive;
     public EntityData Data => _data;
+    public CombatEnemyData EnemyData => _data;
 
     public GameObject CombatAvatar
     {

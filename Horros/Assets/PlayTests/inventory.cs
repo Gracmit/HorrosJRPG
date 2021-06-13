@@ -17,7 +17,8 @@ namespace Player
         public void adds_item_to_inventory()
         {
             var inventory = new GameObject("Inventory").AddComponent<Inventory>();
-            var item = new GameObject("Item").AddComponent<Item>();
+            Item item = ScriptableObject.CreateInstance<Item>();
+            item.ChangeName("item1");
             item.AddItems(1);
             inventory.PickUpItem(item);
             
@@ -28,8 +29,10 @@ namespace Player
         public void removes_item_from_inventory()
         {
             var inventory = new GameObject("Inventory").AddComponent<Inventory>();
-            var item1 = new GameObject("Item1").AddComponent<Item>();
-            var item2 = new GameObject("Item2").AddComponent<Item>();
+            Item item1 = ScriptableObject.CreateInstance<Item>();
+            item1.ChangeName("item1");
+            Item item2 = ScriptableObject.CreateInstance<Item>();
+            item2.ChangeName("item2");
             item1.AddItems(1);
             item2.AddItems(1);
             inventory.PickUpItem(item1);
@@ -43,7 +46,8 @@ namespace Player
         public void adds_multiple_items_to_inventory()
         {
             var inventory = new GameObject("Inventory").AddComponent<Inventory>();
-            var item = new GameObject("Item").AddComponent<Item>();
+            Item item = ScriptableObject.CreateInstance<Item>();
+            item.ChangeName("item1");
             item.AddItems(4);
             inventory.PickUpItem(item);
             
@@ -56,7 +60,8 @@ namespace Player
         public void removes_correct_amount_of_items()
         {
             var inventory = new GameObject("Inventory").AddComponent<Inventory>();
-            var item = new GameObject("Item1").AddComponent<Item>();
+            Item item = ScriptableObject.CreateInstance<Item>();
+            item.ChangeName("item1");
             item.AddItems(5);
             inventory.PickUpItem(item);
             inventory.RemoveItem(item, 3);
@@ -69,9 +74,11 @@ namespace Player
         public void add_already_existing_items()
         {
             var inventory = new GameObject("Inventory").AddComponent<Inventory>();
-            var item = new GameObject("Item1").AddComponent<Item>();
-            var item2 = new GameObject("Item1").AddComponent<Item>();
+            Item item = ScriptableObject.CreateInstance<Item>();
+            item.ChangeName("item1");
             item.AddItems(3);
+            Item item2 = ScriptableObject.CreateInstance<Item>();
+            item2.ChangeName("item1");
             inventory.PickUpItem(item);
             item2.AddItems(4);
             inventory.PickUpItem(item2);
