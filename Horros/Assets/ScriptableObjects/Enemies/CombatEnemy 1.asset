@@ -17,3 +17,6 @@ MonoBehaviour:
   _model: {fileID: 3090649308442433487, guid: 1eaf5caabd5e7e94a9ed519a859e73e3, type: 3}
   _skills:
   - {fileID: 11400000, guid: 73518d98f1016854db52b77cde017089, type: 2}
+  _lootTable:
+  - {fileID: 11400000, guid: 6673a62c5e6e2a449ac7fa0393eb94f9, type: 2}
+  - {fileID: 11400000, guid: aed111880acf16b49b31bf54643701c9, type: 2}

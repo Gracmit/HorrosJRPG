@@ -6,30 +6,28 @@ public class OffensiveSkillEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        var skillObject = (OffensiveSkill)target;
+        var skillObject = (OffensiveSkill) target;
         base.OnInspectorGUI();
 
         var dataEditor = CreateEditor(serializedObject.FindProperty("_data").objectReferenceValue);
-        if(dataEditor != null)
+        if (dataEditor != null)
             dataEditor.OnInspectorGUI();
-
+        
         if (GUILayout.Button("Create Skill Data"))
         {
-            
-            if(skillObject.Data == null)
+            if (skillObject.Data == null)
             {
                 var skillData = CreateInstance<OffensiveSkillData>();
                 AssetDatabase.AddObjectToAsset(skillData, skillObject);
                 skillData.name = "Data";
-                
+
                 var property = serializedObject.FindProperty("_data");
                 property.objectReferenceValue = skillData;
                 serializedObject.ApplyModifiedProperties();
-                
+
                 AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(skillData));
             }
         }
-        
     }
 }
 
@@ -44,22 +42,18 @@ public class BuffSkillEditor : Editor
         var dataEditor = CreateEditor(serializedObject.FindProperty("_data").objectReferenceValue);
         if (dataEditor != null)
             dataEditor.OnInspectorGUI();
-
-        if (GUILayout.Button("Create Skill Data"))
+        if (!GUILayout.Button("Create Skill Data")) return;
+        if (skillObject.Data == null)
         {
+            var skillData = CreateInstance<BuffSkillData>();
+            AssetDatabase.AddObjectToAsset(skillData, skillObject);
+            skillData.name = "Data";
 
-            if (skillObject.Data == null)
-            {
-                var skillData = CreateInstance<BuffSkillData>();
-                AssetDatabase.AddObjectToAsset(skillData, skillObject);
-                skillData.name = "Data";
+            var property = serializedObject.FindProperty("_data");
+            property.objectReferenceValue = skillData;
+            serializedObject.ApplyModifiedProperties();
 
-                var property = serializedObject.FindProperty("_data");
-                property.objectReferenceValue = skillData;
-                serializedObject.ApplyModifiedProperties();
-
-                AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(skillData));
-            }
+            AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(skillData));
         }
     }
 }
@@ -78,7 +72,6 @@ public class HealSkillEditor : Editor
 
         if (GUILayout.Button("Create Skill Data"))
         {
-
             if (skillObject.Data == null)
             {
                 var skillData = CreateInstance<HealSkillData>();
@@ -109,7 +102,6 @@ public class ReviveSkillEditor : Editor
 
         if (GUILayout.Button("Create Skill Data"))
         {
-
             if (skillObject.Data == null)
             {
                 var skillData = CreateInstance<HealSkillData>();
