@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<Item> _items = new List<Item>();
+    [SerializeField] private List<Item> _items = new List<Item>();
 
     
     public int ItemsCount => _items.Count;
@@ -40,4 +40,8 @@ public class Inventory : MonoBehaviour
             _items.Remove(ogItem);
     }
 
+    public List<Item> GetConsumables()
+    {
+        return _items.FindAll(x => x.GetType() == typeof(Consumable));
+    }
 }

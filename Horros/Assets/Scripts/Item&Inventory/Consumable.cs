@@ -8,5 +8,4 @@ public class Consumable : Item
 
     public Skill Effect => _effect;
     public ConsumableType Type => _type;
-
 }

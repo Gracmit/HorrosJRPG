@@ -1,32 +1,29 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * TODO: Pooling for buttons
- */
-public class SkillList : MonoBehaviour
+public class ItemList : MonoBehaviour
 {
-    [SerializeField] private GameObject _skillButton;
+    [SerializeField] private GameObject _itemButton;
     private readonly List<GameObject> _buttons = new List<GameObject>();
     
-    public void InstantiateButtons(List<Skill> skills)
+    public void InstantiateButtons(List<Item> items)
     {
         if (_buttons.Count > 0)
         {
             DeleteOldButtons();
         }
 
-        foreach (var skill in skills)
+        foreach (var item in items)
         {
-            var button = Instantiate(_skillButton);
+            var button = Instantiate(_itemButton);
             _buttons.Add(button);
 
-            var skillButton = button.GetComponent<SkillButton>();
-            skillButton.SetSkill(skill);
+            var skillButton = button.GetComponent<CombatItemButton>();
+            skillButton.SetItem(item);
             button.transform.SetParent(transform);
         }
     }
-
+    
     private void DeleteOldButtons()
     {
         for (int i = _buttons.Count - 1; i >= 0; i--)
@@ -35,10 +32,5 @@ public class SkillList : MonoBehaviour
             _buttons.Remove(button);
             Destroy(button);
         }
-    }
-
-    private void OnEnable()
-    {
-        BattleUIManager.Instance.EventHandler.ActivateSkillButton(_buttons[0]);
     }
 }

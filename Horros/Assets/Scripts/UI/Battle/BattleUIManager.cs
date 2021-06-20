@@ -7,6 +7,7 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private SkillList _skillList;
     [SerializeField] private StatusList _statusList;
     [SerializeField] private InfoPanel _infoPanel;
+    [SerializeField] private ItemList _itemList;
     [SerializeField] private GameObject _victoryScreen;
     [SerializeField] private GameObject _defeatScreen;
     private static BattleUIManager _instance;
@@ -69,6 +70,7 @@ public class BattleUIManager : MonoBehaviour
         _highlighter.CanHighlight();
         _actionList.SetActive(false);
         _skillList.gameObject.SetActive(false);
+        _itemList.gameObject.SetActive(false);
     }
 
     public void ToggleActionList(bool active)
@@ -89,6 +91,15 @@ public class BattleUIManager : MonoBehaviour
         }
     }
 
+    public void ToggleItemsList(bool active)
+    {
+        _itemList.gameObject.SetActive(active);
+        if (_itemList.gameObject.activeInHierarchy)
+        {
+            _stackHandler.PushToStack(_itemList.gameObject);
+        }
+    }
+
     public void ToggleStatusPanels(bool active) => _statusList.gameObject.SetActive(active);
 
     public void RemoveEnemyFromHighlighter(CombatEnemy enemy) => _highlighter.RemoveEnemy(enemy);
@@ -97,6 +108,7 @@ public class BattleUIManager : MonoBehaviour
 
     public void InstantiateStatusPanel(PartyMember member) => _statusList.InstantiateStatusPanel(member);
 
+    public void InstantiateItemButtons(List<Item> items) => _itemList.InstantiateButtons(items);
     public void UpdateStatusPanel(PartyMember member) => _statusList.UpdatePanel(member);
 
     public void ToggleVictoryScreen(bool active)
@@ -108,5 +120,5 @@ public class BattleUIManager : MonoBehaviour
     {
         _defeatScreen.SetActive(active);
     }
-    
+
 }

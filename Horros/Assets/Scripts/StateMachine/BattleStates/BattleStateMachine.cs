@@ -10,7 +10,7 @@ public class BattleStateMachine : MonoBehaviour
 
         var start = new StartBattle();
         var enemyChoose = new EnemyChoose();
-        var playerChoose = new PlayerChoose();
+        var playerChoose = new PlayerChoose(FindObjectOfType<Inventory>());
         var attack = new Attack();
         var win = new Win();
         var lose = new Lose();
