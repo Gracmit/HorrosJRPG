@@ -9,9 +9,10 @@ public class AttackHandler : MonoBehaviour
     private ICombatEntity _attacker;
     private ICombatEntity _target;
     private Skill _skill;
+    private Consumable _item;
     private bool _attackChosen;
     private bool _attacked;
-    
+
     public bool AttackChosen => _attackChosen;
     public bool Attacked => _attacked;
     public Skill Skill => _skill;
@@ -24,6 +25,8 @@ public class AttackHandler : MonoBehaviour
     public void SaveTarget(ICombatEntity target)
     {
         _target = target;
+        if(_item != null)
+            GameManager.Instance.Inventory.RemoveItem(_item, 1);
         _attackChosen = true;
         Debug.Log(_attacker.Data.Name);
     }
@@ -57,9 +60,10 @@ public class AttackHandler : MonoBehaviour
         {
             BattleUIManager.Instance.UpdateStatusPanel((PartyMember)_attacker);
         }
-        
+
         _target = null;
         _skill = null;
+        _item = null;
         _attackChosen = false;
         _attacked = true;
     }
@@ -90,6 +94,7 @@ public class AttackHandler : MonoBehaviour
     {
         _target = null;
         _skill = null;
+        _item = null;
         _attacked = false;
         _attackChosen = false;
     }
@@ -97,5 +102,11 @@ public class AttackHandler : MonoBehaviour
     public void ToggleAttacked()
     {
         _attacked = true;
+    }
+
+    public void SaveItem(Consumable item)
+    {
+        _skill = item.Effect;
+        _item = item;
     }
 }

@@ -23,7 +23,7 @@ public class CombatItemButton : MonoBehaviour
 
     public void ItemChosen()
     {
-        BattleManager.Instance.SaveChosenAttack(_item.Effect);
+        BattleManager.Instance.SaveChosenItem(_item);
         StartCoroutine(Highlight());
     }
     

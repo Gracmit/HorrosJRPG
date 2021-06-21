@@ -138,6 +138,7 @@ public class BattleManager : MonoBehaviour
     }
 
     public void SaveChosenAttack(Skill skill) => _activeMember.AttackHandler.SaveAttack(skill);
+    public void SaveChosenItem(Consumable item) => _activeMember.AttackHandler.SaveItem(item);
 
     public void EnemyDied(CombatEnemy enemy)
     {
@@ -184,4 +185,5 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
+
 }
