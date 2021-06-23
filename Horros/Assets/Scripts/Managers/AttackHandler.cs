@@ -20,6 +20,7 @@ public class AttackHandler : MonoBehaviour
     public void SaveAttack(Skill skill)
     {
         _skill = skill;
+        _item = null;
     }
 
     public void SaveTarget(ICombatEntity target)
