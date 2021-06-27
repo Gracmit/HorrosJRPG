@@ -176,14 +176,17 @@ public class BattleManager : MonoBehaviour
     public void GiveLoot()
     {
         var inventory = FindObjectOfType<Inventory>();
+        List<Item> allTheLoot = new List<Item>();
         foreach (var enemy in _enemies)
         {
             var enemyLoot = enemy.EnemyData.Loot;
             foreach (var loot in enemyLoot)
             {
+                allTheLoot.Add(loot);
                 inventory.PickUpItem(loot);
             }
         }
-    }
 
+        BattleUIManager.Instance.ShowLootedLoot(allTheLoot);
+    }
 }

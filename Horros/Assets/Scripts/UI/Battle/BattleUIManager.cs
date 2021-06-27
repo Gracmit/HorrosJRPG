@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BattleUIManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private ItemList _itemList;
     [SerializeField] private GameObject _victoryScreen;
     [SerializeField] private GameObject _defeatScreen;
+    [SerializeField] private CollectedItemsText _lootText;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
     private BattleEventSystemHandler _eventHandler;
@@ -121,4 +123,8 @@ public class BattleUIManager : MonoBehaviour
         _defeatScreen.SetActive(active);
     }
 
+    public void ShowLootedLoot(List<Item> loot)
+    {
+        _lootText.SetText(loot);
+    }
 }
