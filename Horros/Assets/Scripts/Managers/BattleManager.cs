@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Cinemachine;
 using UnityEngine;
 
@@ -187,6 +188,9 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        allTheLoot = allTheLoot.OrderBy(x => x.Name).ToList();
         BattleUIManager.Instance.ShowLootedLoot(allTheLoot);
     }
+
+
 }
