@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
@@ -10,12 +11,35 @@ public class DialogController : MonoBehaviour
     [SerializeField] private Button[] _choiceButtons;
 
     private Story _story;
+    private CanvasGroup _canvasGroup;
+
+    private void Awake()
+    {
+        _canvasGroup = GetComponent<CanvasGroup>();
+        ToggleCanvasOff();
+    }
+
 
     [ContextMenu("Start Dialog")]
     public void StartDialog(TextAsset dialog)
     {
         _story = new Story(dialog.text);
         RefreshView();
+        ToggleCanvasOn();
+    }
+
+    private void ToggleCanvasOn()
+    {
+        _canvasGroup.alpha = 1f;
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
+    }
+    
+    private void ToggleCanvasOff()
+    {
+        _canvasGroup.alpha = 0f;
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
     }
 
     private void RefreshView()
@@ -29,6 +53,14 @@ public class DialogController : MonoBehaviour
 
         _storyText.SetText(storyTextBuilder);
 
+        if (_story.currentChoices.Count == 0)
+            ToggleCanvasOff();
+        else
+            ShowChoiceButtons();
+    }
+
+    private void ShowChoiceButtons()
+    {
         for (int i = 0; i < _choiceButtons.Length; i++)
         {
             var button = _choiceButtons[i];
@@ -54,7 +86,7 @@ public class DialogController : MonoBehaviour
             if (tag.StartsWith("E."))
             {
                 var eventName = tag.Remove(0, 2);
-                //GameEvent.RaiseEvent(eventName);
+                GameEvent.RaiseEvent(eventName);
             }
         }
     }
