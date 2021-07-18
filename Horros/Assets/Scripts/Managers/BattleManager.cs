@@ -191,6 +191,4 @@ public class BattleManager : MonoBehaviour
         allTheLoot = allTheLoot.OrderBy(x => x.Name).ToList();
         BattleUIManager.Instance.ShowLootedLoot(allTheLoot);
     }
-
-
 }
