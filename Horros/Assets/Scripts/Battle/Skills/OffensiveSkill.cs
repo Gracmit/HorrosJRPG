@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 public class OffensiveSkill : Skill
 {
     [SerializeField] private OffensiveSkillData _data;
+    private static readonly int Attack1 = Animator.StringToHash("Attack");
+    private static readonly int Property = Animator.StringToHash("Take damage");
 
     public override SkillData Data => _data;
 
@@ -34,13 +36,18 @@ public class OffensiveSkill : Skill
         {
             target.ChangeElement(_data.StatusEffect.Element);
         }
-        
-        attacker.CombatAvatar.transform.position += Vector3.up / 2;
-        target.CombatAvatar.transform.position += Vector3.down / 2;
+
+        var animator = attacker.CombatAvatar.GetComponent<Animator>();
+        animator.SetTrigger(Attack1);
+        yield return new WaitForSecondsRealtime(0.5f);
+        var animator1 = target.CombatAvatar.GetComponent<Animator>();
+        animator1.SetTrigger(Property);
+        //attacker.CombatAvatar.transform.position += Vector3.up / 2;
+        //target.CombatAvatar.transform.position += Vector3.down / 2;
         DamagePopUpInstantiator.Instance.InstantiatePopUp(target, damage);
         yield return new WaitForSeconds(2f);
-        attacker.CombatAvatar.transform.position += Vector3.down / 2;
-        target.CombatAvatar.transform.position += Vector3.up / 2;
+        //attacker.CombatAvatar.transform.position += Vector3.down / 2;
+        //target.CombatAvatar.transform.position += Vector3.up / 2;
         
         Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
         target.TakeDamage(damage);

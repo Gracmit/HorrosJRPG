@@ -15,7 +15,7 @@ public class PartyMember : ICombatEntity
     private GameObject _combatAvatar;
     private AttackHandler _attackHandler;
     private CinemachineVirtualCamera _chooseCamera;
-    private MeshRenderer _renderer;
+    private SkinnedMeshRenderer _renderer;
 
     public Weapon Weapon => _data.Weapon;
     public Armor Armor => _data.Armor;
@@ -149,7 +149,7 @@ public class PartyMember : ICombatEntity
     
     public void SetRenderer()
     {
-        _renderer = _combatAvatar.GetComponent<MeshRenderer>();
+        _renderer = _combatAvatar.GetComponentInChildren<SkinnedMeshRenderer>();
     }
 }
 

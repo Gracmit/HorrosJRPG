@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: PartyTest 3
   _stats: {fileID: 11400000, guid: 10ee15a0b69944c48981684a0dd699b3, type: 2}
-  _model: {fileID: 2686740008264026701, guid: f62f52869a568bb4c96f42ef8c50c76a, type: 3}
+  _model: {fileID: 8448313792840368809, guid: bc732b6051f898b4cb1aa98e61dc9d22, type: 3}
   _skills:
   - {fileID: 11400000, guid: ffa4b35e2e71bca47b7a8498a56bdfd3, type: 2}
   - {fileID: 11400000, guid: d210686f09c6a4248a14d4ffe85c8c61, type: 2}
