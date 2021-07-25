@@ -14,6 +14,7 @@ public class OffensiveSkill : Skill
     private static readonly int Property = Animator.StringToHash("Take damage");
 
     public override SkillData Data => _data;
+    public OffensiveSkillData OffensiveData => _data;
 
     public OffensiveSkill(OffensiveSkillData data)
     {

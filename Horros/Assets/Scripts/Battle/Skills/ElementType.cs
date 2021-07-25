@@ -5,4 +5,5 @@
     Ranged,
     Fire,
     Ice,
+    Null,
 }

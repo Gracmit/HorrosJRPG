@@ -24,9 +24,9 @@ public class PartyMember : ICombatEntity
 
     public GameObject Model => _data.Model;
     public AttackHandler AttackHandler => _attackHandler;
-
     public CinemachineVirtualCamera ChooseCamera => _chooseCamera;
-
+    public ElementType Element => _element;
+    
     public bool Alive
     {
         get => _alive;
@@ -61,7 +61,6 @@ public class PartyMember : ICombatEntity
     public void UnEquipAccessory() => _data.Accessory = null;
 
     public void SetActive(bool active) => _active = active;
-    public ElementType Element => _element;
     public bool Attacked => _attackHandler.Attacked;
 
     public void TakeDamage(int damage)

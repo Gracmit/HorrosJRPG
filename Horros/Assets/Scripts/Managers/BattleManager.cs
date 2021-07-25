@@ -17,7 +17,7 @@ public class BattleManager : MonoBehaviour
     private int _enemyCount;
     private int _partyCount;
     private readonly List<PartyMember> _party = new List<PartyMember>();
-    private readonly List<CombatEnemy> _enemies = new List<CombatEnemy>();
+    private  List<CombatEnemy> _enemies = new List<CombatEnemy>();
     private int _partyIndex;
     private bool _partyReady;
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CombatEnemy : ICombatEntity
@@ -55,20 +56,12 @@ public class CombatEnemy : ICombatEntity
 
     public void PrepareAttack()
     {
-        _attackHandler.SaveAttack(ChooseAttack());
-        _attackHandler.SaveTarget(ChooseTarget());
-    }
-
-    private Skill ChooseAttack()
-    {
-        var index = Random.Range(0, _data.Skills.Count);
-        return _data.Skills[index];
-    }
-
-    private PartyMember ChooseTarget()
-    {
-        var index = 0; //Random.Range(0, BattleManager.Instance.PartyCount);
-        return BattleManager.Instance.Party[index];
+        List<PartyMember> party = new List<PartyMember>(BattleManager.Instance.Party.Where(x => x.Alive).ToList());
+        List<CombatEnemy> enemies = new List<CombatEnemy>(BattleManager.Instance.Enemies);
+        enemies.Remove(this);
+        _data.AI.ChooseAction(this, party, enemies);
+        _attackHandler.SaveAttack(_data.AI.GetSkill());
+        _attackHandler.SaveTarget(_data.AI.GetTarget());
     }
 
     public void Highlight()
