@@ -16,6 +16,7 @@ public class AttackHandler : MonoBehaviour
     public bool AttackChosen => _attackChosen;
     public bool Attacked => _attacked;
     public Skill Skill => _skill;
+    public ICombatEntity Target => _target;
 
     public void SaveAttack(Skill skill)
     {

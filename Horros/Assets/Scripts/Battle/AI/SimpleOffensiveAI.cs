@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "CombatAI/SimpleOffensiveAi", fileName = "SimpleOffensiveAI", order = 0)]
+[CreateAssetMenu(menuName = "CombatAI/SimpleOffensiveAi", fileName = "SimpleOffensiveAI")]
 public class SimpleOffensiveAI : CombatAI
 {
     private ICombatEntity _target;

@@ -19,4 +19,5 @@ public class OffensiveSkillData : SkillData
     public StatusEffect StatusEffect => _statusEffect;
     public ElementType Strength => _strength;
     public ElementType Weakness => _weakness;
+    public ElementType Element => _element;
 }

@@ -30,6 +30,7 @@ public class CombatEnemy : ICombatEntity
 
     public ElementType Element => _element;
     public bool Attacked => _attackHandler.Attacked;
+    public AttackHandler AttackHandler => _attackHandler;
 
     public void TakeDamage(int damage)
     {
