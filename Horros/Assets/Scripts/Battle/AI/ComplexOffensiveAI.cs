@@ -52,7 +52,8 @@ public class ComplexOffensiveAI : CombatAI
         {
             foreach (var skill in offensiveSkills)
             {
-                if (enemy.AttackHandler.Skill.GetType() == typeof(OffensiveSkill))
+                var attack = enemy.AttackHandler.Skill;
+                if (attack != null && attack.GetType() == typeof(OffensiveSkill))
                 {
                     OffensiveSkill offensiveSkill = (OffensiveSkill)enemy.AttackHandler.Skill;
                     if (skill.OffensiveData.Strength == offensiveSkill.OffensiveData.Element)
@@ -72,7 +73,7 @@ public class ComplexOffensiveAI : CombatAI
 
     private void TryToGangUpWithOthers()
     {
-        foreach (var enemy in _enemies.Where(enemy => enemy.AttackHandler.Target.GetType() == typeof(PartyMember)))
+        foreach (var enemy in _enemies.Where(enemy => enemy.AttackHandler.Target?.GetType() == typeof(PartyMember)))
         {
             _target = enemy.AttackHandler.Target;
             ChooseRandomAttack();

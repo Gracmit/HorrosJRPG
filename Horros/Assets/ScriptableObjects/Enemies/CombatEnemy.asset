@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73518d98f1016854db52b77cde017089, type: 2}
   _lootTable:
   - {fileID: 11400000, guid: 6673a62c5e6e2a449ac7fa0393eb94f9, type: 2}
+  _ai: {fileID: 11400000, guid: e75e7e73fb57bd94f9af433da1ad8825, type: 2}

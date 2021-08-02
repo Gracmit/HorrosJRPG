@@ -63,6 +63,8 @@ public class AttackHandler : MonoBehaviour
             BattleUIManager.Instance.UpdateStatusPanel((PartyMember)_attacker);
         }
 
+        yield return new WaitForSeconds(1f);
+
         _target = null;
         _skill = null;
         _item = null;

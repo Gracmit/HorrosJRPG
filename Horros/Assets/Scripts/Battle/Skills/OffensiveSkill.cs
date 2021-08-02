@@ -43,15 +43,11 @@ public class OffensiveSkill : Skill
         yield return new WaitForSecondsRealtime(0.5f);
         var animator1 = target.CombatAvatar.GetComponent<Animator>();
         animator1.SetTrigger(Property);
-        //attacker.CombatAvatar.transform.position += Vector3.up / 2;
-        //target.CombatAvatar.transform.position += Vector3.down / 2;
+
         DamagePopUpInstantiator.Instance.InstantiatePopUp(target, damage);
-        yield return new WaitForSeconds(2f);
-        //attacker.CombatAvatar.transform.position += Vector3.down / 2;
-        //target.CombatAvatar.transform.position += Vector3.up / 2;
-        
-        Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
+        yield return new WaitForSeconds(0.5f);
         target.TakeDamage(damage);
+        Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
     }
 
     

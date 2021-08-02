@@ -3,18 +3,23 @@ using UnityEngine;
 
 internal class StatusList : MonoBehaviour
 {
-    [SerializeField] private StatusPanel _statusPanel;
-    private List<StatusPanel> _panels = new List<StatusPanel>();
+    [SerializeField] private List<StatusPanel> _statusPanels;
 
     public void InstantiateStatusPanel(PartyMember member)
     {
-        var panel = Instantiate(_statusPanel, transform);
-        panel.SetCharacter(member);
-        _panels.Add(panel);
+        foreach (var panel in _statusPanels)
+        {
+            if (panel.PartyMember == null)
+            {
+                panel.gameObject.SetActive(true);
+                panel.SetCharacter(member);
+                return;
+            }
+        }
     }
 
     public void UpdatePanel(PartyMember member)
     {
-        _panels.Find(x => x.PartyMember == member).UpdatePanel();
+        _statusPanels.Find(x => x.PartyMember == member).UpdatePanel();
     }
 }
