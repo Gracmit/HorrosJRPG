@@ -34,6 +34,7 @@ public class PartyMember : ICombatEntity
     }
 
     public EntityData Data => _data;
+    public PartyMemberData PartyMemberData => _data;
 
     public GameObject CombatAvatar
     {

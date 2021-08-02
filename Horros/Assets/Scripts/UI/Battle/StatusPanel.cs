@@ -23,6 +23,7 @@ public class StatusPanel : MonoBehaviour
         _hpSlider.value = _partyMember.Data.Stats.GetValue(StatType.HP);
         _mpSlider.maxValue = _partyMember.Data.Stats.GetValue(StatType.MaxMP);
         _mpSlider.value = _partyMember.Data.Stats.GetValue(StatType.MP);
+        _image.sprite = _partyMember.PartyMemberData.Portrait;
         //statusImage.SetText($"Status: {_partyMember.Element.ToString()}");
     }
 
