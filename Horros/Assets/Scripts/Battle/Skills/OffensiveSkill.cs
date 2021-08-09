@@ -35,7 +35,7 @@ public class OffensiveSkill : Skill
 
         if (affected)
         {
-            target.ChangeElement(_data.StatusEffect.Element);
+            target.ChangeElement(_data.StatusEffect);
         }
 
         var animator = attacker.CombatAvatar.GetComponent<Animator>();

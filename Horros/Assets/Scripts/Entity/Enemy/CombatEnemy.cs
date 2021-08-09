@@ -49,10 +49,10 @@ public class CombatEnemy : ICombatEntity
         Object.Destroy(_combatAvatar);
     }
 
-    public void ChangeElement(ElementType element)
+    public void ChangeElement(StatusEffect effect)
     {
-        Debug.Log($"Element changed to {element}");
-        _element = element;
+        Debug.Log($"Element changed to {effect.Element}");
+        _element = effect.Element;
     }
 
     public void PrepareAttack()

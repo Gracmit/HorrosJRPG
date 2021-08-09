@@ -12,6 +12,7 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private GameObject _victoryScreen;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private CollectedItemsText _lootText;
+    [SerializeField] private Sprite _nullIcon;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
     private BattleEventSystemHandler _eventHandler;
@@ -127,4 +128,6 @@ public class BattleUIManager : MonoBehaviour
     {
         _lootText.SetText(loot);
     }
+
+    public Sprite GetNoneStatusIcon() => _nullIcon;
 }

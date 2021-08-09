@@ -38,3 +38,4 @@ MonoBehaviour:
     _type: 2
     _effectElement: 4
     _chance: 30
+    _icon: {fileID: 21300000, guid: 23e8f287d6d772144ad3975d71603d57, type: 3}

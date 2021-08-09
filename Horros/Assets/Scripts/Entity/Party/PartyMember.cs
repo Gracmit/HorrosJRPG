@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cinemachine;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -9,7 +10,7 @@ public class PartyMember : ICombatEntity
 {
     [SerializeField] private PartyMemberData _data;
     [SerializeField] private bool _active;
-    private ElementType _element = ElementType.None;
+    private StatusEffect _statusEffect;
     private Dictionary<StatType, BuffCounter> _activeBuffs;
     private bool _alive = true;
     private GameObject _combatAvatar;
@@ -25,8 +26,20 @@ public class PartyMember : ICombatEntity
     public GameObject Model => _data.Model;
     public AttackHandler AttackHandler => _attackHandler;
     public CinemachineVirtualCamera ChooseCamera => _chooseCamera;
-    public ElementType Element => _element;
-    
+    public ElementType Element
+    {
+        get
+        {
+            if (_statusEffect == null)
+            {
+                return ElementType.None;
+            }
+            return _statusEffect.Element;
+        }
+    }
+
+    public StatusEffect Effect => _statusEffect ?? new StatusEffect(BattleUIManager.Instance.GetNoneStatusIcon());
+
     public bool Alive
     {
         get => _alive;
@@ -89,9 +102,9 @@ public class PartyMember : ICombatEntity
         _alive = true;
     }
 
-    public void ChangeElement(ElementType element)
+    public void ChangeElement(StatusEffect effect)
     {
-        _element = element;
+        _statusEffect = effect;
     }
 
     public void AddBuff(BuffSkillData buff)

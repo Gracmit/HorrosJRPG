@@ -11,7 +11,7 @@ public interface ICombatEntity
 
     void TakeDamage(int damage);
     void Die();
-    void ChangeElement(ElementType element);
+    void ChangeElement(StatusEffect effect);        
     void AddBuff(BuffSkillData buff);
     void Attack();
     void SetAttackHandler();

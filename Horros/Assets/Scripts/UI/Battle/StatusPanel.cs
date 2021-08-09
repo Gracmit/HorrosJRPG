@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using NSubstitute.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ public class StatusPanel : MonoBehaviour
         _mpSlider.maxValue = _partyMember.Data.Stats.GetValue(StatType.MaxMP);
         _mpSlider.value = _partyMember.Data.Stats.GetValue(StatType.MP);
         _image.sprite = _partyMember.PartyMemberData.Portrait;
-        //statusImage.SetText($"Status: {_partyMember.Element.ToString()}");
+        //_statusImage.sprite = _partyMember.Effect.Icon;
     }
 
     public void UpdatePanel()
@@ -33,6 +34,6 @@ public class StatusPanel : MonoBehaviour
         _mpText.SetText(_partyMember.Data.Stats.GetValue(StatType.MP).ToString());
         _hpSlider.value = _partyMember.Data.Stats.GetValue(StatType.HP);
         _mpSlider.value = _partyMember.Data.Stats.GetValue(StatType.MP);
-        //statusImage.SetText($"Status: {_partyMember.Element.ToString()}");
+        _statusImage.sprite = _partyMember.Effect.Icon;
     }
 }
