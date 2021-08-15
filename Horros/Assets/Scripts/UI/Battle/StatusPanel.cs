@@ -25,7 +25,7 @@ public class StatusPanel : MonoBehaviour
         _mpSlider.maxValue = _partyMember.Data.Stats.GetValue(StatType.MaxMP);
         _mpSlider.value = _partyMember.Data.Stats.GetValue(StatType.MP);
         _image.sprite = _partyMember.PartyMemberData.Portrait;
-        //_statusImage.sprite = _partyMember.Effect.Icon;
+        _statusImage.sprite = _partyMember.Effect.Icon;
     }
 
     public void UpdatePanel()

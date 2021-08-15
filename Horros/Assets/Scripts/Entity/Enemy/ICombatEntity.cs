@@ -7,6 +7,7 @@ public interface ICombatEntity
 
     GameObject CombatAvatar { get; set; }
     ElementType Element { get;}
+    StatusEffect Effect { get; }
     bool Attacked{ get;}
 
     void TakeDamage(int damage);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CombatEnemy : ICombatEntity
 {
     private CombatEnemyData _data;
-    private ElementType _element = ElementType.None;
+    private StatusEffect _statusEffect;
     private bool _alive = true;
     private GameObject _combatAvatar;
     private Dictionary<StatType, BuffCounter> _activeBuffs;
@@ -28,7 +28,19 @@ public class CombatEnemy : ICombatEntity
         _combatAvatar = _data.Model;
     }
 
-    public ElementType Element => _element;
+    public ElementType Element
+    {
+        get
+        {
+            if (_statusEffect == null)
+            {
+                return ElementType.None;
+            }
+            return _statusEffect.Element;
+        }
+    }
+    
+    public StatusEffect Effect => _statusEffect ?? new StatusEffect(BattleUIManager.Instance.GetNoneStatusIcon());
     public bool Attacked => _attackHandler.Attacked;
     public AttackHandler AttackHandler => _attackHandler;
 
@@ -51,8 +63,7 @@ public class CombatEnemy : ICombatEntity
 
     public void ChangeElement(StatusEffect effect)
     {
-        Debug.Log($"Element changed to {effect.Element}");
-        _element = effect.Element;
+        _statusEffect = effect;
     }
 
     public void PrepareAttack()

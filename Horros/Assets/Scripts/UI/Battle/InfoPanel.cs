@@ -1,16 +1,15 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfoPanel : MonoBehaviour
 {
     [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private TMP_Text _hpText;
-    [SerializeField] private TMP_Text _statusText;
+    [SerializeField] private Image _icon;
 
-    public void UpdateText(ICombatEntity entity)
+    public void UpdatePanel(ICombatEntity entity)
     {
         _nameText.SetText(entity.Data.Name);
-        _hpText.SetText($"HP: {entity.Data.Stats.GetValue(StatType.HP)}/{entity.Data.Stats.GetValue(StatType.MaxHP)}");
-        _statusText.SetText($"Status: {entity.Element}");
+        _icon.sprite = entity.Effect.Icon;
     }
 }

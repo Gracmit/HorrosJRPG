@@ -86,7 +86,7 @@ public class Highlighter
         BattleCameraManager.Instance.SetTarget(_entities[_activeIndex]);
         _entities[_activeIndex].Highlight();
         Debug.Log($"Highlighted: {_entities[_activeIndex].Data.Name}");
-        _infoPanel.UpdateText(_entities[_activeIndex]);
+        _infoPanel.UpdatePanel(_entities[_activeIndex]);
     }
 
     public void RemoveEnemy(CombatEnemy enemy)

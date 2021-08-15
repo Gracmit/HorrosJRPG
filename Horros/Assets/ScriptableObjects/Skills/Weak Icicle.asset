@@ -10,6 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f751d6441c654f9599ae7fa6802fc56d, type: 3}
-  m_Name: OffensiveSkill
+  m_Name: Weak Icicle
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  _data: {fileID: 6204696533789004217}
+--- !u!114 &6204696533789004217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d32bb65e2116e24ea54ddc58f32ae3c, type: 3}
+  m_Name: Data
+  m_EditorClassIdentifier: 
+  _name: Weak Icicle
+  _description: 
+  _mpCost: 10
+  _power: 5
+  _element: 0
+  _weakness: 0
+  _strength: 0
+  _attackType: 0
+  _defenceType: 0
+  _statusEffect:
+    _type: 2
+    _effectElement: 4
+    _chance: 33
+    _icon: {fileID: 21300000, guid: 4a10128867976fc4d85a24028e92fdcc, type: 3}

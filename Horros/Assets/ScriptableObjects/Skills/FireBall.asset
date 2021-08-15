@@ -25,7 +25,7 @@ MonoBehaviour:
     _type: 1
     _effectElement: 3
     _chance: 100
-    _icon: {fileID: 21300000, guid: b361c967fadcd7f499a2b0e18af55d89, type: 3}
+    _icon: {fileID: 21300000, guid: be65efea876d4b44582dab8bac1fd792, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
