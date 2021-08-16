@@ -28,6 +28,7 @@ MonoBehaviour:
   _name: Icicle
   _description: Basic Ice magic
   _mpCost: 20
+  _multiAttack: 1
   _power: 10
   _element: 4
   _weakness: 3

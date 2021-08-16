@@ -73,7 +73,7 @@ public class CombatEnemy : ICombatEntity
         enemies.Remove(this);
         _data.AI.ChooseAction(this, party, enemies);
         _attackHandler.SaveAttack(_data.AI.GetSkill());
-        _attackHandler.SaveTarget(_data.AI.GetTarget());
+        _attackHandler.SaveTargets(_data.AI.GetTarget());
     }
 
     public void Highlight()

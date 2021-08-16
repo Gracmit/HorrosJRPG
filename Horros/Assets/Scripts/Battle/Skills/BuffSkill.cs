@@ -3,6 +3,7 @@ using System.IO;
 using UnityEditor;
 #endif
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BuffSkill", menuName = "Skill/BuffSkill")]
@@ -16,9 +17,12 @@ public class BuffSkill : Skill
     {
         _data = data;
     }
-    public override IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
+    public override IEnumerator HandleAttack(ICombatEntity attacker, List<ICombatEntity> targets)
     {
-        target.AddBuff(_data);
+        foreach (var target in targets)
+        {
+            target.AddBuff(_data);
+        }
         yield return null;
     }
     

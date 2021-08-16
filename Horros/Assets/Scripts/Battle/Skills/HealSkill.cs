@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -7,6 +8,9 @@ using UnityEngine;
 public class HealSkill : Skill
 {
     [SerializeField] private HealSkillData _data;
+    
+    private static readonly int Attack1 = Animator.StringToHash("Attack");
+    private static readonly int TakeDamage = Animator.StringToHash("Take damage");
 
     public override SkillData Data => _data;
 
@@ -15,26 +19,33 @@ public class HealSkill : Skill
         _data = data;
     }
 
-    public override IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
+    public override IEnumerator HandleAttack(ICombatEntity attacker, List<ICombatEntity> targets)
     {
         SubtractMP(attacker);
-        var amount = _data.Power;
-        if (_data.HealingType == HealingType.Constant)
+        
+        var animator = attacker.CombatAvatar.GetComponent<Animator>();
+        animator.SetTrigger(Attack1);
+
+        foreach (var target in targets)
         {
-            amount = _data.Power;
-        }
-        else
-        {
-            amount = CountHealAmount(target);
+            var amount = _data.Power;
+            if (_data.HealingType == HealingType.Constant)
+            {
+                amount = _data.Power;
+            }
+            else
+            {
+                amount = CountHealAmount(target);
+            }
+
+            var animator1 = target.CombatAvatar.GetComponent<Animator>();
+            animator1.SetTrigger(TakeDamage);
+            
+            DamagePopUpInstantiator.Instance.InstantiatePopUp(target, amount);
+            target.Data.Stats.Replenish(StatType.HP, amount);
         }
 
-        attacker.CombatAvatar.transform.position += Vector3.up / 2;
-        target.CombatAvatar.transform.position += Vector3.down / 2;
-        DamagePopUpInstantiator.Instance.InstantiatePopUp(target, amount);
-        target.Data.Stats.Replenish(StatType.HP, amount);
         yield return new WaitForSeconds(2f);
-        attacker.CombatAvatar.transform.position += Vector3.down / 2;
-        target.CombatAvatar.transform.position += Vector3.up / 2;
     }
 
     private int CountHealAmount(ICombatEntity target)

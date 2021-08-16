@@ -1,9 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Skill : ScriptableObject
 {
-    public virtual IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
+    public virtual IEnumerator HandleAttack(ICombatEntity attacker, List<ICombatEntity> targets)
     {
         yield return null;
     }

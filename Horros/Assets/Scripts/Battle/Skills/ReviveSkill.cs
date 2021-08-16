@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityEngine;
 public class ReviveSkill : Skill
 {
     [SerializeField] private HealSkillData _data;
+    private static readonly int Attack1 = Animator.StringToHash("Attack");
+    private static readonly int TakeDamage = Animator.StringToHash("Take damage");
 
     public override SkillData Data => _data;
 
@@ -15,35 +18,44 @@ public class ReviveSkill : Skill
         _data = data;
     }
 
-    public override IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
+    public override IEnumerator HandleAttack(ICombatEntity attacker, List<ICombatEntity> targets)
     {
         SubtractMP(attacker);
-        var amount = 0;
-        if (target.Alive)
-            amount = 0;
-        else if(target.GetType() == typeof(PartyMember))
+
+        var animator = attacker.CombatAvatar.GetComponent<Animator>();
+        animator.SetTrigger(Attack1);
+
+        yield return new WaitForSeconds(0.5f);
+
+        foreach (var target in targets)
         {
-            if (_data.HealingType == HealingType.Constant)
+            var amount = 0;
+            if (target.Alive)
+                amount = 0;
+            else if (target.GetType() == typeof(PartyMember))
             {
-                var member = (PartyMember) target;
-                member.Revive();
-                amount = _data.Power;
+                if (_data.HealingType == HealingType.Constant)
+                {
+                    var member = (PartyMember) target;
+                    member.Revive();
+                    amount = _data.Power;
+                }
+                else
+                {
+                    var member = (PartyMember) target;
+                    member.Revive();
+                    amount = CountHealAmount(target);
+                }
             }
-            else
-            {
-                var member = (PartyMember) target;
-                member.Revive();
-                amount = CountHealAmount(target);
-            }
+
+            var animator1 = target.CombatAvatar.GetComponent<Animator>();
+            animator1.SetTrigger(TakeDamage);
+
+            DamagePopUpInstantiator.Instance.InstantiatePopUp(target, amount);
+            target.Data.Stats.Replenish(StatType.HP, amount);
         }
 
-        attacker.CombatAvatar.transform.position += Vector3.up / 2;
-        target.CombatAvatar.transform.position += Vector3.down / 2;
-        DamagePopUpInstantiator.Instance.InstantiatePopUp(target, amount);
-        target.Data.Stats.Replenish(StatType.HP, amount);
-        yield return new WaitForSeconds(2f);
-        attacker.CombatAvatar.transform.position += Vector3.down / 2;
-        target.CombatAvatar.transform.position += Vector3.up / 2;
+        yield return new WaitForSeconds(1f);
     }
 
     private int CountHealAmount(ICombatEntity target)

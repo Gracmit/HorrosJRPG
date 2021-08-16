@@ -75,6 +75,14 @@ public class BattleUIManager : MonoBehaviour
         _skillList.gameObject.SetActive(false);
         _itemList.gameObject.SetActive(false);
     }
+    
+    public void HighlightAll()
+    {
+        _highlighter.CanHighlightAll();
+        _actionList.SetActive(false); 
+        _skillList.gameObject.SetActive(false);
+        _itemList.gameObject.SetActive(false);
+    }
 
     public void ToggleActionList(bool active)
     {

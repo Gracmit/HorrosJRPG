@@ -1,8 +1,9 @@
 ﻿#if UNITY_EDITOR
-    using System.IO;
-    using UnityEditor;
+using System.IO;
+using UnityEditor;
 #endif
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,7 +12,7 @@ public class OffensiveSkill : Skill
 {
     [SerializeField] private OffensiveSkillData _data;
     private static readonly int Attack1 = Animator.StringToHash("Attack");
-    private static readonly int Property = Animator.StringToHash("Take damage");
+    private static readonly int TakeDamage = Animator.StringToHash("Take damage");
 
     public override SkillData Data => _data;
     public OffensiveSkillData OffensiveData => _data;
@@ -21,42 +22,44 @@ public class OffensiveSkill : Skill
         _data = data;
     }
 
-    
-    public override IEnumerator HandleAttack(ICombatEntity attacker, ICombatEntity target)
-    {
-        
-        var damage = CountDamage(attacker, target);
-        SubtractMP(attacker);
-        var affected = false;
-        if (_data.StatusEffect.EffectType != EffectType.None)
-        {
-            affected = EffectWorked();
-        }
 
-        if (affected)
-        {
-            target.ChangeElement(_data.StatusEffect);
-        }
+    public override IEnumerator HandleAttack(ICombatEntity attacker, List<ICombatEntity> targets)
+    {
+        SubtractMP(attacker);
 
         var animator = attacker.CombatAvatar.GetComponent<Animator>();
         animator.SetTrigger(Attack1);
         yield return new WaitForSecondsRealtime(0.5f);
-        var animator1 = target.CombatAvatar.GetComponent<Animator>();
-        animator1.SetTrigger(Property);
 
-        DamagePopUpInstantiator.Instance.InstantiatePopUp(target, damage);
+        foreach (var target in targets)
+        {
+            var damage = CountDamage(attacker, target);
+
+            var affected = false;
+            if (_data.StatusEffect.EffectType != EffectType.None)
+                affected = EffectWorked();
+
+            if (affected)
+                target.ChangeElement(_data.StatusEffect);
+
+            var animator1 = target.CombatAvatar.GetComponent<Animator>();
+            animator1.SetTrigger(TakeDamage);
+
+            DamagePopUpInstantiator.Instance.InstantiatePopUp(target, damage);
+            target.TakeDamage(damage);
+            Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
+        }
+        
         yield return new WaitForSeconds(0.5f);
-        target.TakeDamage(damage);
-        Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
     }
 
-    
+
     private void SubtractMP(ICombatEntity attacker)
     {
         attacker.Data.Stats.Subtract(StatType.MP, Data.MpCost);
     }
 
-    
+
     private int CountDamage(ICombatEntity attacker, ICombatEntity target)
     {
         var attackPower = attacker.Data.Stats.GetValue(_data.AttackType);
@@ -77,8 +80,8 @@ public class OffensiveSkill : Skill
         var number = Random.Range(1, 100);
         return _data.StatusEffect.Chance >= number;
     }
-    
-    
+
+
 #if UNITY_EDITOR
     private void Awake()
     {

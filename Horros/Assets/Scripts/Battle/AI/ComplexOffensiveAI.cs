@@ -61,7 +61,7 @@ public class ComplexOffensiveAI : CombatAI
                         if (WillDo(90))
                         {
                             _attack = skill;
-                            _target = enemy.AttackHandler.Target;
+                            _target = enemy.AttackHandler.Targets[0];
                             return true;
                         }
                     }
@@ -73,9 +73,9 @@ public class ComplexOffensiveAI : CombatAI
 
     private void TryToGangUpWithOthers()
     {
-        foreach (var enemy in _enemies.Where(enemy => enemy.AttackHandler.Target?.GetType() == typeof(PartyMember)))
+        foreach (var enemy in _enemies.Where(enemy => enemy.AttackHandler.Targets?.GetType() == typeof(PartyMember)))
         {
-            _target = enemy.AttackHandler.Target;
+            _target = enemy.AttackHandler.Targets[0];
             ChooseRandomAttack();
         }
     }
@@ -84,7 +84,7 @@ public class ComplexOffensiveAI : CombatAI
     {
         foreach (var enemy in _enemies)
         {
-            if (enemy.AttackHandler.Target != null && enemy.AttackHandler.Target.GetType() == typeof(PartyMember)) 
+            if (enemy.AttackHandler.Targets != null && enemy.AttackHandler.Targets.GetType() == typeof(PartyMember)) 
                 return true;
         }
 

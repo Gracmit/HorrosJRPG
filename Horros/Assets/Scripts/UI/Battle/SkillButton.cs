@@ -29,12 +29,23 @@ public class SkillButton : MonoBehaviour
     public void AttackChosen()
     {
         BattleManager.Instance.SaveChosenAttack(_skill);
-        StartCoroutine(Highlight());
+        if (_skill.Data.MultiAttack)
+            StartCoroutine(HighlightAll());
+        else
+            StartCoroutine(Highlight());
     }
-    
+
+    private IEnumerator HighlightAll()
+    {
+        yield return null;
+        BattleUIManager.Instance.HighlightAll();
+    }
+
     private IEnumerator Highlight()
     {
         yield return null;
         BattleUIManager.Instance.HighlightEntity();
     }
+    
+    
 }
