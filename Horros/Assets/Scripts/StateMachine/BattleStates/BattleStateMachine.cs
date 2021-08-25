@@ -14,6 +14,7 @@ public class BattleStateMachine : MonoBehaviour
         var attack = new Attack();
         var win = new Win();
         var lose = new Lose();
+        var runAway = new RunAway();
         
         _stateMachine.AddState(start);
         _stateMachine.AddState(enemyChoose);
@@ -21,6 +22,7 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.AddState(attack);
         _stateMachine.AddState(win);
         _stateMachine.AddState(lose);
+        _stateMachine.AddState(runAway);
 
         _stateMachine.AddTransition(attack, win, () => BattleManager.Instance.EnemyCount <= 0);
         _stateMachine.AddTransition(attack, lose, () => BattleManager.Instance.PartyCount <= 0);
@@ -39,6 +41,7 @@ public class BattleStateMachine : MonoBehaviour
             attack,
             attack,
             () => BattleManager.Instance.TurnManager.ActiveEntity.Attacked && BattleManager.Instance.TurnManager.NextEntity != null);
+        _stateMachine.AddTransition(playerChoose, runAway, () => BattleManager.Instance.RunAway);
         
         _stateMachine.SetState(start);
     }

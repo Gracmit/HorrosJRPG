@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class VictoryButton : MonoBehaviour
 {
@@ -8,5 +6,6 @@ public class VictoryButton : MonoBehaviour
     {
         StartCoroutine(LevelLoader.Instance.LoadLevelWithName(StatusManager.Instance.StatusData.sceneName));
         BattleUIManager.Instance.ToggleVictoryScreen(false);
+        BattleUIManager.Instance.ToggleRunAwayScreen(false);
     }
 }

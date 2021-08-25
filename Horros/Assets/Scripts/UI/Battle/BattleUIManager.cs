@@ -11,6 +11,7 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private ItemList _itemList;
     [SerializeField] private GameObject _victoryScreen;
     [SerializeField] private GameObject _defeatScreen;
+    [SerializeField] private GameObject _runAwayScreen;
     [SerializeField] private CollectedItemsText _lootText;
     [SerializeField] private Sprite _nullIcon;
     private static BattleUIManager _instance;
@@ -52,14 +53,13 @@ public class BattleUIManager : MonoBehaviour
 
     private void ReturnToPreviousUIObject()
     {
-        
         var x = _stackHandler.GetLastUIObject();
         var activeObject = _stackHandler.GetLastUIObject();
         if (activeObject == null)
         {
             return;
         }
-                
+
         x.SetActive(false);
         activeObject.SetActive(true);
         _stackHandler.PushToStack(activeObject);
@@ -75,11 +75,11 @@ public class BattleUIManager : MonoBehaviour
         _skillList.gameObject.SetActive(false);
         _itemList.gameObject.SetActive(false);
     }
-    
+
     public void HighlightAll()
     {
         _highlighter.CanHighlightAll();
-        _actionList.SetActive(false); 
+        _actionList.SetActive(false);
         _skillList.gameObject.SetActive(false);
         _itemList.gameObject.SetActive(false);
     }
@@ -122,20 +122,13 @@ public class BattleUIManager : MonoBehaviour
     public void InstantiateItemButtons(List<Item> items) => _itemList.InstantiateButtons(items);
     public void UpdateStatusPanel(PartyMember member) => _statusList.UpdatePanel(member);
 
-    public void ToggleVictoryScreen(bool active)
-    {
-        _victoryScreen.SetActive(active);
-    }
+    public void ToggleVictoryScreen(bool active) => _victoryScreen.SetActive(active);
 
-    public void ToggleDefeatScreen(bool active)
-    {
-        _defeatScreen.SetActive(active);
-    }
+    public void ToggleDefeatScreen(bool active) => _defeatScreen.SetActive(active);
 
-    public void ShowLootedLoot(List<Item> loot)
-    {
-        _lootText.SetText(loot);
-    }
+    public void ToggleRunAwayScreen(bool active) => _runAwayScreen.SetActive(active);
+
+    public void ShowLootedLoot(List<Item> loot) => _lootText.SetText(loot);
 
     public Sprite GetNoneStatusIcon() => _nullIcon;
 }

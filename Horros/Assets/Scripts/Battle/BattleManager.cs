@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
     private  List<CombatEnemy> _enemies = new List<CombatEnemy>();
     private int _partyIndex;
     private bool _partyReady;
+    private bool _runAway;
 
     public static BattleManager Instance => _instance;
     public PartyMember ActiveMember => _activeMember;
@@ -31,6 +32,7 @@ public class BattleManager : MonoBehaviour
     public bool EnemiesReady => _enemiesReady;
 
     public bool PartyReady => _partyReady;
+    public bool RunAway => _runAway;
 
     public bool Initialized() => _initializationCompleted;
 
@@ -190,5 +192,10 @@ public class BattleManager : MonoBehaviour
 
         allTheLoot = allTheLoot.OrderBy(x => x.Name).ToList();
         BattleUIManager.Instance.ShowLootedLoot(allTheLoot);
+    }
+
+    public void EscapeFromBattle()
+    {
+        _runAway = true;
     }
 }
