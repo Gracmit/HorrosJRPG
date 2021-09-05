@@ -10,6 +10,8 @@ public interface ICombatEntity
     StatusEffect Effect { get; }
     bool Attacked{ get;}
 
+    AttackHandler AttackHandler { get; }
+
     void TakeDamage(int damage);
     void Die();
     void ChangeElement(StatusEffect effect);        

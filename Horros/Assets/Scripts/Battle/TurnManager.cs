@@ -36,6 +36,12 @@ public class TurnManager
         var xSpeed = x.Data.Stats.GetValue(StatType.Speed);
         var ySpeed = y.Data.Stats.GetValue(StatType.Speed);
 
+        if (!x.AttackHandler.Skill.Data.SkipsSpeedStats && y.AttackHandler.Skill.Data.SkipsSpeedStats)
+            return 1;
+        
+        if (x.AttackHandler.Skill.Data.SkipsSpeedStats && !y.AttackHandler.Skill.Data.SkipsSpeedStats)
+            return -1;
+
         if (xSpeed > ySpeed)
             return -1;
 
