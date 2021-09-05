@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+
 public class DamagePopUpInstantiator : MonoBehaviour
 {
     [SerializeField] private TMP_Text _textPrefab;
@@ -25,7 +26,7 @@ public class DamagePopUpInstantiator : MonoBehaviour
     public void InstantiatePopUp(ICombatEntity target, int damage)
     {
         var popup = Instantiate(_textPrefab, transform, true);
-        popup.transform.position = _camera.WorldToScreenPoint(target.CombatAvatar.transform.position + new Vector3(0, 1, 0));
+        popup.transform.position = _camera.WorldToScreenPoint(target.CombatAvatar.transform.position + new Vector3(0, 0, 0));
         popup.text = damage.ToString();
         StartCoroutine(AnimatePopUp(popup));
     }

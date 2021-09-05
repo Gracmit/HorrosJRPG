@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-
 public class AttackButton : MonoBehaviour
 {
     [SerializeField] private OffensiveSkill _skill;

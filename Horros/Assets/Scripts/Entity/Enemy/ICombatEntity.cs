@@ -19,4 +19,6 @@ public interface ICombatEntity
     void ResetAttack();
     void Highlight();
     void UnHighlight();
+    int GetStatValue(StatType type);
+    void CheckBuffs();
 }

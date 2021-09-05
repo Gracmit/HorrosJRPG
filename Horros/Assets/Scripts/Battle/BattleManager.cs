@@ -198,4 +198,17 @@ public class BattleManager : MonoBehaviour
     {
         _runAway = true;
     }
+
+    public void CheckBuffs()
+    {
+        foreach (var member in _party)
+        {
+            member.CheckBuffs();
+        }
+
+        foreach (var enemy in _enemies)
+        {
+            enemy.CheckBuffs();
+        }
+    }
 }

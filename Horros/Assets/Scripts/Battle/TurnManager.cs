@@ -37,10 +37,10 @@ public class TurnManager
         var ySpeed = y.Data.Stats.GetValue(StatType.Speed);
 
         if (xSpeed > ySpeed)
-            return 1;
+            return -1;
 
         if (xSpeed < ySpeed)
-            return -1;
+            return 1;
 
         return Random.Range(-1, 2);
     }

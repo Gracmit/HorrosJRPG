@@ -10,6 +10,7 @@ public class EnemyChoose : IState
 
     public void OnEnter()
     {
+        BattleManager.Instance.CheckBuffs();
         Debug.Log("Changed to EnemyChoose state");
         BattleManager.Instance.ChooseEnemyAttacks();
     }

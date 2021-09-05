@@ -8,7 +8,7 @@ public class CombatEnemy : ICombatEntity
     private StatusEffect _statusEffect;
     private bool _alive = true;
     private GameObject _combatAvatar;
-    private Dictionary<StatType, BuffCounter> _activeBuffs;
+    private Dictionary<StatType, BuffCounter> _activeBuffs = new Dictionary<StatType, BuffCounter>();
     private AttackHandler _attackHandler;
     private SkinnedMeshRenderer _renderer;
     public GameObject Model => _data.Model;
@@ -78,24 +78,47 @@ public class CombatEnemy : ICombatEntity
 
     public void Highlight()
     {
-        _renderer.material.color = new Color(255, 1, 1);
+        HighlightHealthBarInstantiator.Instance.ShowHealtBar(this);
     }
 
     public void UnHighlight()
     {
-        _renderer.material.color = new Color(219, 0, 0, 255);
+        HighlightHealthBarInstantiator.Instance.HideHealthBar();
+    }
+
+    public int GetStatValue(StatType type)
+    {
+        var statValue = _data.Stats.GetValue(type);
+        if (_activeBuffs.ContainsKey(type))
+            return (int) Mathf.Ceil(_activeBuffs[type].Multiplier * statValue);
+        
+        return statValue;
+    }
+
+    public void CheckBuffs()
+    {
+        foreach (var keyValuePair in _activeBuffs)
+        {
+            keyValuePair.Value.DecreaseRemainingTime();
+            if (keyValuePair.Value.RemainingTime <= 0)
+                _activeBuffs.Remove(keyValuePair.Key);
+        }
     }
 
     public void AddBuff(BuffSkillData buff)
     {
-        if (_activeBuffs.ContainsKey(buff.Stat))
+        for(int i = 0; i < buff.Stat.Count; i++)
         {
-            if (!_activeBuffs[buff.Stat].ModifyBuff(buff))
-                _activeBuffs.Remove(buff.Stat);
-        }
-        else
-        {
-            _activeBuffs.Add(buff.Stat, new BuffCounter(buff.Multiplier, buff.Lenght));
+            if (_activeBuffs.ContainsKey(buff.Stat[i]))
+            {
+                if (!_activeBuffs[buff.Stat[i]].ModifyBuff(buff))
+                    _activeBuffs.Remove(buff.Stat[i]);
+            }
+            else
+            {
+                _activeBuffs.Add(buff.Stat[i], new BuffCounter(buff.Multiplier, buff.Lenght));
+            }
+            
         }
     }
 

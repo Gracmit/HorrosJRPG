@@ -45,12 +45,13 @@ public class OffensiveSkill : Skill
             var animator1 = target.CombatAvatar.GetComponent<Animator>();
             animator1.SetTrigger(TakeDamage);
 
+            HighlightHealthBarInstantiator.Instance.InstantiatePopUpHealthBar(target, damage);
             DamagePopUpInstantiator.Instance.InstantiatePopUp(target, damage);
             target.TakeDamage(damage);
             Debug.Log($"{attacker.Data.Name} attacked {target.Data.Name} with skill {_data.Name}");
         }
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
     }
 
 
@@ -62,10 +63,13 @@ public class OffensiveSkill : Skill
 
     private int CountDamage(ICombatEntity attacker, ICombatEntity target)
     {
-        var attackPower = attacker.Data.Stats.GetValue(_data.AttackType);
-        var targetDefence = target.Data.Stats.GetValue(_data.DefenceType);
+        var attackPower = attacker.GetStatValue(_data.AttackType);
+        var targetDefence = target.GetStatValue(_data.DefenceType);
         var skillPower = _data.Power;
         var damage = attackPower * skillPower / 2 - targetDefence;
+        if (damage <= 0)
+            damage = 1;
+        
         if (target.Element == ElementType.None)
             return damage;
         if (_data.Strength == target.Element)

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe89a87941a042a9b2ff9eaad952ea6c, type: 3}
+  m_Name: Guard
+  m_EditorClassIdentifier: 
+  _data: {fileID: 4287368438788681474}
+--- !u!114 &4287368438788681474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15179b0a7314d489f637fc1121e932c, type: 3}
+  m_Name: Data
+  m_EditorClassIdentifier: 
+  _name: Guard
+  _description: Guard
+  _mpCost: 0
+  _multiAttack: 0
+  _buffTargets: 0500000007000000
+  _length: 1
+  _multiplier: 3

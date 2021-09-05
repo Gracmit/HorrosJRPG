@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cinemachine;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -11,7 +10,7 @@ public class PartyMember : ICombatEntity
     [SerializeField] private PartyMemberData _data;
     [SerializeField] private bool _active;
     private StatusEffect _statusEffect;
-    private Dictionary<StatType, BuffCounter> _activeBuffs;
+    private Dictionary<StatType, BuffCounter> _activeBuffs = new Dictionary<StatType, BuffCounter>();
     private bool _alive = true;
     private GameObject _combatAvatar;
     private AttackHandler _attackHandler;
@@ -60,6 +59,7 @@ public class PartyMember : ICombatEntity
         _alive = true;
         _data = data;
         _combatAvatar = _data.Model;
+        _activeBuffs = new Dictionary<StatType, BuffCounter>();
     }
 
     public void Equip(Weapon weapon) => _data.Weapon = weapon;
@@ -86,7 +86,7 @@ public class PartyMember : ICombatEntity
             Die();
         }
     }
-
+    
     public void Die()
     {
         _alive = false;
@@ -109,14 +109,19 @@ public class PartyMember : ICombatEntity
 
     public void AddBuff(BuffSkillData buff)
     {
-        if (_activeBuffs.ContainsKey(buff.Stat))
+        if(_activeBuffs == null)
+            _activeBuffs = new Dictionary<StatType, BuffCounter>();
+        for(int i = 0; i < buff.Stat.Count; i++)
         {
-            if (!_activeBuffs[buff.Stat].ModifyBuff(buff))
-                _activeBuffs.Remove(buff.Stat);
-        }
-        else
-        {
-            _activeBuffs.Add(buff.Stat, new BuffCounter(buff.Multiplier, buff.Lenght));
+            if (_activeBuffs.ContainsKey(buff.Stat[i]))
+            {
+                if (!_activeBuffs[buff.Stat[i]].ModifyBuff(buff))
+                    _activeBuffs.Remove(buff.Stat[i]);
+            }
+            else
+            {
+                _activeBuffs.Add(buff.Stat[i], new BuffCounter(buff.Multiplier, buff.Lenght));
+            }
         }
     }
 
@@ -147,12 +152,12 @@ public class PartyMember : ICombatEntity
 
     public void Highlight()
     {
-        _renderer.material.color = new Color(1, 1, 255);
+        HighlightHealthBarInstantiator.Instance.ShowHealtBar(this);
     }
 
     public void UnHighlight()
     {
-        _renderer.material.color = new Color(0.15f, 0.39f, 1f);
+        HighlightHealthBarInstantiator.Instance.HideHealthBar();
     }
 
     public void SetCameras(CinemachineVirtualCamera chooseCamera)
@@ -164,27 +169,33 @@ public class PartyMember : ICombatEntity
     {
         _renderer = _combatAvatar.GetComponentInChildren<SkinnedMeshRenderer>();
     }
-}
 
-public class BuffCounter
-{
-    private float _multiplier;
-    private int _timeRemaining;
-
-    public BuffCounter(float multiplier, int length)
+    public int GetStatValue(StatType type)
     {
-        _multiplier = multiplier;
-        _timeRemaining = length;
+        var statValue = _data.Stats.GetValue(type);
+        if (_activeBuffs.ContainsKey(type))
+            return (int) Mathf.Ceil(_activeBuffs[type].Multiplier * statValue);
+        
+        return statValue;
     }
 
-    public bool ModifyBuff(BuffSkillData buff)
+    public void CheckBuffs()
     {
-        if (_multiplier == buff.Multiplier)
+        if (_activeBuffs == null)
+            _activeBuffs = new Dictionary<StatType, BuffCounter>();
+
+        var removableBuffs = new List<StatType>();
+        
+        foreach (var keyValuePair in _activeBuffs)
         {
-            _timeRemaining += buff.Lenght;
-            return true;
+            keyValuePair.Value.DecreaseRemainingTime();
+            if (keyValuePair.Value.RemainingTime <= 0)
+                removableBuffs.Add(keyValuePair.Key);
         }
 
-        return false;
+        foreach (var buff in removableBuffs)
+        {
+            _activeBuffs.Remove(buff);
+        }        
     }
 }

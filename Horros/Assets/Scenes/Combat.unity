@@ -941,6 +941,7 @@ GameObject:
   - component: {fileID: 1780189634}
   - component: {fileID: 1780189633}
   - component: {fileID: 1780189632}
+  - component: {fileID: 1780189637}
   m_Layer: 5
   m_Name: DamagePopUp
   m_TagString: Untagged
@@ -1042,6 +1043,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1780189637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780189631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94b06ffc594462297cc9815fea4ad36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barPrefab: {fileID: 3607432440467070227, guid: 4a9e1a33445c0614d8015ca2f9bcd030,
+    type: 3}
+  _camera: {fileID: 1959236029}
 --- !u!1 &1908445046
 GameObject:
   m_ObjectHideFlags: 3
