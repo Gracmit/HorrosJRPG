@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DialogGiver : MonoBehaviour
+public class DialogGiver : MonoBehaviour, IInteractable
 {
     [SerializeField] private TextAsset _dialog;
     private void OnTriggerEnter(Collider other)
@@ -13,5 +11,12 @@ public class DialogGiver : MonoBehaviour
             FindObjectOfType<DialogController>().StartDialog(_dialog);
             transform.LookAt(player.transform);
         }
+    }
+
+
+    public void Interact(GameObject player)
+    {
+        FindObjectOfType<DialogController>().StartDialog(_dialog);
+        transform.LookAt(player.transform);
     }
 }

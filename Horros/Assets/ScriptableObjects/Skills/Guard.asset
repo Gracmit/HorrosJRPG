@@ -29,6 +29,7 @@ MonoBehaviour:
   _description: Guard
   _mpCost: 0
   _multiAttack: 0
+  _skipsSpeedStats: 1
   _buffTargets: 0500000007000000
   _length: 1
   _multiplier: 3
