@@ -27,16 +27,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Icicle
   _description: Basic Ice magic
-  _mpCost: 20
+  _mpCost: 8
   _multiAttack: 1
-  _power: 10
+  _skipsSpeedStats: 0
+  _power: 15
   _element: 4
   _weakness: 3
-  _strength: 0
-  _attackType: 4
-  _defenceType: 5
+  _strength: 5
+  _attackType: 6
+  _defenceType: 7
   _statusEffect:
     _type: 2
     _effectElement: 4
-    _chance: 30
+    _chance: 90
     _icon: {fileID: 21300000, guid: 4a10128867976fc4d85a24028e92fdcc, type: 3}

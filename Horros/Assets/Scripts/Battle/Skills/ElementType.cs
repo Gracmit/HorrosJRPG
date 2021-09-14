@@ -1,9 +1,9 @@
 ﻿public enum ElementType
 {
-    None,
+    Null,
     Melee,
     Ranged,
     Fire,
     Ice,
-    Null,
+    None,
 }

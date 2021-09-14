@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711423dcc2929ad428d5a0620bd17615, type: 3}
   m_Name: PartyMember
   m_EditorClassIdentifier: 
-  _name: PartyTest 1
+  _name: Fighter
   _stats: {fileID: 11400000, guid: 238cd26d018c0284dad6258d2ca9c864, type: 2}
   _model: {fileID: 8448313792840368809, guid: bc732b6051f898b4cb1aa98e61dc9d22, type: 3}
   _skills:
-  - {fileID: 11400000, guid: a7e552cc10e936946a5bacf344616968, type: 2}
-  - {fileID: 11400000, guid: ffa4b35e2e71bca47b7a8498a56bdfd3, type: 2}
+  - {fileID: 11400000, guid: 684b31d1c4a3f29488227d8ff80dbe17, type: 2}
   - {fileID: 11400000, guid: 212c93502ea5f344f8ac0bb4d08d3158, type: 2}
-  - {fileID: 11400000, guid: 461f563d1c5fee14f9839d75b1b45487, type: 2}
   _weapon: {fileID: 0}
   _armor: {fileID: 0}
   _accessory: {fileID: 0}

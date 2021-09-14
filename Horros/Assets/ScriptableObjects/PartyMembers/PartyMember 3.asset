@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711423dcc2929ad428d5a0620bd17615, type: 3}
   m_Name: PartyMember 3
   m_EditorClassIdentifier: 
-  _name: PartyTest 4
+  _name: Mage
   _stats: {fileID: 11400000, guid: 0025a29c50bd1ec419aaf2c8320834d9, type: 2}
   _model: {fileID: 8448313792840368809, guid: bc732b6051f898b4cb1aa98e61dc9d22, type: 3}
   _skills: []

@@ -14,17 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Fireball
   _description: Basic fire magic
-  _mpCost: 10
-  _power: 10
+  _mpCost: 6
+  _multiAttack: 0
+  _skipsSpeedStats: 0
+  _power: 15
   _element: 3
   _weakness: 4
-  _strength: 0
-  _attackType: 4
-  _defenceType: 5
+  _strength: 5
+  _attackType: 6
+  _defenceType: 7
   _statusEffect:
     _type: 1
     _effectElement: 3
-    _chance: 100
+    _chance: 95
     _icon: {fileID: 21300000, guid: be65efea876d4b44582dab8bac1fd792, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:

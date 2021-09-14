@@ -63,10 +63,9 @@ public class OffensiveSkill : Skill
 
     private int CountDamage(ICombatEntity attacker, ICombatEntity target)
     {
-        var attackPower = attacker.GetStatValue(_data.AttackType);
+        var attackPower = attacker.GetStatValue(_data.AttackType) + _data.Power;
         var targetDefence = target.GetStatValue(_data.DefenceType);
-        var skillPower = _data.Power;
-        var damage = attackPower * skillPower / 2 - targetDefence;
+        var damage = 2 * (attackPower)^2 / (attackPower + targetDefence);
         if (damage <= 0)
             damage = 1;
         

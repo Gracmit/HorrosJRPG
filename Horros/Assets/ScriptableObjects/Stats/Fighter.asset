@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 927b50b64d0a7ce4288c1589cdac4586, type: 3}
-  m_Name: TestStats
+  m_Name: Fighter
   m_EditorClassIdentifier: 
   _stats:
   - _statType: 0
-    _value: 22
+    _value: 262
   - _statType: 1
-    _value: 30
+    _value: 300
   - _statType: 2
-    _value: 930
+    _value: 88
   - _statType: 3
-    _value: 10
+    _value: 100
   - _statType: 4
-    _value: 4
+    _value: 15
   - _statType: 5
-    _value: 1
+    _value: 9
   - _statType: 6
-    _value: 1
+    _value: 6
   - _statType: 7
-    _value: 1
+    _value: 9
   - _statType: 8
-    _value: 1
+    _value: 10

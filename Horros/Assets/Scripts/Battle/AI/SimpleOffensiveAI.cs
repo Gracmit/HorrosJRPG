@@ -51,7 +51,7 @@ public class SimpleOffensiveAI : CombatAI
     private void ChooseEffectiveAction()
     {
         var luckyNumber = Random.Range(0, 100);
-        if (luckyNumber < 90)
+        if (luckyNumber < 60)
         {
             _attack = _effectiveSkill;
             _target = _weakTarget;

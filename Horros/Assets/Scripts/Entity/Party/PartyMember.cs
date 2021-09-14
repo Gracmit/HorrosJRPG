@@ -31,7 +31,7 @@ public class PartyMember : ICombatEntity
         {
             if (_statusEffect == null)
             {
-                return ElementType.None;
+                return ElementType.Null;
             }
             return _statusEffect.Element;
         }

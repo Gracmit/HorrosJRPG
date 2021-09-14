@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711423dcc2929ad428d5a0620bd17615, type: 3}
   m_Name: PartyMember 2
   m_EditorClassIdentifier: 
-  _name: PartyTest 3
-  _stats: {fileID: 11400000, guid: 10ee15a0b69944c48981684a0dd699b3, type: 2}
+  _name: Mage
+  _stats: {fileID: 11400000, guid: 0025a29c50bd1ec419aaf2c8320834d9, type: 2}
   _model: {fileID: 8448313792840368809, guid: bc732b6051f898b4cb1aa98e61dc9d22, type: 3}
   _skills:
   - {fileID: 11400000, guid: ffa4b35e2e71bca47b7a8498a56bdfd3, type: 2}
-  - {fileID: 11400000, guid: d210686f09c6a4248a14d4ffe85c8c61, type: 2}
+  - {fileID: 11400000, guid: a7e552cc10e936946a5bacf344616968, type: 2}
   - {fileID: 11400000, guid: 212c93502ea5f344f8ac0bb4d08d3158, type: 2}
-  - {fileID: 11400000, guid: 461f563d1c5fee14f9839d75b1b45487, type: 2}
   _weapon: {fileID: 0}
   _armor: {fileID: 0}
   _accessory: {fileID: 0}
