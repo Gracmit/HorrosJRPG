@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 181be7200eb2406aa411aab4b4921ddb, type: 3}
-  m_Name: Effect
+  m_Name: Potion
   m_EditorClassIdentifier: 
   _data: {fileID: 8099083666791345609}
 --- !u!114 &11400000
@@ -26,7 +26,10 @@ MonoBehaviour:
   m_Name: Potion
   m_EditorClassIdentifier: 
   _name: Potion
+  _description: Small potion that heals 30hp
   _amount: 1
+  _buyingPrice: 0
+  _sellingPrice: 0
   _effect: {fileID: -5869843839392780002}
   _type: 0
 --- !u!114 &8099083666791345609
@@ -44,6 +47,8 @@ MonoBehaviour:
   _name: Potion
   _description: Heals 30hp
   _mpCost: 0
+  _multiAttack: 0
+  _skipsSpeedStats: 0
   _power: 30
   _statToHeal: 0
   _type: 0

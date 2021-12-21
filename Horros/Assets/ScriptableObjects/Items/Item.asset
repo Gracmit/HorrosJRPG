@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Item
   m_EditorClassIdentifier: 
   _name: item goes brrrrrr.
+  _description: brrrrrr
   _amount: 4
+  _buyingPrice: 0
+  _sellingPrice: 0
