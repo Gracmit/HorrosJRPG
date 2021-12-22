@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: item goes brrrrrr.
   _description: brrrrrr
   _amount: 4
-  _buyingPrice: 0
+  _buyingPrice: 300
   _sellingPrice: 0

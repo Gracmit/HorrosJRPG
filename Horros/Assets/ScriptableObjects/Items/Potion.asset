@@ -27,8 +27,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Potion
   _description: Small potion that heals 30hp
-  _amount: 1
-  _buyingPrice: 0
+  _amount: 2097152
+  _buyingPrice: 100
   _sellingPrice: 0
   _effect: {fileID: -5869843839392780002}
   _type: 0

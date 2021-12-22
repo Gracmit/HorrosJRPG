@@ -9,6 +9,8 @@ public class ShopButton : MonoBehaviour
     private Button _button;
     private Item _item;
 
+    public Item Item => _item;
+
     public void SetItem(Item item)
     {
         _item = item;
@@ -17,4 +19,11 @@ public class ShopButton : MonoBehaviour
     }
 
     public void ShowInfo() => ShopPanel.Instance.ShowInfo(_item);
+
+    public void Buy()
+    {
+        var inventory = FindObjectOfType<Inventory>();
+        inventory.PickUpItem(_item);
+        inventory.SpendMoney(_item.BuyingPrice);
+    }
 }

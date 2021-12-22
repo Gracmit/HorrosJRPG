@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopPanel : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class ShopPanel : MonoBehaviour
     private static ShopPanel _instance;
     private Shop[] _shops;
     private List<ShopButton> _buttons = new List<ShopButton>();
+    private Inventory _inventory;
+
 
     public static ShopPanel Instance => _instance;
 
@@ -25,11 +29,12 @@ public class ShopPanel : MonoBehaviour
         }
         
         _shops = FindObjectsOfType<Shop>();
+        _inventory = FindObjectOfType<Inventory>();
     }
 
     private void OnEnable()
     {
-
+        _inventory.MoneyChanged += UpdateButtons;
         foreach (var shop in _shops)
         {
             shop.ShopOpened += UpdateShopUI;
@@ -38,9 +43,25 @@ public class ShopPanel : MonoBehaviour
 
     private void OnDisable()
     {
+        _inventory.MoneyChanged -= UpdateButtons;
         foreach (var shop in _shops)
         {
             shop.ShopOpened -= UpdateShopUI;
+        }
+    }
+
+    private void UpdateButtons()
+    {
+        foreach (var button in _buttons)
+        {
+            if (button.Item.BuyingPrice > _inventory.MoneyAmount)
+            {
+                button.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                button.GetComponent<Button>().interactable = true;
+            }
         }
     }
 
@@ -51,7 +72,6 @@ public class ShopPanel : MonoBehaviour
             for (int i = _buttons.Count - 1; i >= 0; i--)
             {
                 var button = _buttons[i];
-                //button.transform.SetParent(null);
                 _buttons.Remove(button);
                 Destroy(button.gameObject);
             }
@@ -60,6 +80,7 @@ public class ShopPanel : MonoBehaviour
         foreach (var item in items)
         {
             CreateButton(item);
+            UpdateButtons();
         }
     }
 
@@ -70,7 +91,6 @@ public class ShopPanel : MonoBehaviour
 
         var shopButton = button.GetComponent<ShopButton>();
         shopButton.SetItem(item);
-
     }
 
     public void ShowInfo(Item item)

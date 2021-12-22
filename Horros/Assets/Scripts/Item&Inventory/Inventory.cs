@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<Item> _items = new List<Item>();
+    [SerializeField] private int _money = 100;
 
-    
+    public event Action MoneyChanged;
+
     public int ItemsCount => _items.Count;
     public List<Item> Items => _items;
+
+    public int MoneyAmount => _money;
 
     public int ItemAmount(Item item)
     {
@@ -25,7 +31,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            _items.Add(ScriptableObject.CreateInstance<Item>());
+            _items.Add(Instantiate(item));
         }
     }
 
@@ -43,5 +49,24 @@ public class Inventory : MonoBehaviour
     public List<Item> GetConsumables()
     {
         return _items.FindAll(x => x.GetType() == typeof(Consumable));
+    }
+
+    public void AddMoney(int amount)
+    {
+        _money += amount;
+        MoneyChanged?.Invoke();
+    }
+
+    public void SpendMoney(int amount)
+    {
+        if (_money - amount >= 0)
+        {
+            _money -= amount;
+            MoneyChanged?.Invoke();
+        }
+        else
+        {
+            Debug.LogError("Not enough money to buy");
+        }
     }
 }
