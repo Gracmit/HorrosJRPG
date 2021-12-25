@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +8,7 @@ public class ShopPanel : MonoBehaviour
     [SerializeField] private ShopButton _shopButton;
     [SerializeField] private GameObject _list;
     [SerializeField] private ShopItemInfo _infoPanel;
+    [SerializeField] private TMP_Text _moneyText;
 
     private static ShopPanel _instance;
     private Shop[] _shops;
@@ -34,23 +35,24 @@ public class ShopPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        _inventory.MoneyChanged += UpdateButtons;
+        _inventory.MoneyChanged += HandleMoneyChanged;
         foreach (var shop in _shops)
         {
             shop.ShopOpened += UpdateShopUI;
         }
+        _moneyText.SetText(_inventory.MoneyAmount.ToString());
     }
 
     private void OnDisable()
     {
-        _inventory.MoneyChanged -= UpdateButtons;
+        _inventory.MoneyChanged -= HandleMoneyChanged;
         foreach (var shop in _shops)
         {
             shop.ShopOpened -= UpdateShopUI;
         }
     }
 
-    private void UpdateButtons()
+    private void HandleMoneyChanged()
     {
         foreach (var button in _buttons)
         {
@@ -63,6 +65,8 @@ public class ShopPanel : MonoBehaviour
                 button.GetComponent<Button>().interactable = true;
             }
         }
+
+        _moneyText.SetText(_inventory.MoneyAmount.ToString());
     }
 
     private void UpdateShopUI(List<Item> items)
@@ -80,7 +84,7 @@ public class ShopPanel : MonoBehaviour
         foreach (var item in items)
         {
             CreateButton(item);
-            UpdateButtons();
+            HandleMoneyChanged();
         }
     }
 
