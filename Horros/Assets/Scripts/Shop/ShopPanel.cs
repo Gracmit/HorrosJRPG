@@ -14,6 +14,7 @@ public class ShopPanel : MonoBehaviour
     private Shop[] _shops;
     private List<ShopButton> _buttons = new List<ShopButton>();
     private Inventory _inventory;
+    private CanvasGroup _canvasGroup;
 
 
     public static ShopPanel Instance => _instance;
@@ -28,9 +29,13 @@ public class ShopPanel : MonoBehaviour
         {
             _instance = this;
         }
-        
+
+        _canvasGroup = GetComponent<CanvasGroup>();
         _shops = FindObjectsOfType<Shop>();
         _inventory = FindObjectOfType<Inventory>();
+        
+        _canvasGroup.interactable = false;
+        _canvasGroup.alpha = 0;
     }
 
     private void OnEnable()
@@ -38,7 +43,7 @@ public class ShopPanel : MonoBehaviour
         _inventory.MoneyChanged += HandleMoneyChanged;
         foreach (var shop in _shops)
         {
-            shop.ShopOpened += UpdateShopUI;
+            shop.ShopOpened += OpenShop;
         }
         _moneyText.SetText(_inventory.MoneyAmount.ToString());
     }
@@ -48,8 +53,21 @@ public class ShopPanel : MonoBehaviour
         _inventory.MoneyChanged -= HandleMoneyChanged;
         foreach (var shop in _shops)
         {
-            shop.ShopOpened -= UpdateShopUI;
+            shop.ShopOpened -= OpenShop;
         }
+    }
+
+    private void Update()
+    {
+        if (_canvasGroup.interactable && PlayerInput.Instance.GetKeyDown(KeyCode.Q))
+            CloseShop();
+    }
+
+    private void CloseShop()
+    {
+        _canvasGroup.interactable = false;
+        _canvasGroup.alpha = 0;
+
     }
 
     private void HandleMoneyChanged()
@@ -69,8 +87,11 @@ public class ShopPanel : MonoBehaviour
         _moneyText.SetText(_inventory.MoneyAmount.ToString());
     }
 
-    private void UpdateShopUI(List<Item> items)
+    private void OpenShop(List<Item> items)
     {
+        _canvasGroup.interactable = true;
+        _canvasGroup.alpha = 1;
+        
         if (_buttons.Count > 0)
         {
             for (int i = _buttons.Count - 1; i >= 0; i--)
