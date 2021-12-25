@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System.Net;
+using System.Numerics;
+using Cinemachine;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -11,6 +13,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private CharacterController _controller;
     private float _turnSmoothVelocity;
+    private bool _frozen;
 
     private void Awake()
     {
@@ -19,6 +22,9 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        if (_frozen)
+            return;
+        
         CameraRelativeMovement();
     }
 
@@ -36,5 +42,14 @@ public class PlayerMovementController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime));
         }
+    }
+
+    public void FreezeControls(bool freeze)
+    {
+        _frozen = freeze;
+        if (freeze)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
 }
