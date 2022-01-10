@@ -1,7 +1,4 @@
-﻿using System.Net;
-using System.Numerics;
-using Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -40,6 +37,10 @@ public class PlayerMovementController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            
+            //Vector3 moveDir = new Vector3(transform.forward.x, _controller.velocity.y, transform.forward.z);
+
+            //_controller.velocity = moveDir.normalized * _movementSpeed;
             _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime));
         }
     }

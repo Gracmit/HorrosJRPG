@@ -31,5 +31,6 @@ public class Item : ScriptableObject
     public void ChangeName(string newName)
     {
         _name = newName;
+        
     }
 }

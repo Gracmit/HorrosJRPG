@@ -9,6 +9,9 @@ public class InteractTrigger : MonoBehaviour
     private IInteractable _interactable;
     private bool _canInteract;
     private GameObject _gameObject;
+    
+    
+    
 
     private void Update()
     {

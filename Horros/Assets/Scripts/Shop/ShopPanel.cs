@@ -37,6 +37,7 @@ public class ShopPanel : MonoBehaviour
         _player = FindObjectOfType<PlayerMovementController>();
         _canvasGroup.interactable = false;
         _canvasGroup.alpha = 0;
+        _canvasGroup.blocksRaycasts = false;
     }
 
     private void OnEnable()
@@ -68,6 +69,7 @@ public class ShopPanel : MonoBehaviour
     {
         _canvasGroup.interactable = false;
         _canvasGroup.alpha = 0;
+        _canvasGroup.blocksRaycasts = false;
 
         _player.FreezeControls(false);
     }
@@ -93,6 +95,7 @@ public class ShopPanel : MonoBehaviour
     {
         _canvasGroup.interactable = true;
         _canvasGroup.alpha = 1;
+        _canvasGroup.blocksRaycasts = true;
         
         if (_buttons.Count > 0)
         {
