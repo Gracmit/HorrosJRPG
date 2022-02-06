@@ -22,6 +22,7 @@ public class BuffSkill : Skill
         foreach (var target in targets)
         {
             target.AddBuff(_data);
+            Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<FindTransform>().transform);
         }
         yield return null;
     }

@@ -26,6 +26,8 @@ public class HealSkill : Skill
         var animator = attacker.CombatAvatar.GetComponent<Animator>();
         animator.SetTrigger(Attack1);
 
+        yield return new WaitForSeconds(0.5f);
+
         foreach (var target in targets)
         {
             var amount = _data.Power;
@@ -38,14 +40,13 @@ public class HealSkill : Skill
                 amount = CountHealAmount(target);
             }
 
-            var animator1 = target.CombatAvatar.GetComponent<Animator>();
-            animator1.SetTrigger(TakeDamage);
+            Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<FindTransform>().transform);
             
             DamagePopUpInstantiator.Instance.InstantiatePopUp(target, amount);
             target.Data.Stats.Replenish(StatType.HP, amount);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
     }
 
     private int CountHealAmount(ICombatEntity target)

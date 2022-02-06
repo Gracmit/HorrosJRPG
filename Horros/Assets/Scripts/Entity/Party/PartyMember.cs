@@ -25,6 +25,7 @@ public class PartyMember : ICombatEntity
     public GameObject Model => _data.Model;
     public AttackHandler AttackHandler => _attackHandler;
     public CinemachineVirtualCamera ChooseCamera => _chooseCamera;
+
     public ElementType Element
     {
         get

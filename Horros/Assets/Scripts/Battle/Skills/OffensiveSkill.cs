@@ -42,6 +42,8 @@ public class OffensiveSkill : Skill
             if (affected)
                 target.ChangeElement(_data.StatusEffect);
 
+            Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<FindTransform>().transform);
+
             var animator1 = target.CombatAvatar.GetComponent<Animator>();
             animator1.SetTrigger(TakeDamage);
 

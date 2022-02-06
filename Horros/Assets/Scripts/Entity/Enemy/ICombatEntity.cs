@@ -6,6 +6,7 @@ public interface ICombatEntity
     EntityData Data { get; }
 
     GameObject CombatAvatar { get; set; }
+
     ElementType Element { get;}
     StatusEffect Effect { get; }
     bool Attacked{ get;}

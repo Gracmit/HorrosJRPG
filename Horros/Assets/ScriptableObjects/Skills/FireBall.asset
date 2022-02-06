@@ -17,6 +17,7 @@ MonoBehaviour:
   _mpCost: 6
   _multiAttack: 0
   _skipsSpeedStats: 0
+  Effect: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   _power: 15
   _element: 3
   _weakness: 4

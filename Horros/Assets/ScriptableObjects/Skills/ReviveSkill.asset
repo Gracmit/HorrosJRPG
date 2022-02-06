@@ -28,6 +28,9 @@ MonoBehaviour:
   _name: Lesser Revive
   _description: Revives a member with 30% health
   _mpCost: 10
+  _multiAttack: 0
+  _skipsSpeedStats: 0
+  Effect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
   _power: 50
   _statToHeal: 0
   _type: 1

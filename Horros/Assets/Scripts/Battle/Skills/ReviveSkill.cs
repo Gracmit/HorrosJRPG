@@ -48,8 +48,7 @@ public class ReviveSkill : Skill
                 }
             }
 
-            var animator1 = target.CombatAvatar.GetComponent<Animator>();
-            animator1.SetTrigger(TakeDamage);
+            Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<FindTransform>().transform);
 
             DamagePopUpInstantiator.Instance.InstantiatePopUp(target, amount);
             target.Data.Stats.Replenish(StatType.HP, amount);

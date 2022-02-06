@@ -9,6 +9,7 @@ public class SkillData : ScriptableObject
     [SerializeField] private int _mpCost;
     [SerializeField] private bool _multiAttack;
     [SerializeField] private bool _skipsSpeedStats;
+    public GameObject Effect;
 
     public string Name => _name;
     public int MpCost => _mpCost;

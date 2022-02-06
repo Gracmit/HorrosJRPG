@@ -33,4 +33,9 @@ public class ItemList : MonoBehaviour
             Destroy(button);
         }
     }
+    
+    private void OnEnable()
+    {
+        BattleUIManager.Instance.EventHandler.ActivateItemButton(_buttons[0]);
+    }
 }

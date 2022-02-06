@@ -27,7 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Potion
   _description: Small potion that heals 30hp
-  _amount: 2097152
+  _amount: 2097143
   _buyingPrice: 100
   _sellingPrice: 0
   _effect: {fileID: -5869843839392780002}
@@ -49,6 +49,7 @@ MonoBehaviour:
   _mpCost: 0
   _multiAttack: 0
   _skipsSpeedStats: 0
+  Effect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
   _power: 30
   _statToHeal: 0
   _type: 0

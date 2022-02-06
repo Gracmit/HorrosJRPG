@@ -15,6 +15,9 @@ MonoBehaviour:
   _name: Potion
   _description: Heals 10 hp
   _mpCost: 5
+  _multiAttack: 0
+  _skipsSpeedStats: 0
+  Effect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
   _power: 10
   _statToHeal: 0
   _type: 0
