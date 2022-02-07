@@ -54,8 +54,8 @@ public class AttackHandler : MonoBehaviour
 
     public void Attack()
     {
-        if (_targets == null)
-            return;
+        if (_targets.Count == 0)
+            FindNewTarget();
         
         if (!TargetsAreAlive() && _skill.GetType() != typeof(ReviveSkill))
             FindNewTarget();
@@ -65,12 +65,12 @@ public class AttackHandler : MonoBehaviour
 
     private bool TargetsAreAlive()
     {
-        var alive = false;
+        var alive = true;
         foreach (var target in _targets)
         {
-            if (target.Alive)
+            if (!target.Alive)
             {
-                alive = true;
+                alive = false;
             }
         }
 
@@ -81,7 +81,7 @@ public class AttackHandler : MonoBehaviour
     {
         BattleUIManager.Instance.EnableAttackText(_skill.Data.Name);
         yield return StartCoroutine(_skill.HandleAttack(_attacker, _targets));
-        if (_targets == null) yield break;
+        if (_targets.Count <= 0) yield break;
         if (_targets[0].GetType() == typeof(PartyMember))
         {
             foreach (var target in _targets)
@@ -99,7 +99,7 @@ public class AttackHandler : MonoBehaviour
         
         BattleUIManager.Instance.DisableAttackText();
         yield return new WaitForSeconds(0.5f);
-        _targets = null;
+        _targets.Clear();
         _skill = null;
         _item = null;
         _attackChosen = false;
@@ -114,7 +114,8 @@ public class AttackHandler : MonoBehaviour
             foreach (var member in BattleManager.Instance.Party.Where(member => member.Alive))
             {
                 _targets.Add(member);
-                return;
+                if(!_skill.Data.MultiAttack)
+                    return;
             }
         }
         else
@@ -122,16 +123,15 @@ public class AttackHandler : MonoBehaviour
             foreach (var enemy in BattleManager.Instance.Enemies.Where(enemy => enemy.Alive))
             {
                 _targets.Add(enemy);
-                return;
+                if(!_skill.Data.MultiAttack)
+                    return;
             }
         }
-
-        _targets = null;
     }
 
     public void ResetAttack()
     {
-        _targets = null;
+        _targets.Clear();
         _skill = null;
         _item = null;
         _attacked = false;

@@ -111,6 +111,7 @@ public class Highlighter
     public void TurnHighlighterOff()
     {
         _canHighlight = false;
+        _highlightAll = false;
     }
 
     private void PreviousEnemy()
