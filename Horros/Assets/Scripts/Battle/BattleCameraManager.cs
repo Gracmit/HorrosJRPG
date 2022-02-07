@@ -4,6 +4,7 @@ using Cinemachine;
 public class BattleCameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _overviewCamera;
+    [SerializeField] private Transform _allEnemies;
     private CinemachineVirtualCamera _activeCamera;
     private static BattleCameraManager _instance;
 
@@ -41,5 +42,10 @@ public class BattleCameraManager : MonoBehaviour
     public void SetTarget(ICombatEntity enemy)
     {
         _activeCamera.m_LookAt = enemy.CombatAvatar.transform;
+    }
+
+    public void SetTargetToAllEnemies()
+    {
+        _activeCamera.m_LookAt = _allEnemies;
     }
 }

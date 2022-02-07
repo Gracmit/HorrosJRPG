@@ -154,6 +154,7 @@ public class Highlighter
 
     private void HighlightAll()
     {
+        BattleCameraManager.Instance.SetTargetToAllEnemies();
         foreach (var entity in _highlightedGroup)
         {
             entity.Highlight();
