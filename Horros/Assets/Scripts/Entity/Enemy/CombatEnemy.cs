@@ -10,7 +10,6 @@ public class CombatEnemy : ICombatEntity
     private GameObject _combatAvatar;
     private Dictionary<StatType, BuffCounter> _activeBuffs = new Dictionary<StatType, BuffCounter>();
     private AttackHandler _attackHandler;
-    private SkinnedMeshRenderer _renderer;
     public GameObject Model => _data.Model;
     public bool Alive => _alive;
     public EntityData Data => _data;
@@ -145,10 +144,5 @@ public class CombatEnemy : ICombatEntity
     public void FullHeal()
     {
         _data.Stats.FullHeal();
-    }
-
-    public void SetRenderer()
-    {
-        _renderer = _combatAvatar.GetComponentInChildren<SkinnedMeshRenderer>();
     }
 }

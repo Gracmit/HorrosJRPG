@@ -71,7 +71,6 @@ public class BattleManager : MonoBehaviour
             entity.FullHeal();
             entity.Alive = true;
             entity.SetAttackHandler();
-            entity.SetRenderer();
 
             var chooseCamera = _chooseCameras[spawnpointCounter];
             chooseCamera.gameObject.SetActive(false);
@@ -95,7 +94,6 @@ public class BattleManager : MonoBehaviour
             var enemy = new CombatEnemy(entityData);
             var model = Instantiate(entityData.Model, _enemySpawnpoints[spawnpointCounter]);
             enemy.CombatAvatar = model;
-            enemy.SetRenderer();
             enemy.FullHeal();
             spawnpointCounter++;
             enemy.SetAttackHandler();
