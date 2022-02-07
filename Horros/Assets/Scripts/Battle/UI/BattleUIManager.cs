@@ -13,6 +13,7 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _runAwayScreen;
     [SerializeField] private CollectedItemsText _lootText;
+    [SerializeField] private AttackText _attackText;
     [SerializeField] private Sprite _nullIcon;
     private static BattleUIManager _instance;
     private Highlighter _highlighter;
@@ -127,6 +128,10 @@ public class BattleUIManager : MonoBehaviour
     public void ToggleDefeatScreen(bool active) => _defeatScreen.SetActive(active);
 
     public void ToggleRunAwayScreen(bool active) => _runAwayScreen.SetActive(active);
+
+    public void EnableAttackText(string attackName) => _attackText.EnableText(attackName);
+
+    public void DisableAttackText() => _attackText.DisableText();
 
     public void ShowLootedLoot(List<Item> loot) => _lootText.SetText(loot);
 

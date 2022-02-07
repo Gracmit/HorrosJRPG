@@ -30,6 +30,7 @@ public class OffensiveSkill : Skill
         var animator = attacker.CombatAvatar.GetComponent<Animator>();
         animator.SetTrigger(Attack1);
         yield return new WaitForSecondsRealtime(0.5f);
+        
 
         foreach (var target in targets)
         {
@@ -54,6 +55,7 @@ public class OffensiveSkill : Skill
         }
         
         yield return new WaitForSeconds(0.1f);
+        
     }
 
 

@@ -79,6 +79,7 @@ public class AttackHandler : MonoBehaviour
 
     public IEnumerator HandleAttack()
     {
+        BattleUIManager.Instance.EnableAttackText(_skill.Data.Name);
         yield return StartCoroutine(_skill.HandleAttack(_attacker, _targets));
         if (_targets == null) yield break;
         if (_targets[0].GetType() == typeof(PartyMember))
@@ -94,8 +95,10 @@ public class AttackHandler : MonoBehaviour
             BattleUIManager.Instance.UpdateStatusPanel((PartyMember) _attacker);
         }
 
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(0.5f);
+        
+        BattleUIManager.Instance.DisableAttackText();
+        yield return new WaitForSeconds(0.5f);
         _targets = null;
         _skill = null;
         _item = null;
