@@ -18,7 +18,7 @@ public class IntroCamera : MonoBehaviour
 
     IEnumerator ChangeTrack()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.92f);
 
         if (_index + 1 > _paths.Length)
         {
