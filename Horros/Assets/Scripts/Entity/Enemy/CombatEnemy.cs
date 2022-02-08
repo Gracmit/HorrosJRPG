@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 
 public class CombatEnemy : ICombatEntity
@@ -10,10 +11,12 @@ public class CombatEnemy : ICombatEntity
     private GameObject _combatAvatar;
     private Dictionary<StatType, BuffCounter> _activeBuffs = new Dictionary<StatType, BuffCounter>();
     private AttackHandler _attackHandler;
+    private CinemachineVirtualCamera _attackCamera;
     public GameObject Model => _data.Model;
     public bool Alive => _alive;
     public EntityData Data => _data;
     public CombatEnemyData EnemyData => _data;
+    public CinemachineVirtualCamera AttackCamera => _attackCamera;
 
     public GameObject CombatAvatar
     {
@@ -103,6 +106,7 @@ public class CombatEnemy : ICombatEntity
                 _activeBuffs.Remove(keyValuePair.Key);
         }
     }
+    
 
     public void AddBuff(BuffSkillData buff)
     {
@@ -144,5 +148,10 @@ public class CombatEnemy : ICombatEntity
     public void FullHeal()
     {
         _data.Stats.FullHeal();
+    }
+
+    public void SetCameras(CinemachineVirtualCamera attackCamera)
+    {
+        _attackCamera = attackCamera;
     }
 }

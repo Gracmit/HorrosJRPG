@@ -10,6 +10,7 @@ public class StartBattle : IState
     {
         Debug.Log("Starting");
         BattleManager.Instance.InitializeBattleField();
+        BattleCameraManager.Instance.StartIntro();
     }
 
     public void OnExit()

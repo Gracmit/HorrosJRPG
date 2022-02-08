@@ -9,6 +9,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> _playerSpawnpoints;
     [SerializeField] private List<Transform> _enemySpawnpoints;
     [SerializeField] private List<CinemachineVirtualCamera> _chooseCameras;
+    [SerializeField] private List<CinemachineVirtualCamera> _enemyAttackCameras;
+    [SerializeField] private List<CinemachineVirtualCamera> _partyAttackCameras;
+    
     private static BattleManager _instance;
     private TurnManager _turnManager;
     private PartyMember _activeMember;
@@ -63,20 +66,22 @@ public class BattleManager : MonoBehaviour
 
     private void InstantiatePartyMembers()
     {
-        var spawnpointCounter = 0;
+        var spawnPointCounter = 0;
         foreach (var entity in GameManager.Instance.ActiveParty)
         {
-            var model = Instantiate(entity.Model, _playerSpawnpoints[spawnpointCounter]);
+            var model = Instantiate(entity.Model, _playerSpawnpoints[spawnPointCounter]);
             entity.CombatAvatar = model;
             entity.FullHeal();
             entity.Alive = true;
             entity.SetAttackHandler();
 
-            var chooseCamera = _chooseCameras[spawnpointCounter];
+            var chooseCamera = _chooseCameras[spawnPointCounter];
             chooseCamera.gameObject.SetActive(false);
-            entity.SetCameras(chooseCamera);
+            var attackCamera = _partyAttackCameras[spawnPointCounter];
+            attackCamera.gameObject.SetActive(false);
+            entity.SetCameras(chooseCamera, attackCamera);
 
-            spawnpointCounter++;
+            spawnPointCounter++;
             _turnManager.AddEntity(entity);
             _party.Add(entity);
             BattleUIManager.Instance.InstantiateStatusPanel(entity);
@@ -88,14 +93,17 @@ public class BattleManager : MonoBehaviour
 
     private void InstantiateEnemies(StatusData statusData)
     {
-        var spawnpointCounter = 0;
+        var spawnPointCounter = 0;
         foreach (var entityData in statusData.enemyGroup)
         {
             var enemy = new CombatEnemy(entityData);
-            var model = Instantiate(entityData.Model, _enemySpawnpoints[spawnpointCounter]);
+            var model = Instantiate(entityData.Model, _enemySpawnpoints[spawnPointCounter]);
             enemy.CombatAvatar = model;
             enemy.FullHeal();
-            spawnpointCounter++;
+            var attackCamera = _enemyAttackCameras[spawnPointCounter];
+            attackCamera.gameObject.SetActive(false);
+            enemy.SetCameras(attackCamera);
+            spawnPointCounter++;
             enemy.SetAttackHandler();
             _enemies.Add(enemy);
             _turnManager.AddEntity(enemy);

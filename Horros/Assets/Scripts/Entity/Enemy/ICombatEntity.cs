@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
 
 public interface ICombatEntity
 {
@@ -12,6 +13,7 @@ public interface ICombatEntity
     bool Attacked{ get;}
 
     AttackHandler AttackHandler { get; }
+    CinemachineVirtualCamera AttackCamera { get; }
 
     void TakeDamage(int damage);
     void Die();

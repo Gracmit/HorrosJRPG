@@ -26,11 +26,17 @@ public class OffensiveSkill : Skill
     public override IEnumerator HandleAttack(ICombatEntity attacker, List<ICombatEntity> targets)
     {
         SubtractMP(attacker);
+        
+        BattleCameraManager.Instance.SetCamera(attacker.AttackCamera);
 
         var animator = attacker.CombatAvatar.GetComponent<Animator>();
         animator.SetTrigger(Attack1);
-        yield return new WaitForSecondsRealtime(0.5f);
-        
+        yield return new WaitForSecondsRealtime(1f);
+
+        if (_data.MultiAttack)
+        {
+            BattleCameraManager.Instance.SetOverviewCamera();
+        }
 
         foreach (var target in targets)
         {
@@ -42,6 +48,10 @@ public class OffensiveSkill : Skill
 
             if (affected)
                 target.ChangeElement(_data.StatusEffect);
+            
+            if(!_data.MultiAttack)
+                BattleCameraManager.Instance.SetCamera(target.AttackCamera);
+            yield return new WaitForSeconds(0.3f);
 
             Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<FindTransform>().transform);
 

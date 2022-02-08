@@ -15,6 +15,7 @@ public class PartyMember : ICombatEntity
     private GameObject _combatAvatar;
     private AttackHandler _attackHandler;
     private CinemachineVirtualCamera _chooseCamera;
+    private CinemachineVirtualCamera _attackCamera;
 
     public Weapon Weapon => _data.Weapon;
     public Armor Armor => _data.Armor;
@@ -24,6 +25,8 @@ public class PartyMember : ICombatEntity
     public GameObject Model => _data.Model;
     public AttackHandler AttackHandler => _attackHandler;
     public CinemachineVirtualCamera ChooseCamera => _chooseCamera;
+
+    public CinemachineVirtualCamera AttackCamera => _attackCamera;
 
     public ElementType Element
     {
@@ -76,6 +79,7 @@ public class PartyMember : ICombatEntity
 
     public void SetActive(bool active) => _active = active;
     public bool Attacked => _attackHandler.Attacked;
+    
 
     public void TakeDamage(int damage)
     {
@@ -160,9 +164,10 @@ public class PartyMember : ICombatEntity
         HighlightHealthBarInstantiator.Instance.HideHealthBar();
     }
 
-    public void SetCameras(CinemachineVirtualCamera chooseCamera)
+    public void SetCameras(CinemachineVirtualCamera chooseCamera, CinemachineVirtualCamera attackCamera)
     {
         _chooseCamera = chooseCamera;
+        _attackCamera = attackCamera;
     }
 
     public int GetStatValue(StatType type)

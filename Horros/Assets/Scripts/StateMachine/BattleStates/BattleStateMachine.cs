@@ -4,7 +4,7 @@ public class BattleStateMachine : MonoBehaviour
 {
     private StateMachine _stateMachine;
 
-    private void Awake()
+    private void Start()
     {
         _stateMachine = new StateMachine();
 
@@ -27,7 +27,7 @@ public class BattleStateMachine : MonoBehaviour
         _stateMachine.AddTransition(attack, win, () => BattleManager.Instance.EnemyCount <= 0);
         _stateMachine.AddTransition(attack, lose, () => BattleManager.Instance.PartyCount <= 0);
         _stateMachine.AddTransition(start, enemyChoose, () => BattleManager.Instance.Initialized());
-        _stateMachine.AddTransition(enemyChoose, playerChoose, () => BattleManager.Instance.EnemiesReady);
+        _stateMachine.AddTransition(enemyChoose, playerChoose, () => BattleManager.Instance.EnemiesReady && BattleCameraManager.Instance.IntroDone);
         _stateMachine.AddTransition(playerChoose, playerChoose,
             () => BattleManager.Instance.ActiveMember.AttackHandler.AttackChosen && !BattleManager.Instance.PartyReady);
         _stateMachine.AddTransition(playerChoose, attack,

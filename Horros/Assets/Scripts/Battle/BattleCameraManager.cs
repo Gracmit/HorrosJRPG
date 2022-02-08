@@ -5,10 +5,13 @@ public class BattleCameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _overviewCamera;
     [SerializeField] private Transform _allEnemies;
+    [SerializeField] private IntroCamera _introCamera;
     private CinemachineVirtualCamera _activeCamera;
     private static BattleCameraManager _instance;
+    private static bool _introDone;
 
     public static BattleCameraManager Instance => _instance;
+    public bool IntroDone => _introDone;
 
     private void Awake()
     {
@@ -47,5 +50,16 @@ public class BattleCameraManager : MonoBehaviour
     public void SetTargetToAllEnemies()
     {
         _activeCamera.m_LookAt = _allEnemies;
+    }
+
+    public void StartIntro()
+    {
+        _introCamera.StartIntro();
+    }
+
+    public void ToggleIntroDone(bool done)
+    {
+        _introDone = done;
+        _introCamera.GetComponent<CinemachineVirtualCamera>().m_Priority = 9;
     }
 }
