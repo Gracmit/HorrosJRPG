@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,7 +13,6 @@ public class EnemyRoaming : MonoBehaviour
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _agent.SetDestination(_navigationPoints[_index].transform.position);
     }
 
     void NextIndex()
@@ -38,5 +37,12 @@ public class EnemyRoaming : MonoBehaviour
         NextIndex();
         _agent.SetDestination(_navigationPoints[_index].transform.position);
         _agent.isStopped = false;
+    }
+
+    public IEnumerator SetNavigationPoints(List<NavigationPoint> points)
+    {
+        _navigationPoints = points;
+        yield return null;
+        _agent.SetDestination(_navigationPoints[_index].transform.position);
     }
 }

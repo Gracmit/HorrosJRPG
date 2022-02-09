@@ -334,7 +334,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118822149}
-  m_LocalRotation: {x: -0.12872526, y: 0.6244696, z: -0.10533833, w: -0.7631327}
+  m_LocalRotation: {x: 0.10655577, y: -0.7290677, z: 0.11665382, w: 0.66595656}
   m_LocalPosition: {x: 6.2432556, y: 2.800763, z: -2.6799507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -589,7 +589,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320768585}
-  m_LocalRotation: {x: 0.045370623, y: -0.8051637, z: 0.06212271, w: 0.58804226}
+  m_LocalRotation: {x: 0.045370623, y: -0.8051637, z: 0.062122703, w: 0.5880423}
   m_LocalPosition: {x: 7, y: 3.1, z: 3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -658,8 +658,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333926646}
-  m_LocalRotation: {x: 0, y: 0.102342054, z: 0, w: 0.9947493}
-  m_LocalPosition: {x: 2.09, y: 1.32, z: -3.843789}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.2942257, y: 1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 418247297}
@@ -697,11 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _paths:
   - {fileID: 1155643731}
-  - {fileID: 480930046}
-  - {fileID: 1910391156}
   _lookAtTransforms:
-  - {fileID: 885642575}
-  - {fileID: 1391317764}
   - {fileID: 885642575}
   _cart: {fileID: 333926649}
 --- !u!1 &417312111
@@ -1503,11 +1499,11 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 0, y: 0, z: -4.173789}
+  - position: {x: -2.5757742, y: 0, z: 0}
     roll: 0
-  - position: {x: 0.5621629, y: 0, z: -0.18627799}
+  - position: {x: -0.40632915, y: 0, z: 0}
     roll: 0
-  - position: {x: 0, y: 0, z: 3.532376}
+  - position: {x: 2.8605108, y: 0, z: 0}
     roll: 0
 --- !u!4 &1155643732
 Transform:
@@ -1517,7 +1513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155643730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.09, y: 1.32, z: 0.33}
+  m_LocalPosition: {x: 2.87, y: 1.32, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2483,62 +2479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1910391155
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1910391157}
-  - component: {fileID: 1910391156}
-  m_Layer: 0
-  m_Name: ZoomOutTrack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1910391156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910391155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Resolution: 13
-  m_Appearance:
-    pathColor: {r: 0, g: 1, b: 0, a: 1}
-    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    width: 0.2
-  m_Looped: 0
-  m_Waypoints:
-  - position: {x: 1.6727079, y: 1.4056115, z: -0.09427714}
-    roll: 0
-  - position: {x: 6.3680983, y: 2.605113, z: -0.76976097}
-    roll: 0
-  - position: {x: 7, y: 3.1, z: 3.2}
-    roll: 0
---- !u!4 &1910391157
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910391155}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1910757588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,7 +2738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2064356142
 MonoBehaviour:
   m_ObjectHideFlags: 0

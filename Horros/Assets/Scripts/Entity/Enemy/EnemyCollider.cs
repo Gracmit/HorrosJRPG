@@ -10,6 +10,7 @@ public class EnemyCollider : MonoBehaviour
             StatusManager.Instance.SetBattleData(other.gameObject, enemyPool);
             
             StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Combat"));
+            Destroy(this);
         }
     }
 }
