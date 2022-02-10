@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
         var id = StatusManager.Instance.StatusData.SpawnerID;
         if (id != 0)
             _spawnStatus.AddID(id);
+        
         foreach (var spawner in _spawners)
         {
             if (!_spawnStatus.IdExists(spawner.ID))

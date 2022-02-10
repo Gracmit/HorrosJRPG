@@ -176,4 +176,11 @@ public class Highlighter
         if (_activeIndex >= _entities.Count)
             _activeIndex--;
     }
+
+    public void Reset()
+    {
+        _activeIndex = 0;
+        _entities = new List<ICombatEntity>();
+        _highlightedGroup = new List<ICombatEntity>();
+    }
 }

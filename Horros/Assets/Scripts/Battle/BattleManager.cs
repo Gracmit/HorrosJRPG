@@ -56,6 +56,7 @@ public class BattleManager : MonoBehaviour
 
     public void InitializeBattleField()
     {
+        BattleUIManager.Instance.ResetHighlighter();
         var statusData = StatusManager.Instance.StatusData;
         InstantiateEnemies(statusData);
         InstantiatePartyMembers();

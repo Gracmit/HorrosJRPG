@@ -136,4 +136,6 @@ public class BattleUIManager : MonoBehaviour
     public void ShowLootedLoot(List<Item> loot) => _lootText.SetText(loot);
 
     public Sprite GetNoneStatusIcon() => _nullIcon;
+
+    public void ResetHighlighter() => _highlighter.Reset();
 }
