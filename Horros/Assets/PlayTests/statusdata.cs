@@ -19,9 +19,9 @@ public class statusdata
         enemyPool.AddEnemy(enemy2);
         
         var player = new GameObject();
-        statusManager.SetBattleData(player, enemyPool);
+        statusManager.SetBattleData(player, enemyPool, 1);
         
-        Assert.AreEqual(enemyPool.EnemyCount, statusManager.StatusData.enemyGroup.Count);
+        Assert.AreEqual(enemyPool.EnemyCount, statusManager.StatusData.EnemyGroup.Count);
     }
 
     [Test]
@@ -33,10 +33,10 @@ public class statusdata
         var enemyPool = new GameObject().AddComponent<EnemyPool>();
         var player = new GameObject();
         player.transform.position = new Vector3(1, 2, 3);
-        statusManager.SetBattleData(player, enemyPool);
-        Assert.AreEqual(player.transform.position.x, statusManager.StatusData.position[0]);
-        Assert.AreEqual(player.transform.position.y, statusManager.StatusData.position[1]);
-        Assert.AreEqual(player.transform.position.z, statusManager.StatusData.position[2]);
+        statusManager.SetBattleData(player, enemyPool, 1);
+        Assert.AreEqual(player.transform.position.x, statusManager.StatusData.Position[0]);
+        Assert.AreEqual(player.transform.position.y, statusManager.StatusData.Position[1]);
+        Assert.AreEqual(player.transform.position.z, statusManager.StatusData.Position[2]);
     }
 
     [Test]
@@ -52,14 +52,14 @@ public class statusdata
         
         var player = new GameObject();
         player.transform.position = new Vector3(1, 2, 3);
-        statusManager.SetBattleData(player, enemyPool);
+        statusManager.SetBattleData(player, enemyPool, 1);
         
         enemyPool.AddEnemy(enemy2);
         player.transform.position = new Vector3(4,5,6);
-        statusManager.SetBattleData(player, enemyPool);
-        Assert.AreEqual(player.transform.position.x, statusManager.StatusData.position[0]);
-        Assert.AreEqual(player.transform.position.y, statusManager.StatusData.position[1]);
-        Assert.AreEqual(player.transform.position.z, statusManager.StatusData.position[2]);
-        Assert.AreEqual(enemyPool.EnemyCount, statusManager.StatusData.enemyGroup.Count);
+        statusManager.SetBattleData(player, enemyPool, 1);
+        Assert.AreEqual(player.transform.position.x, statusManager.StatusData.Position[0]);
+        Assert.AreEqual(player.transform.position.y, statusManager.StatusData.Position[1]);
+        Assert.AreEqual(player.transform.position.z, statusManager.StatusData.Position[2]);
+        Assert.AreEqual(enemyPool.EnemyCount, statusManager.StatusData.EnemyGroup.Count);
     }
 }

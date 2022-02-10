@@ -94,7 +94,7 @@ public class BattleManager : MonoBehaviour
     private void InstantiateEnemies(StatusData statusData)
     {
         var spawnPointCounter = 0;
-        foreach (var entityData in statusData.enemyGroup)
+        foreach (var entityData in statusData.EnemyGroup)
         {
             var enemy = new CombatEnemy(entityData);
             var model = Instantiate(entityData.Model, _enemySpawnpoints[spawnPointCounter]);
@@ -110,7 +110,7 @@ public class BattleManager : MonoBehaviour
             BattleUIManager.Instance.AddEnemyToHighlighter(enemy);
         }
 
-        _enemyCount = statusData.enemyGroup.Count;
+        _enemyCount = statusData.EnemyGroup.Count;
     }
 
     public void SetActiveEntity()

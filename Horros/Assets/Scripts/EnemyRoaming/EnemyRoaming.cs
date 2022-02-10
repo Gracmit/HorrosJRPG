@@ -10,10 +10,11 @@ public class EnemyRoaming : MonoBehaviour
 
     int _index = 0;
     NavMeshAgent _agent;
-    private void Awake()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-    }
+    private int _id;
+    
+    public int ID => _id;
+
+    private void Awake() => _agent = GetComponent<NavMeshAgent>();
 
     void NextIndex()
     {
@@ -43,6 +44,8 @@ public class EnemyRoaming : MonoBehaviour
     {
         _navigationPoints = points;
         yield return null;
-        _agent.SetDestination(_navigationPoints[_index].transform.position);
+        _agent.SetDestination(_navigationPoints[_index].transform.position); 
     }
+
+    public void SetID(int id) => _id = id;
 }

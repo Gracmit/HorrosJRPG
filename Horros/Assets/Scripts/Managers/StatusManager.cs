@@ -27,15 +27,16 @@ public class StatusManager : MonoBehaviour
         _statusData = data;
     }
 
-    public void SetBattleData(GameObject player, EnemyPool enemyPool)
+    public void SetBattleData(GameObject player, EnemyPool enemyPool, int spawnerId)
     {
-        _statusData.enemyGroup = enemyPool.Enemies;
+        _statusData.EnemyGroup = enemyPool.Enemies;
 
         Vector3 playerPosition = player.transform.position;
-        _statusData.position[0] = playerPosition.x;
-        _statusData.position[1] = playerPosition.y;
-        _statusData.position[2] = playerPosition.z;
+        _statusData.Position[0] = playerPosition.x;
+        _statusData.Position[1] = playerPosition.y;
+        _statusData.Position[2] = playerPosition.z;
 
-        _statusData.sceneName = SceneManager.GetActiveScene().name;
+        _statusData.SceneName = SceneManager.GetActiveScene().name;
+        _statusData.SpawnerID = spawnerId;
     }
 }

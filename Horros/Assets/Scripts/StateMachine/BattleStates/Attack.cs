@@ -20,5 +20,6 @@ public class Attack : IState
     {
         BattleManager.Instance.TurnManager.ResetAttack();
         BattleManager.Instance.TurnManager.NextTurn();
+        BattleUIManager.Instance.DisableAttackText();
     }
 }
