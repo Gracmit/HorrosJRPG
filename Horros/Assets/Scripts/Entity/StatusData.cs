@@ -5,7 +5,8 @@ using UnityEngine;
 public class StatusData : ScriptableObject
 {
     public List<CombatEnemyData> EnemyGroup;
-    public float[] Position = new float[3];
     public string SceneName;
     public int SpawnerID;
+    public Vector3 PlayerPosition;
+    public Quaternion PlayerRotation;
 }

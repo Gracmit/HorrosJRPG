@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454f23413b9144f45ab45f6a3369a714, type: 3}
   m_Name: StatusData
   m_EditorClassIdentifier: 
-  partyStatus:
-  - {fileID: 11400000, guid: 0e68bd5edccf6524b9b9acaf19b6006b, type: 2}
-  enemyGroupStatus: []
-  position:
-  - 0.027695527
-  - 1.5799999
-  - 11.05847
+  EnemyGroup:
+  - {fileID: 11400000, guid: 0798c03eaf9ad0b4ca50a1ef637fd295, type: 2}
+  - {fileID: 11400000, guid: 898b2a3ae8f03b245b91245a613db792, type: 2}
+  - {fileID: 11400000, guid: 5d366bc8650c946479e62f8c8592c072, type: 2}
+  SceneName: DemoLevel
+  SpawnerID: 0
+  PlayerPosition: {x: 55.323677, y: 1.08, z: 57.428177}
+  PlayerRotation: {x: 0, y: 0.6645241, z: 0, w: 0.74726695}

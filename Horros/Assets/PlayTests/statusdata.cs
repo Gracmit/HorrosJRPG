@@ -34,9 +34,7 @@ public class statusdata
         var player = new GameObject();
         player.transform.position = new Vector3(1, 2, 3);
         statusManager.SetBattleData(player, enemyPool, 1);
-        Assert.AreEqual(player.transform.position.x, statusManager.StatusData.Position[0]);
-        Assert.AreEqual(player.transform.position.y, statusManager.StatusData.Position[1]);
-        Assert.AreEqual(player.transform.position.z, statusManager.StatusData.Position[2]);
+        Assert.AreEqual(player.transform.position, statusManager.StatusData.PlayerPosition);
     }
 
     [Test]
@@ -57,9 +55,7 @@ public class statusdata
         enemyPool.AddEnemy(enemy2);
         player.transform.position = new Vector3(4,5,6);
         statusManager.SetBattleData(player, enemyPool, 1);
-        Assert.AreEqual(player.transform.position.x, statusManager.StatusData.Position[0]);
-        Assert.AreEqual(player.transform.position.y, statusManager.StatusData.Position[1]);
-        Assert.AreEqual(player.transform.position.z, statusManager.StatusData.Position[2]);
+        Assert.AreEqual(player.transform.position, statusManager.StatusData.PlayerPosition);
         Assert.AreEqual(enemyPool.EnemyCount, statusManager.StatusData.EnemyGroup.Count);
     }
 }
