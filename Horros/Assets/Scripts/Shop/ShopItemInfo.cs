@@ -7,6 +7,6 @@ public class ShopItemInfo : MonoBehaviour
 
     public void SetText(Item item)
     {
-        _text.SetText(item.Description);
+        _text.SetText(item.ItemData.Description);
     }
 }

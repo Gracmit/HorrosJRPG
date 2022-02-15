@@ -78,7 +78,7 @@ public class ShopPanel : MonoBehaviour
     {
         foreach (var button in _buttons)
         {
-            if (button.Item.BuyingPrice > _inventory.MoneyAmount)
+            if (button.Item.ItemData.BuyingPrice > _inventory.MoneyAmount)
             {
                 button.GetComponent<Button>().interactable = false;
             }
@@ -116,17 +116,17 @@ public class ShopPanel : MonoBehaviour
         _player.FreezeControls(true);
     }
 
-    private void CreateButton(Item item)
+    private void CreateButton(Item itemData)
     {
         var button = Instantiate(_shopButton, _list.transform);
         _buttons.Add(button);
 
         var shopButton = button.GetComponent<ShopButton>();
-        shopButton.SetItem(item);
+        shopButton.SetItem(itemData);
     }
 
-    public void ShowInfo(Item item)
+    public void ShowInfo(Item itemData)
     {
-        _infoPanel.SetText(item);
+        _infoPanel.SetText(itemData);
     }
 }

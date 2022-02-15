@@ -1,18 +1,32 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Item/Item")]
-public class Item : ScriptableObject
+[Serializable]
+public class Item
 {
-    [SerializeField] private string _name;
-    [TextArea] [SerializeField] private string _description;
-    [SerializeField] private int _amount;
-    [SerializeField] private int _buyingPrice;
-    [SerializeField] private int _sellingPrice;
+    [SerializeField] private ItemData _itemData;
+    [SerializeField] protected int _amount;
 
+    public Item(int itemAmount)
+    {
+        _amount = itemAmount;
+    }
+
+    public Item(int itemAmount, ItemData itemData)
+    {
+        _amount = itemAmount;
+        _itemData = itemData;
+    }
+
+    protected Item()
+    {
+    }
+
+    public string Name => _itemData.Name;
     public int Amount => _amount;
-    public string Name => _name;
-    public int BuyingPrice => _buyingPrice;
-    public string Description => _description;
+    
+    public ItemData ItemData => _itemData;
+    
 
     public void AddItems(int addedAmount)
     {
@@ -28,9 +42,4 @@ public class Item : ScriptableObject
         return false;
     }
 
-    public void ChangeName(string newName)
-    {
-        _name = newName;
-        
-    }
 }

@@ -145,7 +145,7 @@ public class AttackHandler : MonoBehaviour
 
     public void SaveItem(Consumable item)
     {
-        _skill = item.Effect;
+        _skill = item.ConsumableData.Effect;
         _item = item;
     }
 

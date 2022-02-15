@@ -6,7 +6,7 @@ public class ConsumableEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        var itemObject = (Consumable)target;
+        var itemObject = (ConsumableData)target;
         base.OnInspectorGUI();
 
         var effectEditor = CreateEditor(serializedObject.FindProperty("_effect").objectReferenceValue);
@@ -40,7 +40,7 @@ public class ConsumableEditor : Editor
         }
     }
 
-    private void AddEffectToItem(Skill skillToAdd, Consumable assetObject)
+    private void AddEffectToItem(Skill skillToAdd, ConsumableData assetObject)
     {
         AssetDatabase.AddObjectToAsset(skillToAdd, assetObject);
         skillToAdd.name = "Effect";

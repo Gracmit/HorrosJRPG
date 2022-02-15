@@ -15,10 +15,10 @@ public class Inventory : MonoBehaviour
 
     public int MoneyAmount => _money;
 
-    public int ItemAmount(Item item)
+    public int ItemAmount(ItemData itemData)
     {
-        Item searchedItem = _items.Find(x => x.Name == item.Name);
-        return searchedItem.Amount;
+        Item searchedItemData = _items.Find(x => x.Name == itemData.Name);
+        return searchedItemData.Amount;
     }
 
     
@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            _items.Add(Instantiate(item));
+            _items.Add(new Item(item.Amount, item.ItemData));  
         }
     }
 

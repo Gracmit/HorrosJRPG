@@ -11,11 +11,11 @@ public class ShopButton : MonoBehaviour
 
     public Item Item => _item;
 
-    public void SetItem(Item item)
+    public void SetItem(Item itemData)
     {
-        _item = item;
-        _itemName.SetText(item.Name);
-        _price.SetText(item.BuyingPrice.ToString());
+        _item = itemData;
+        _itemName.SetText(itemData.Name);
+        _price.SetText(itemData.ItemData.BuyingPrice.ToString());
     }
 
     public void ShowInfo() => ShopPanel.Instance.ShowInfo(_item);
@@ -24,6 +24,6 @@ public class ShopButton : MonoBehaviour
     {
         var inventory = FindObjectOfType<Inventory>();
         inventory.PickUpItem(_item);
-        inventory.SpendMoney(_item.BuyingPrice);
+        inventory.SpendMoney(_item.ItemData.BuyingPrice);
     }
 }

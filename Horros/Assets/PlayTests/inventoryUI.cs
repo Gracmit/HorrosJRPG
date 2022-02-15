@@ -34,8 +34,9 @@ public class inventoryUI
         
         itemsPanel.BindInventory(inventory);
 
-        Item item = ScriptableObject.CreateInstance<Item>();
-        item.ChangeName("item1");
+        ItemData itemData = ScriptableObject.CreateInstance<ItemData>();
+        Item item = new Item(0, itemData);
+        item.ItemData.ChangeName("item1");
         item.AddItems(1);
         inventory.PickUpItem(item);
         
@@ -56,13 +57,15 @@ public class inventoryUI
         
         itemsPanel.BindInventory(inventory);
         
-        Item item = ScriptableObject.CreateInstance<Item>();
-        item.ChangeName("item1");
+        ItemData itemData = ScriptableObject.CreateInstance<ItemData>();
+        Item item = new Item(0, itemData);
+        itemData.ChangeName("item1");
         item.AddItems(2);
         inventory.PickUpItem(item);
         
-        Item item2 = ScriptableObject.CreateInstance<Item>();
-        item2.ChangeName("item2");
+        ItemData itemData2 = ScriptableObject.CreateInstance<ItemData>();
+        Item item2 = new Item(0, itemData2);
+        itemData2.ChangeName("item2");
         item2.AddItems(5);
         inventory.PickUpItem(item2);
         

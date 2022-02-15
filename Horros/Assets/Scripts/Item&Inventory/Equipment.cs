@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Equipment : Item
+public class Equipment : ItemData
 {
     [SerializeField] private StatMod[] _statsMods;
 }
