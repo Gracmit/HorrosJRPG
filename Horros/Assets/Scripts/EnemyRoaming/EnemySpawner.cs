@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public void Spawn()
     {
         var enemy = Instantiate(_enemyToSpawn, transform);
-        var roaming = enemy.GetComponent<EnemyRoaming>();
+        var roaming = enemy.GetComponent<EnemyStateMachine>().Roamer;
         roaming.SetID(_id);
         StartCoroutine(roaming.SetNavigationPoints(_navigationPoints));
     }

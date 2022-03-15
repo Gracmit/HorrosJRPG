@@ -53,7 +53,7 @@ public class OffensiveSkill : Skill
                 BattleCameraManager.Instance.SetCamera(target.AttackCamera);
             yield return new WaitForSeconds(0.3f);
 
-            Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<FindTransform>().transform);
+            Instantiate(_data.Effect, target.CombatAvatar.GetComponentInChildren<EffectTransform>().transform);
 
             var animator1 = target.CombatAvatar.GetComponent<Animator>();
             animator1.SetTrigger(TakeDamage);

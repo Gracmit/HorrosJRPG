@@ -4,18 +4,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyRoaming : MonoBehaviour
+public class EnemyRoaming 
 {
-    [SerializeField] List<NavigationPoint> _navigationPoints;
-
-    int _index = 0;
-    NavMeshAgent _agent;
+    private List<NavigationPoint> _navigationPoints;
+    private readonly NavMeshAgent _agent;
+    private int _index;
     private int _id;
-    
+    private GameObject _player;
+
+    public EnemyRoaming(NavMeshAgent navMeshAgent, GameObject player)
+    {
+        _agent = navMeshAgent;
+        _player = player;
+    }
+
     public int ID => _id;
-
-    private void Awake() => _agent = GetComponent<NavMeshAgent>();
-
+    
     void NextIndex()
     {
         if (_index >= _navigationPoints.Count - 1)
@@ -24,14 +28,13 @@ public class EnemyRoaming : MonoBehaviour
             _index++;
     }
 
-    private void Update()
+    public void Roam()
     {
-        if (Vector3.Distance(transform.position, _navigationPoints[_index].transform.position) < 1) 
+        if (Vector3.Distance(_agent.transform.position, _navigationPoints[_index].transform.position) < 1) 
         {
             NextDestination();
         }
     }
-
 
     public void NextDestination()
     {
@@ -48,4 +51,9 @@ public class EnemyRoaming : MonoBehaviour
     }
 
     public void SetID(int id) => _id = id;
+
+    public void FollowPlayer()
+    {
+        _agent.SetDestination(_player.transform.position);
+    }
 }

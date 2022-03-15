@@ -7,8 +7,8 @@ public class EnemyCollider : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             var enemyPool = GetComponent<EnemyPool>();
-            var roaming = GetComponent<EnemyRoaming>();
-            StatusManager.Instance.SetBattleData(other.gameObject, enemyPool, roaming.ID);
+            var stateMachine = GetComponent<EnemyStateMachine>();
+            StatusManager.Instance.SetBattleData(other.gameObject, enemyPool, stateMachine.Roamer.ID);
             
             StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Combat"));
         }
