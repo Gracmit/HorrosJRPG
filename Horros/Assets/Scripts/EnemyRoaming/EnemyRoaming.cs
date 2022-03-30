@@ -56,4 +56,25 @@ public class EnemyRoaming
     {
         _agent.SetDestination(_player.transform.position);
     }
+    
+    public bool LookForPlayer()
+    {
+        if (Vector3.Distance(_agent.transform.position, _player.transform.position) > 10)
+        {
+            return false;
+        }
+
+        if (Vector3.Angle(_agent.transform.forward, _player.transform.position - _agent.transform.position) < 45)
+        {
+            RaycastHit hit;
+            Physics.Raycast(
+                new Ray(_agent.transform.position, (_player.transform.position - _agent.transform.position).normalized),
+                out hit, 10);
+
+            if (hit.collider.CompareTag("Player"))
+                return true;
+        }
+
+        return false;
+    }
 }

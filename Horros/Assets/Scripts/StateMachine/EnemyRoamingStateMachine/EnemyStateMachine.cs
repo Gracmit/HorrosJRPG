@@ -20,7 +20,7 @@ public class EnemyStateMachine : MonoBehaviour
         _stateMachine.AddState(roam);
         _stateMachine.AddState(follow);
         
-        _stateMachine.AddTransition(roam, follow, () => false);
+        _stateMachine.AddTransition(roam, follow, () => _roamer.LookForPlayer());
         _stateMachine.AddTransition(follow, roam, () => false);
         
         _stateMachine.SetState(roam);

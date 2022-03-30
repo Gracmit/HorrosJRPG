@@ -1,6 +1,4 @@
-﻿using UnityEngine.AI;
-
-public class Roam : IState
+﻿public class Roam : IState
 {
     private readonly EnemyRoaming _roamer;
 
