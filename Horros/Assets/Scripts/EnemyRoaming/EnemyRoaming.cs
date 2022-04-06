@@ -11,6 +11,9 @@ public class EnemyRoaming
     private int _index;
     private int _id;
     private GameObject _player;
+    private float _time = Time.time;
+    private bool _lostTarget;
+    private const int FOLLOWTIMER = 5;
 
     public EnemyRoaming(NavMeshAgent navMeshAgent, GameObject player)
     {
@@ -19,6 +22,7 @@ public class EnemyRoaming
     }
 
     public int ID => _id;
+    public bool LostTarget => _lostTarget;
     
     void NextIndex()
     {
@@ -42,6 +46,12 @@ public class EnemyRoaming
         _agent.SetDestination(_navigationPoints[_index].transform.position);
         _agent.isStopped = false;
     }
+    
+    public void SetNewPoint()
+    {
+        if(_navigationPoints != null)
+            _agent.SetDestination(_navigationPoints[_index].transform.position);
+    }
 
     public IEnumerator SetNavigationPoints(List<NavigationPoint> points)
     {
@@ -55,6 +65,16 @@ public class EnemyRoaming
     public void FollowPlayer()
     {
         _agent.SetDestination(_player.transform.position);
+        if (!LookForPlayer())
+        {
+            if (_time < Time.time)
+            {
+                _lostTarget = true;
+            }
+            
+            return;
+        }
+        _time = Time.time + FOLLOWTIMER;
     }
     
     public bool LookForPlayer()
@@ -66,10 +86,9 @@ public class EnemyRoaming
 
         if (Vector3.Angle(_agent.transform.forward, _player.transform.position - _agent.transform.position) < 45)
         {
-            RaycastHit hit;
             Physics.Raycast(
                 new Ray(_agent.transform.position, (_player.transform.position - _agent.transform.position).normalized),
-                out hit, 10);
+                out var hit, 10);
 
             if (hit.collider.CompareTag("Player"))
                 return true;
@@ -77,4 +96,11 @@ public class EnemyRoaming
 
         return false;
     }
+
+    public void NegateLostTarget()
+    {
+        _lostTarget = false;
+    }
+
+
 }

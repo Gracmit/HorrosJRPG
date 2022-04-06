@@ -18,5 +18,6 @@
 
     public void OnExit()
     {
+        _roamer.NegateLostTarget();
     }
 }

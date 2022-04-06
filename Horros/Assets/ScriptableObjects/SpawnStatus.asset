@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f5181e37b44909ab1303b2e7aef240, type: 3}
   m_Name: SpawnStatus
   m_EditorClassIdentifier: 
-  _defeatedIds: 01000000
+  _defeatedIds: 

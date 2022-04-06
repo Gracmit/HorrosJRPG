@@ -1,4 +1,6 @@
-﻿public class Roam : IState
+﻿using UnityEngine;
+
+public class Roam : IState
 {
     private readonly EnemyRoaming _roamer;
 
@@ -15,6 +17,8 @@
 
     public void OnEnter()
     {
+        _roamer.SetNewPoint();
+        Debug.Log("Roaming");
     }
 
     public void OnExit()
