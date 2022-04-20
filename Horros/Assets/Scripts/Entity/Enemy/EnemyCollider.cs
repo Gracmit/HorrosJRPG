@@ -8,8 +8,11 @@ public class EnemyCollider : MonoBehaviour
         {
             var enemyPool = GetComponent<EnemyPool>();
             var stateMachine = GetComponent<EnemyStateMachine>();
-            StatusManager.Instance.SetBattleData(other.gameObject, enemyPool, stateMachine.Roamer.ID);
-            
+            if(stateMachine.CurrentState.GetType() == typeof(Roam))
+                StatusManager.Instance.SetBattleData(other.gameObject, enemyPool, stateMachine.Roamer.ID, EngageType.Ambush);
+            else
+                StatusManager.Instance.SetBattleData(other.gameObject, enemyPool, stateMachine.Roamer.ID, EngageType.Danger);
+                
             StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Combat"));
         }
     }

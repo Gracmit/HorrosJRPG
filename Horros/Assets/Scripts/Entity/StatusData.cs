@@ -9,4 +9,12 @@ public class StatusData : ScriptableObject
     public int SpawnerID;
     public Vector3 PlayerPosition;
     public Quaternion PlayerRotation;
+    public EngageType EngageType;
+}
+
+public enum EngageType
+{
+    Ambush, 
+    Normal,
+    Danger
 }

@@ -60,6 +60,21 @@ public class BattleManager : MonoBehaviour
         var statusData = StatusManager.Instance.StatusData;
         InstantiateEnemies(statusData);
         InstantiatePartyMembers();
+        if (statusData.EngageType == EngageType.Ambush)
+        {
+            foreach (var enemy in _enemies)
+            {
+                enemy.TakeDamage(10);
+            }
+        }
+
+        if (statusData.EngageType == EngageType.Danger)
+        {
+            foreach (var partyMember in _party)
+            {
+                partyMember.TakeDamage(10);
+            }
+        }
         _partyIndex = 0;
         _initializationCompleted = true;
     }

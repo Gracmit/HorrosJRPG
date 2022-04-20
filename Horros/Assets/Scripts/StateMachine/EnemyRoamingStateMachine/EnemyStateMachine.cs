@@ -8,6 +8,8 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyRoaming _roamer;
     public EnemyRoaming Roamer => _roamer;
 
+    public IState CurrentState => _stateMachine.CurrentState;
+
     void Awake()
     {
         _stateMachine = new StateMachine();
