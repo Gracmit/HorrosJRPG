@@ -20,6 +20,4 @@ MonoBehaviour:
   _lootTable:
   - _itemData: {fileID: 11400000, guid: 5f56e690e6855c4418111026a1025b04, type: 2}
     _amount: 1
-  - _itemData: {fileID: 0}
-    _amount: 0
   _ai: {fileID: 11400000, guid: d2981e82e3da49c4b936823f8ac714bb, type: 2}
