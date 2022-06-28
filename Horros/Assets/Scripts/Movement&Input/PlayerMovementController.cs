@@ -28,6 +28,8 @@ public class PlayerMovementController : MonoBehaviour
     private void CameraRelativeMovement()
     {
         Vector3 direction = new Vector3(PlayerInput.Instance.Horizontal, 0f, PlayerInput.Instance.Vertical).normalized;
+        var gravity = 2f;
+        if (_controller.isGrounded) gravity = 0f;
 
         if (direction.magnitude >= 0.1f)
         {
@@ -41,7 +43,7 @@ public class PlayerMovementController : MonoBehaviour
             //Vector3 moveDir = new Vector3(transform.forward.x, _controller.velocity.y, transform.forward.z);
 
             //_controller.velocity = moveDir.normalized * _movementSpeed;
-            _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime));
+            _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime) + new Vector3(0, -gravity, 0));
         }
     }
 
