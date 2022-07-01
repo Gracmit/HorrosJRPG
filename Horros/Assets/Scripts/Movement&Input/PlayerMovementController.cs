@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Animations;
+using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -9,12 +10,14 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.1f;
 
     private CharacterController _controller;
+    private Animator _animator;
     private float _turnSmoothVelocity;
     private bool _frozen;
 
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -45,6 +48,7 @@ public class PlayerMovementController : MonoBehaviour
             //_controller.velocity = moveDir.normalized * _movementSpeed;
             _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime) + new Vector3(0, -gravity, 0));
         }
+        _animator.SetFloat("Speed", direction.magnitude);
     }
 
     public void FreezeControls(bool freeze)
