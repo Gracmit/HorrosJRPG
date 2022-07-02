@@ -10,6 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16214de9508977d4b82c41a469135769, type: 3}
-  m_Name: New Quest
+  m_Name: Inspect The Gate
   m_EditorClassIdentifier: 
-  Steps: []
+  _name: Inspect the Gate
+  _description: Check out the strange palace gate
+  _notes: Just for testing purposes
+  Steps:
+  - _instructions: Get to the Palace
+    Objectives:
+    - _objectiveType: 0

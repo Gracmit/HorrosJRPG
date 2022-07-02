@@ -10,6 +10,8 @@ public class Quest : ScriptableObject
     [Tooltip("Designer/programmer notes, not visible to player")]
     [SerializeField] string _notes;
     public List<Step> Steps;
+    public string Name => _name;
+    public string Description => _description;
 }
 
 [Serializable]
@@ -17,6 +19,7 @@ public class Step
 {
     [SerializeField] string _instructions;
     public List<Objectives> Objectives;
+    public string Instructions => _instructions;
 }
 
 [Serializable]
@@ -29,4 +32,6 @@ public class Objectives
         Item,
         Kill,
     }
+
+    public override string ToString() => _objectiveType.ToString();
 }
