@@ -225,10 +225,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1185}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 98b4f5ffe8b8f5ff00e9f5ff1ae9f5ffa200f7ff6028f7ff1afbffff84a60000
+      scrollPos: {x: 0, y: 897}
+      m_SelectedIDs: ec13feff
+      m_LastClickedID: -125972
+      m_ExpandedIDs: 06fdfeff98f9ffff64faffff1afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -244,7 +244,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 5}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -506,9 +506,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 274.54034, y: 32.950512, z: 47.389313}
+    m_Target: {x: 295.29758, y: 2.6304817, z: 86.73152}
     speed: 2
-    m_Value: {x: 274.54034, y: 32.950512, z: 47.389313}
+    m_Value: {x: 295.29758, y: 2.6304817, z: 86.73152}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -555,13 +555,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29031435, y: 0.5461461, z: -0.20966916, w: 0.75704855}
+    m_Target: {x: -0.057347726, y: 0.9423253, z: -0.22493829, w: -0.24034554}
     speed: 2
-    m_Value: {x: 0.29036638, y: 0.54624397, z: -0.20970674, w: 0.7571842}
+    m_Value: {x: -0.05735837, y: 0.9425002, z: -0.22498003, w: -0.24039014}
   m_Size:
-    m_Target: 0.9291073
+    m_Target: 1.7146502
     speed: 2
-    m_Value: 0.9291073
+    m_Value: 1.7146502
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -684,22 +684,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models/Environment/Water/Materials
+    - Assets/Models/Environment/Gazebo/Pillar/Textures
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models/Environment/Water/Materials
+  - Assets/Models/Environment/Gazebo/Pillar/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\HorrosRepo\Horros
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8ab00000
-    m_LastClickedID: 45194
-    m_ExpandedIDs: 000000009cac00009eac0000a0ac0000b0ac000000ca9a3b
+    scrollPos: {x: 0, y: 5}
+    m_SelectedIDs: 5abd0000
+    m_LastClickedID: 48474
+    m_ExpandedIDs: 0000000036af000038af00003aaf000012b100002eb100002cbd000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -727,7 +727,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009cac00009eac0000a0ac0000
+    m_ExpandedIDs: 0000000036af000038af00003aaf000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -752,8 +752,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: ec13feff
+    m_LastClickedInstanceID: -125972
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
