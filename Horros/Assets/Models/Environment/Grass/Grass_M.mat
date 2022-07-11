@@ -108,16 +108,16 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 5
     - _Surface: 1
-    - _WindScale: 1.69
-    - _WindSpeed: 0.56
+    - _WindScale: 1.35
+    - _WindSpeed: 2.24
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GrassColor: {r: 0.23512308, g: 0.23584908, b: 0.1546369, a: 0}
-    - _GrassColor2: {r: 0.41678357, g: 0.4245283, b: 0.3224012, a: 0}
+    - _GrassColor: {r: 0.14150941, g: 0.13996083, b: 0.12215199, a: 0}
+    - _GrassColor2: {r: 0.3019608, g: 0.31764707, b: 0.121568635, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &9215269821939627679
