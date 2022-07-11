@@ -19,3 +19,8 @@ MonoBehaviour:
   - _instructions: Get to the Palace
     Objectives:
     - _objectiveType: 0
+      _gameFlag: {fileID: 11400000, guid: a09c7ad5f54615c4db5c172161b3e327, type: 2}
+  - _instructions: Go to the Cliff
+    Objectives:
+    - _objectiveType: 0
+      _gameFlag: {fileID: 11400000, guid: e62d7f7529b74f847a334cf6bcb3ac57, type: 2}

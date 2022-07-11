@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -8,10 +6,10 @@ using UnityEngine;
 public class QuestPanel : MonoBehaviour
 {
     [SerializeField] Quest _selectedQuest;
-    [SerializeField] Step _selectedStep;
     [SerializeField] TMP_Text _nameText;
     [SerializeField] TMP_Text _descriptionText;
     [SerializeField] TMP_Text _currentObjectivesText;
+    Step selectedStep => _selectedQuest.CurrenStep;
 
     [ContextMenu("Bind")]
     public void Bind()
@@ -19,15 +17,34 @@ public class QuestPanel : MonoBehaviour
         _nameText.SetText(_selectedQuest.Name);
         _descriptionText.SetText(_selectedQuest.Description);
         
-        _selectedStep = _selectedQuest.Steps.FirstOrDefault();
-        if (_selectedStep == null) return;
-        
+        DisplayStepsInstructionsAndObjectives();
+    }
+
+    void DisplayStepsInstructionsAndObjectives()
+    {
         StringBuilder builder = new StringBuilder();
-        builder.AppendLine(_selectedStep.Instructions);
-        foreach (var objective in _selectedStep.Objectives)
+
+        if (selectedStep != null)
         {
-            builder.AppendLine(objective.ToString());
+            builder.AppendLine(selectedStep.Instructions);
+            foreach (var objective in selectedStep.Objectives)
+            {
+                builder.AppendLine(objective.ToString());
+            }
         }
+
         _currentObjectivesText.SetText(builder.ToString());
+    }
+
+    public void SelectQuest(Quest quest)
+    {
+        if(_selectedQuest)
+            _selectedQuest.Progressed -= DisplayStepsInstructionsAndObjectives;
+        
+        _selectedQuest = quest;
+        Bind();
+
+        _selectedQuest.Progressed += DisplayStepsInstructionsAndObjectives;
+
     }
 }
