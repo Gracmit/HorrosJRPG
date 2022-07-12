@@ -7,22 +7,22 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grass_M
-  m_Shader: {fileID: -6465566751694194690, guid: c8b3e247c0bbe9d4792086c1ea9419e6,
+  m_Name: PineTree_M
+  m_Shader: {fileID: -6465566751694194690, guid: 186c03c72c34c1b4d8be6f3e119637ca,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 3004
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: d68c38d082208244488594969f523e57, type: 3}
+        m_Texture: {fileID: 2800000, guid: a6c19124abe97a940b539e3da876fb2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -45,12 +45,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _GrassTexture:
-        m_Texture: {fileID: 2800000, guid: d68c38d082208244488594969f523e57, type: 3}
+    - _LeafTexture:
+        m_Texture: {fileID: 2800000, guid: 6fd29db4c1463c04ca4a19a49fee6500, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d68c38d082208244488594969f523e57, type: 3}
+        m_Texture: {fileID: 2800000, guid: a6c19124abe97a940b539e3da876fb2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -63,6 +63,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e5d0921d88df4173b82357f470b79e9c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7bed2647fa26a024b938effd03f6f759, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -83,44 +87,47 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
+    - _AlphaClip: 1
+    - _B: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cull: 2
-    - _Cutoff: 0.5
+    - _Cull: 0
+    - _Cutoff: 0.504
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _EnvironmentReflections: 1
+    - _G: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Hue: 0.03
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: 4
+    - _R: 0
     - _ReceiveShadows: 1
+    - _Saturation: 0.707
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 5
     - _Surface: 1
-    - _WindScale: 1.35
-    - _WindSpeed: 2.24
+    - _Value: 0.66
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 0.1385928, g: 0.1981132, b: 0.1093361, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GrassColor: {r: 0.09433961, g: 0.052984945, b: 0.0129049495, a: 0}
-    - _GrassColor2: {r: 0.23529413, g: 0.2509804, b: 0.16470589, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &9215269821939627679
+--- !u!114 &7095931362533440056
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
