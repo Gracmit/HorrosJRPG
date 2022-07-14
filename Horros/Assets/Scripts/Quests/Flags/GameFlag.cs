@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameFlag : ScriptableObject
 
 {
-    public static event Action AnyChanged;
+    public event Action Changed;
     public bool Value { get; private set; }
 
     void OnEnable() => Value = default;
@@ -14,6 +14,6 @@ public class GameFlag : ScriptableObject
     public void Set(bool value)
     {
         Value = value;
-        AnyChanged?.Invoke();
+        Changed?.Invoke();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
@@ -19,21 +18,10 @@ public class QuestManager : MonoBehaviour
         _instance = this;
     }
 
-    void Start() => GameFlag.AnyChanged += ProgressQuests;
-    void OnDestroy() => GameFlag.AnyChanged -= ProgressQuests;
-
     public void AddQuest(Quest quest)
     {
         _activeQuests.Add(quest);
         _questPanel.SelectQuest(quest);
     }
     
-    [ContextMenu("Progress Quest")]
-    public void ProgressQuests()
-    {
-        foreach (var quest in _activeQuests)
-        {
-            quest.TryProgress();
-        }
-    }
 }

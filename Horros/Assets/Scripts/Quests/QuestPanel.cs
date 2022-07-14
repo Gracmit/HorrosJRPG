@@ -39,12 +39,12 @@ public class QuestPanel : MonoBehaviour
     public void SelectQuest(Quest quest)
     {
         if(_selectedQuest)
-            _selectedQuest.Progressed -= DisplayStepsInstructionsAndObjectives;
+            _selectedQuest.Changed -= DisplayStepsInstructionsAndObjectives;
         
         _selectedQuest = quest;
         Bind();
 
-        _selectedQuest.Progressed += DisplayStepsInstructionsAndObjectives;
+        _selectedQuest.Changed += DisplayStepsInstructionsAndObjectives;
 
     }
 }
