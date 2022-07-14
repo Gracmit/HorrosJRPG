@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     private void Awake()
     {
         Instance = this;
+        LockAndHideCursor();
     }
     
     public float Vertical => Input.GetAxisRaw("Vertical");
@@ -15,5 +16,11 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     public bool GetKeyDown(KeyCode keyCode) => Input.GetKeyDown(keyCode);
 
     public bool GetButtonDown(string buttonName) => Input.GetButtonDown(buttonName);
+
+    public void LockAndHideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
 }
