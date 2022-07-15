@@ -8,6 +8,7 @@ public class QuestGiver: MonoBehaviour
         if (other.CompareTag("Player"))
         {
             QuestManager.Instance.AddQuest(_quest);
+            enabled = false;
         }
     }
 }

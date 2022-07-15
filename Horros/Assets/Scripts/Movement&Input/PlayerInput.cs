@@ -17,10 +17,17 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
     public bool GetButtonDown(string buttonName) => Input.GetButtonDown(buttonName);
 
-    public void LockAndHideCursor()
+    public static void LockAndHideCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    
+    
+    public static void UseCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 }

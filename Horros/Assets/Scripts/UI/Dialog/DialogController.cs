@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DialogController : MonoBehaviour
 {
     [SerializeField] private TMP_Text _storyText;
+    [SerializeField] private TMP_Text _nameText;
     [SerializeField] private Button[] _choiceButtons;
     [SerializeField] private float _textSpeed = 2;
 
@@ -49,6 +50,7 @@ public class DialogController : MonoBehaviour
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
         _showing = true;
+        PlayerInput.UseCursor();
     }
 
     private void ToggleCanvasOff()
@@ -57,6 +59,7 @@ public class DialogController : MonoBehaviour
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
         _showing = false;
+        PlayerInput.LockAndHideCursor();
     }
 
     private IEnumerator RefreshView()
@@ -75,6 +78,7 @@ public class DialogController : MonoBehaviour
             ToggleCanvasOff();
         else
             ShowChoiceButtons();
+        
     }
 
     private IEnumerator ShowText()
@@ -82,14 +86,15 @@ public class DialogController : MonoBehaviour
         _currentLine = _story.Continue();
         _writing = true;
         var originalText = _currentLine;
-        var displayedText = "";
         var alphaIndex = 0;
+        HandleTags();
+
 
         foreach (var character in _currentLine.ToCharArray())
         {
             alphaIndex++;
             _storyText.SetText(originalText);
-            displayedText = _storyText.text.Insert(alphaIndex, "<color=#00000000>");
+            var displayedText = _storyText.text.Insert(alphaIndex, "<color=#00000000>");
             _storyText.SetText(displayedText);
             yield return new WaitForSecondsRealtime(0.1f / _textSpeed);
             if(!_writing)
@@ -127,6 +132,11 @@ public class DialogController : MonoBehaviour
             {
                 var eventName = tag.Remove(0, 2);
                 GameEvent.RaiseEvent(eventName);
+            }
+
+            if (tag.StartsWith("N."))
+            {
+                _nameText.SetText(tag.Remove(0, 2));
             }
         }
     }
