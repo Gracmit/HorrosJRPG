@@ -12,6 +12,8 @@ public class PlayerMovementController : MonoBehaviour
     private Animator _animator;
     private float _turnSmoothVelocity;
     private bool _frozen;
+    private static readonly int Speed = Animator.StringToHash("Speed");
+
 
     private void Awake()
     {
@@ -22,7 +24,10 @@ public class PlayerMovementController : MonoBehaviour
     void Update()
     {
         if (_frozen)
+        {
+            _animator.SetFloat(Speed, 0);
             return;
+        }
         
         CameraRelativeMovement();
     }
@@ -42,20 +47,10 @@ public class PlayerMovementController : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             
-            //Vector3 moveDir = new Vector3(transform.forward.x, _controller.velocity.y, transform.forward.z);
-
-            //_controller.velocity = moveDir.normalized * _movementSpeed;
             _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime) + new Vector3(0, -gravity, 0));
         }
-        _animator.SetFloat("Speed", direction.magnitude);
+        _animator.SetFloat(Speed, direction.magnitude);
     }
 
-    public void FreezeControls(bool freeze)
-    {
-        _frozen = freeze;
-        if (freeze)
-            Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
-    }
+    public void FreezeControls(bool freeze) => _frozen = freeze;
 }

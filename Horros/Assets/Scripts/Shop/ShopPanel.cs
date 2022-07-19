@@ -15,7 +15,6 @@ public class ShopPanel : MonoBehaviour
     private List<ShopButton> _buttons = new List<ShopButton>();
     private Inventory _inventory;
     private CanvasGroup _canvasGroup;
-    private PlayerMovementController _player;
 
 
     public static ShopPanel Instance => _instance;
@@ -34,7 +33,6 @@ public class ShopPanel : MonoBehaviour
         _canvasGroup = GetComponent<CanvasGroup>();
         _shops = FindObjectsOfType<Shop>();
         _inventory = FindObjectOfType<Inventory>();
-        _player = FindObjectOfType<PlayerMovementController>();
         _canvasGroup.interactable = false;
         _canvasGroup.alpha = 0;
         _canvasGroup.blocksRaycasts = false;
@@ -71,7 +69,8 @@ public class ShopPanel : MonoBehaviour
         _canvasGroup.alpha = 0;
         _canvasGroup.blocksRaycasts = false;
 
-        _player.FreezeControls(false);
+        ControlsManager.Instance.FreezeTime(false);
+        ControlsManager.Instance.FreezeMovement(false);
     }
 
     private void HandleMoneyChanged()
@@ -113,7 +112,8 @@ public class ShopPanel : MonoBehaviour
             HandleMoneyChanged();
         }
         
-        _player.FreezeControls(true);
+        ControlsManager.Instance.FreezeTime(true);
+        ControlsManager.Instance.FreezeMovement(true);
     }
 
     private void CreateButton(Item itemData)
