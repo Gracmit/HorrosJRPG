@@ -18,7 +18,7 @@ public class InteractTrigger : MonoBehaviour
         if (_canInteract)
         {
             _text.gameObject.SetActive(true);
-            if (PlayerInput.Instance.GetKeyDown(KeyCode.E))
+            if (PlayerInput.Instance.Controls.Player.Interact.WasPressedThisFrame())
             {
                 _interactable.Interact(transform.parent.gameObject);
                 _canInteract = false;

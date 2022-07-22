@@ -6,7 +6,7 @@ public class UIHotkeyToggle : MonoBehaviour
     [SerializeField] private GameObject _gameObjectToToggle;
     private void Update()
     {
-        if (PlayerInput.Instance.GetKeyDown(_keyCode))
+        if (PlayerInput.Instance.Controls.Player.OpenInventory.WasPressedThisFrame())
         {
             _gameObjectToToggle.SetActive(!_gameObjectToToggle.activeSelf);
         }

@@ -16,6 +16,7 @@ public class DialogController : MonoBehaviour
     private bool _showing;
     private bool _writing;
     private string _currentLine;
+    private PlayerMovementController _playerMovementController;
 
     private void Awake()
     {
@@ -25,9 +26,9 @@ public class DialogController : MonoBehaviour
 
     private void Update()
     {
-        if (_showing && PlayerInput.Instance.GetKeyDown(KeyCode.E) && !_writing)
+        if (_showing && PlayerInput.Instance.Controls.UI.Submit.WasPressedThisFrame() && !_writing)
             StartCoroutine(RefreshView());
-        else if (_showing && _writing && PlayerInput.Instance.GetKeyDown(KeyCode.E))
+        else if (_showing && _writing && PlayerInput.Instance.Controls.UI.Submit.WasPressedThisFrame())
         {
             //StopCoroutine(ShowText());
             _writing = false;
@@ -51,6 +52,8 @@ public class DialogController : MonoBehaviour
         _canvasGroup.blocksRaycasts = true;
         _showing = true;
         PlayerInput.UseCursor();
+        ControlsManager.Instance.FreezeMovement(true);
+        ControlsManager.Instance.LockCamera(true);
     }
 
     private void ToggleCanvasOff()
@@ -60,6 +63,8 @@ public class DialogController : MonoBehaviour
         _canvasGroup.blocksRaycasts = false;
         _showing = false;
         PlayerInput.LockAndHideCursor();
+        ControlsManager.Instance.FreezeMovement(false);
+        ControlsManager.Instance.LockCamera(false);
     }
 
     private IEnumerator RefreshView()
