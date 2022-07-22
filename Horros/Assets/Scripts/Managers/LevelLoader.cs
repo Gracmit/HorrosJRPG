@@ -23,8 +23,10 @@ public class LevelLoader : MonoBehaviour
 
     public IEnumerator LoadLevelWithName(string levelName)
     {
+        var level = SceneManager.GetActiveScene();
         var operation = SceneManager.LoadSceneAsync(levelName);
         var operation2 = SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(level);
 
         while (!operation.isDone && !operation2.isDone)
         {

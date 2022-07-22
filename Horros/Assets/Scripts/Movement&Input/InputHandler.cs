@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class InputHandler : MonoBehaviour
 {
-    public static PlayerInput Instance { get; private set; }
+    public static InputHandler Instance { get; private set; }
     private Inputs _playerControls;
+    private PlayerInput _playerInput;
     private void Awake()
     {
         Instance = this;
         _playerControls = new Inputs();
         LockAndHideCursor();
+        _playerInput = GetComponent<PlayerInput>();
     }
-
+    
     private void OnEnable()
     {
         _playerControls.Enable();
@@ -35,5 +38,4 @@ public class PlayerInput : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
 }

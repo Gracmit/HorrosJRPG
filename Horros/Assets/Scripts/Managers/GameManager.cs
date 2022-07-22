@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ public class GameManager : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -29,6 +28,13 @@ public class GameManager : MonoBehaviour
         _party = GetComponent<PartyPool>();
         _inventory = GetComponent<Inventory>();
         DontDestroyOnLoad(gameObject);
-        
+    }
+
+    private void Update()
+    {
+        if (InputHandler.Instance.Controls.Player.Test.WasPressedThisFrame())
+        {
+            StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Cell1-1"));
+        }
     }
 }
