@@ -34,7 +34,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private void CameraRelativeMovement()
     {
-        Vector3 direction = new Vector3(PlayerInput.Instance.Horizontal, 0f, PlayerInput.Instance.Vertical).normalized;
+        
+        Vector2 input = PlayerInput.Instance.Controls.Player.Move.ReadValue<Vector2>().normalized;
+        Vector3 direction = new Vector3(input.x, 0, input.y);
         var gravity = 2f;
         if (_controller.isGrounded) gravity = 0f;
 

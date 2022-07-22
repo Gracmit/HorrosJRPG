@@ -26,9 +26,9 @@ public class DialogController : MonoBehaviour
 
     private void Update()
     {
-        if (_showing && PlayerInput.Instance.GetKeyDown(KeyCode.E) && !_writing)
+        if (_showing && PlayerInput.Instance.Controls.UI.Submit.WasPressedThisFrame() && !_writing)
             StartCoroutine(RefreshView());
-        else if (_showing && _writing && PlayerInput.Instance.GetKeyDown(KeyCode.E))
+        else if (_showing && _writing && PlayerInput.Instance.Controls.UI.Submit.WasPressedThisFrame())
         {
             //StopCoroutine(ShowText());
             _writing = false;

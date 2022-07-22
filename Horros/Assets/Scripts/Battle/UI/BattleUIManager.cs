@@ -46,7 +46,7 @@ public class BattleUIManager : MonoBehaviour
     {
         _highlighter.Tick();
 
-        if (PlayerInput.Instance.GetKeyDown(KeyCode.Q))
+        if (PlayerInput.Instance.Controls.UI.Cancel.WasPressedThisFrame())
         {
             ReturnToPreviousUIObject();
         }
