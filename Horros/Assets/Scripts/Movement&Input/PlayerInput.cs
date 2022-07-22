@@ -2,13 +2,13 @@
 
 public class PlayerInput : MonoBehaviour
 {
-    public static PlayerInput Instance { get; set; }
+    public static PlayerInput Instance { get; private set; }
     private Inputs _playerControls;
     private void Awake()
     {
         Instance = this;
-        LockAndHideCursor();
         _playerControls = new Inputs();
+        LockAndHideCursor();
     }
 
     private void OnEnable()
@@ -22,11 +22,6 @@ public class PlayerInput : MonoBehaviour
     }
 
     public Inputs Controls => _playerControls;
-    
-    //public float Vertical => Input.GetAxisRaw("Vertical");
-    //public float Horizontal => Input.GetAxisRaw("Horizontal");
-
-    public bool GetKeyDown(KeyCode keyCode) => Input.GetKeyDown(keyCode);
 
     public static void LockAndHideCursor()
     {

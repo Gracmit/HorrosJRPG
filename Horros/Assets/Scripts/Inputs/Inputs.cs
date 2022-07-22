@@ -62,6 +62,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f555ee2e-b90e-4118-8e37-de998259427d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -304,6 +313,28 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6086b498-90a2-4df8-927a-3829f86bbabd"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb3205fc-964d-4444-8af6-83eafa7c46e0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -868,6 +899,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChooseTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbe3e198-3031-446e-bbc1-97539acdd87d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -958,6 +998,28 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""action"": ""HighlightNext"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a342a25-33c6-41f6-9e83-5e5ad4fc28bf"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ChooseTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7fc3dfa-08f7-498b-9a61-16df01a44e21"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChooseTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1031,6 +1093,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1047,6 +1110,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         m_Battle_HighlightPrevious = m_Battle.FindAction("HighlightPrevious", throwIfNotFound: true);
         m_Battle_HighlightNext = m_Battle.FindAction("HighlightNext", throwIfNotFound: true);
+        m_Battle_ChooseTarget = m_Battle.FindAction("ChooseTarget", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1110,6 +1174,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_OpenInventory;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -1118,6 +1183,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1139,6 +1205,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @OpenInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1155,6 +1224,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @OpenInventory.started += instance.OnOpenInventory;
                 @OpenInventory.performed += instance.OnOpenInventory;
                 @OpenInventory.canceled += instance.OnOpenInventory;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1270,12 +1342,14 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private IBattleActions m_BattleActionsCallbackInterface;
     private readonly InputAction m_Battle_HighlightPrevious;
     private readonly InputAction m_Battle_HighlightNext;
+    private readonly InputAction m_Battle_ChooseTarget;
     public struct BattleActions
     {
         private @Inputs m_Wrapper;
         public BattleActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @HighlightPrevious => m_Wrapper.m_Battle_HighlightPrevious;
         public InputAction @HighlightNext => m_Wrapper.m_Battle_HighlightNext;
+        public InputAction @ChooseTarget => m_Wrapper.m_Battle_ChooseTarget;
         public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1291,6 +1365,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @HighlightNext.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnHighlightNext;
                 @HighlightNext.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnHighlightNext;
                 @HighlightNext.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnHighlightNext;
+                @ChooseTarget.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnChooseTarget;
+                @ChooseTarget.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnChooseTarget;
+                @ChooseTarget.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnChooseTarget;
             }
             m_Wrapper.m_BattleActionsCallbackInterface = instance;
             if (instance != null)
@@ -1301,6 +1378,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @HighlightNext.started += instance.OnHighlightNext;
                 @HighlightNext.performed += instance.OnHighlightNext;
                 @HighlightNext.canceled += instance.OnHighlightNext;
+                @ChooseTarget.started += instance.OnChooseTarget;
+                @ChooseTarget.performed += instance.OnChooseTarget;
+                @ChooseTarget.canceled += instance.OnChooseTarget;
             }
         }
     }
@@ -1356,6 +1436,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1374,5 +1455,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     {
         void OnHighlightPrevious(InputAction.CallbackContext context);
         void OnHighlightNext(InputAction.CallbackContext context);
+        void OnChooseTarget(InputAction.CallbackContext context);
     }
 }
