@@ -16,8 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0798c03eaf9ad0b4ca50a1ef637fd295, type: 2}
   - {fileID: 11400000, guid: 898b2a3ae8f03b245b91245a613db792, type: 2}
   - {fileID: 11400000, guid: 5d366bc8650c946479e62f8c8592c072, type: 2}
-  SceneName: DemoLevel
-  SpawnerID: 0
+  SceneName: SampleScene
+  SpawnerID: 1
   PlayerPosition: {x: 0, y: 0, z: 0}
-  PlayerRotation: {x: 0, y: 0.16276357, z: 0, w: -0.9866651}
+  PlayerRotation: {x: 0, y: 0.039802674, z: 0, w: -0.99920756}
   EngageType: 0

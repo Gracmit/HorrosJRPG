@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
@@ -21,14 +22,19 @@ public class DialogController : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+        
+    }
+
+    private void Start()
+    {
         ToggleCanvasOff();
     }
 
     private void Update()
     {
-        if (_showing && PlayerInput.Instance.Controls.UI.Submit.WasPressedThisFrame() && !_writing)
+        if (_showing && InputHandler.Instance.Controls.UI.Submit.WasPressedThisFrame() && !_writing)
             StartCoroutine(RefreshView());
-        else if (_showing && _writing && PlayerInput.Instance.Controls.UI.Submit.WasPressedThisFrame())
+        else if (_showing && _writing && InputHandler.Instance.Controls.UI.Submit.WasPressedThisFrame())
         {
             //StopCoroutine(ShowText());
             _writing = false;
@@ -51,7 +57,8 @@ public class DialogController : MonoBehaviour
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
         _showing = true;
-        PlayerInput.UseCursor();
+        InputHandler.UseCursor();
+        //InputHandler.Instance.SwitchActionMap("UI");
         ControlsManager.Instance.FreezeMovement(true);
         ControlsManager.Instance.LockCamera(true);
     }
@@ -62,7 +69,8 @@ public class DialogController : MonoBehaviour
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
         _showing = false;
-        PlayerInput.LockAndHideCursor();
+        InputHandler.LockAndHideCursor();
+        //InputHandler.Instance.SwitchActionMap("Player");
         ControlsManager.Instance.FreezeMovement(false);
         ControlsManager.Instance.LockCamera(false);
     }

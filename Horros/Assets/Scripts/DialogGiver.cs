@@ -9,7 +9,7 @@ public class DialogGiver : MonoBehaviour, IInteractable
         if (player != null)
         {
             FindObjectOfType<DialogController>().StartDialog(_dialog);
-            transform.LookAt(player.transform);
+            //transform.LookAt(player.transform);
         }
     }
 
@@ -17,6 +17,6 @@ public class DialogGiver : MonoBehaviour, IInteractable
     public void Interact(GameObject player)
     {
         FindObjectOfType<DialogController>().StartDialog(_dialog);
-        transform.LookAt(player.transform);
+        //transform.LookAt(player.transform);
     }
 }

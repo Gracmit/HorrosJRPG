@@ -59,7 +59,7 @@ public class ShopPanel : MonoBehaviour
 
     private void Update()
     {
-        if (_canvasGroup.interactable && PlayerInput.Instance.Controls.UI.Cancel.WasPressedThisFrame())
+        if (_canvasGroup.interactable && InputHandler.Instance.Controls.UI.Cancel.WasPressedThisFrame())
             CloseShop();
     }
 

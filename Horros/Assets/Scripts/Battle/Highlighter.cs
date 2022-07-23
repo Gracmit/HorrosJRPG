@@ -17,7 +17,7 @@ public class Highlighter
 
     public void Tick()
     {
-        if (_canHighlight && PlayerInput.Instance.Controls.Battle.HighlightPrevious.WasPressedThisFrame())
+        if (_canHighlight && InputHandler.Instance.Controls.Battle.HighlightPrevious.WasPressedThisFrame())
         {
             if (_highlightAll)
                 ChangeHighlightedGroup();
@@ -25,7 +25,7 @@ public class Highlighter
                 PreviousEnemy();
         }
 
-        if (_canHighlight && PlayerInput.Instance.Controls.Battle.HighlightNext.WasPressedThisFrame())
+        if (_canHighlight && InputHandler.Instance.Controls.Battle.HighlightNext.WasPressedThisFrame())
         {
             if (_highlightAll)
                 ChangeHighlightedGroup();
@@ -33,7 +33,7 @@ public class Highlighter
                 NextEnemy();
         }
 
-        if (_canHighlight && PlayerInput.Instance.Controls.Battle.ChooseTarget.WasPressedThisFrame())
+        if (_canHighlight && InputHandler.Instance.Controls.Battle.ChooseTarget.WasPressedThisFrame())
         {
             if (_highlightAll)
                 BattleManager.Instance.ActiveMember.AttackHandler.SaveTargets(_highlightedGroup);
@@ -47,7 +47,7 @@ public class Highlighter
             _infoPanel.gameObject.SetActive(false);
         }
 
-        if (_canHighlight && PlayerInput.Instance.Controls.UI.Cancel.WasPressedThisFrame())
+        if (_canHighlight && InputHandler.Instance.Controls.UI.Cancel.WasPressedThisFrame())
         {
             _entities[_activeIndex].UnHighlight();
             _canHighlight = false;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2505,8 +2505,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734857413}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000061035156, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2528,29 +2528,29 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_PointAction: {fileID: 6341594512759791270, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_MoveAction: {fileID: -7601528850798668041, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_SubmitAction: {fileID: -1186273377684097793, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_CancelAction: {fileID: -1521352819334798893, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_LeftClickAction: {fileID: 3138181836593257654, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_MiddleClickAction: {fileID: 6075801196976603011, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_RightClickAction: {fileID: -2288924750780336933, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_ScrollWheelAction: {fileID: 4795761102278785192, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_TrackedDevicePositionAction: {fileID: -8932410839738598969, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_TrackedDeviceOrientationAction: {fileID: 1543202361065666427, guid: 56676b7356b248644894bbf102a6d925,
     type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
 --- !u!1 &741949403
 GameObject:
@@ -4554,6 +4554,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016790523}
   m_CullTransparentMesh: 0
+--- !u!1 &1023710194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1493693021, guid: 99ccb967bcd8f224bb33985c9d728e5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3497660093967960229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1027931085
 GameObject:
   m_ObjectHideFlags: 0
@@ -8757,6 +8763,14 @@ PrefabInstance:
     - target: {fileID: 1442847708, guid: 99ccb967bcd8f224bb33985c9d728e5d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.1999512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862860012, guid: 99ccb967bcd8f224bb33985c9d728e5d, type: 3}
+      propertyPath: _winButton
+      value: 
+      objectReference: {fileID: 1023710194}
+    - target: {fileID: 1950127563, guid: 99ccb967bcd8f224bb33985c9d728e5d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3497660092044074688, guid: 99ccb967bcd8f224bb33985c9d728e5d,
         type: 3}

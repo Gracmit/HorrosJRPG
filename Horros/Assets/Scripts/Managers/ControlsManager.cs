@@ -11,9 +11,17 @@ public class ControlsManager : MonoBehaviour
     public static ControlsManager Instance => _instance;
     private void Awake()
     {
-        CinemachineCore.GetInputAxis = GetAxisCustom;
-        _instance = this;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+        
         _playerMovementController = FindObjectOfType<PlayerMovementController>();
+        CinemachineCore.GetInputAxis = GetAxisCustom;
     }
 
     public void FreezeTime(bool freeze) => Time.timeScale = freeze ? 0 : 1;
