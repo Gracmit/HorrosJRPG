@@ -11,9 +11,11 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 8d15515b38fabfc4f8bfe1b2d8bbe173,
     type: 3}
   m_ValidKeywords:
+  - _NORMALMAP
   - _OBJECT_TRIPLANAR
   - _TERRAIN_BLEND_HEIGHT
   - _TERRAIN_DISTANCEBLEND
+  - _TERRAIN_PARALLAX
   m_InvalidKeywords:
   - _METALLICSPECGLOSSMAP
   - _OBJECT_STEEP_INTERSECTION
@@ -64,11 +66,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask0:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1d5401827e882aa439dcfff4ef05718e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask1:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 450b0dba983c68a46b3f08fa9a068d03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask2:
@@ -84,11 +86,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal0:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8d441c1dcbd6ce7488fca29c9870735c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal1:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 36dbdc1b15a1c424e866b1cc0c5bbc67, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal2:
@@ -116,7 +118,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat1:
-        m_Texture: {fileID: 2800000, guid: bdcba848a71a4354d8b09306c3f75d49, type: 3}
+        m_Texture: {fileID: 2800000, guid: 28e3e1749b219e348b897f2810ccb0dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat2:
@@ -168,7 +170,7 @@ Material:
     - _DisableDistanceBlending: 0
     - _DisableOffsetY: 0
     - _DisableTerrainParallax: 0
-    - _Distance_HeightTransition: 10
+    - _Distance_HeightTransition: 44.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -177,7 +179,7 @@ Material:
     - _HT_cover: 0.6
     - _HT_distance_scale: 0.176
     - _HasMask: 0
-    - _HeightTransition: 6.5
+    - _HeightTransition: 60
     - _LayerIndex1: 0
     - _LayerIndex2: 0
     - _LayerNumber: 0
@@ -209,12 +211,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffuseRemapOffset0: {r: 0, g: 0, b: 0, a: 0}
-    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 0}
+    - _DiffuseRemapOffset0: {r: 0, g: 0, b: 0, a: 20}
+    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 20}
     - _DiffuseRemapOffset2: {r: 0, g: 0, b: 0, a: 0}
     - _DiffuseRemapOffset3: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 12.57}
+    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 12.92}
     - _DiffuseRemapScale2: {r: 0.6412002, g: 0.8301887, b: 0.54432184, a: 1}
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

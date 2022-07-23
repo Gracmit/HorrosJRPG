@@ -25,6 +25,7 @@ Material:
   m_ValidKeywords:
   - _TERRAIN_BLEND_HEIGHT
   - _TERRAIN_DISTANCEBLEND
+  - _TERRAIN_PARALLAX
   - _TERRAIN_TRIPLANAR_ONE
   m_InvalidKeywords:
   - _TERRAIN_INSTANCED_PERPIXEL_NORMAL
@@ -150,7 +151,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distance_HeightTransition: 10
+    - _Distance_HeightTransition: 44.5
     - _DstBlend: 0
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
@@ -159,7 +160,7 @@ Material:
     - _Glossiness: 0.5
     - _HT_cover: 0.6
     - _HT_distance_scale: 0.176
-    - _HeightTransition: 6.5
+    - _HeightTransition: 60
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
