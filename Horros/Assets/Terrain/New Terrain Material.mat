@@ -8,10 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: New Terrain Material
-  m_Shader: {fileID: 4800000, guid: 69c1f799e772cb6438f56c23efccb782, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3e3de67027c68e34a96553bba38745c1, type: 3}
   m_ValidKeywords:
+  - _LAYERS_TWO
+  - _TERRAIN_BLEND_HEIGHT
+  - _TERRAIN_DISTANCEBLEND
+  - _TERRAIN_TRIPLANAR_ONE
+  m_InvalidKeywords:
   - _TERRAIN_INSTANCED_PERPIXEL_NORMAL
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -113,7 +117,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TerrainColorTintTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TerrainHolesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TriplanarTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_MetallicAO:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -122,13 +138,16 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Distance_HeightTransition: 10
     - _DstBlend: 0
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
-    - _HeightTransition: 0
+    - _HT_cover: 0.6
+    - _HT_distance_scale: 0.096
+    - _HeightTransition: 10.4
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
@@ -138,6 +157,7 @@ Material:
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ParallaxAffineStepsTerrain: 3
     - _Smoothness0: 1
     - _Smoothness1: 1
     - _Smoothness2: 1
@@ -146,6 +166,9 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TERRAIN_INSTANCED_PERPIXEL_NORMAL: 0
+    - _TerrainColorTintStrenght: 0
+    - _TriplanarOneToAllSteep: 1
+    - _TriplanarSharpness: 8.87
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -153,7 +176,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HT_distance: {r: 8.527639, g: 19.003357, b: 0, a: 25}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TerrainSizeXZPosY: {r: 1000, g: 1000, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &698712822892933632
 MonoBehaviour:
