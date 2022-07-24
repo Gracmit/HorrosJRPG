@@ -188,8 +188,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HT_cover: 0.6
-    - _HT_distance_scale: 0.176
+    - _HT_cover: 0.721
+    - _HT_distance_scale: 0.185
     - _HasMask: 0
     - _HeightTransition: 60
     - _LayerIndex1: 0
@@ -229,10 +229,10 @@ Material:
     - _DiffuseRemapOffset3: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 12.57}
     - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 12.92}
-    - _DiffuseRemapScale2: {r: 0.7048791, g: 0.8207547, b: 0.6775098, a: 13.87}
+    - _DiffuseRemapScale2: {r: 0.7048791, g: 0.8207547, b: 0.6775098, a: 5.5}
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HT_distance: {r: 3, g: 10, b: 0, a: 25}
+    - _HT_distance: {r: 11.569182, g: 18.569183, b: 0, a: 25}
     - _Intersection: {r: -0.24285746, g: 2, b: -2, a: 2}
     - _Intersection2: {r: 0.66623396, g: 1, b: 0, a: 1}
     - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}
@@ -251,7 +251,7 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _SplatUV0: {r: 2, g: 2, b: 0, a: 0}
     - _SplatUV1: {r: 2, g: 2, b: 0, a: 0}
-    - _SplatUV2: {r: 2, g: 2, b: 0, a: 0}
+    - _SplatUV2: {r: 5, g: 5, b: 0, a: 0}
     - _SplatUV3: {r: 1, g: 1, b: 0, a: 0}
     - _TerrainHeightmapScale: {r: 0.390625, g: 1200.0549, b: 0.390625, a: 600}
     - _TerrainMetallic: {r: 0, g: 0, b: 0, a: 0}
