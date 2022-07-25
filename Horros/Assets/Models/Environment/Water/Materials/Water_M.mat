@@ -115,8 +115,8 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth_Distance: 0.84
-    - _Depth_Stenght: 0.2
+    - _Depth_Distance: 0.21
+    - _Depth_Stenght: 0.04
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Displace_Strenght: 0.02
@@ -124,14 +124,14 @@ Material:
     - _EnvironmentReflections: 1
     - _FadeDistance: 1.01
     - _FadeSmoothness: 37.37
-    - _Flow_Speed: 0.03
+    - _Flow_Speed: 0.06
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Index_of_Refraction: -0.018
     - _IndexofRefraction: 0.01
     - _Metallic: 0
-    - _Normal_Strenght: 0.115
+    - _Normal_Strenght: 0.299
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -153,8 +153,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Other: {r: 0.3985849, g: 0.40686205, b: 0.5, a: 0}
-    - _Color_Waves: {r: 0.40000004, g: 0.40784317, b: 0.5019608, a: 1}
+    - _Color_Other: {r: 0.46274513, g: 0.50980395, b: 0.65882355, a: 0}
+    - _Color_Waves: {r: 0.46413317, g: 0.5097874, b: 0.6603774, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

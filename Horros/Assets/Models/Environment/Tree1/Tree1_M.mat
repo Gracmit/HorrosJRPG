@@ -212,15 +212,15 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseRemapOffset0: {r: 0, g: 0, b: 0, a: 20}
-    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 20}
+    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 50}
     - _DiffuseRemapOffset2: {r: 0, g: 0, b: 0, a: 20}
     - _DiffuseRemapOffset3: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 12.57}
-    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 12.92}
-    - _DiffuseRemapScale2: {r: 0.7048791, g: 0.8207547, b: 0.6775098, a: 5.5}
+    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 15}
+    - _DiffuseRemapScale2: {r: 0.5276344, g: 0.6698113, b: 0.6192961, a: 5.5}
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HT_distance: {r: 11.569182, g: 18.569183, b: 0, a: 25}
+    - _HT_distance: {r: 17.999983, g: 25, b: 0, a: 25}
     - _Intersection: {r: -1.3649352, g: 2, b: -2, a: 2}
     - _Intersection2: {r: 0.046753246, g: 0.2818184, b: 0, a: 1}
     - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}

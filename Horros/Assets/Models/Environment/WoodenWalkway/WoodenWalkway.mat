@@ -192,7 +192,7 @@ Material:
     - _QueueControl: -1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Sharpness: 30
+    - _Sharpness: 38.7
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -210,24 +210,24 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseRemapOffset0: {r: 0, g: 0, b: 0, a: 20}
-    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 20}
+    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 50}
     - _DiffuseRemapOffset2: {r: 0, g: 0, b: 0, a: 20}
     - _DiffuseRemapOffset3: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 12.57}
-    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 12.92}
-    - _DiffuseRemapScale2: {r: 0.7048791, g: 0.8207547, b: 0.6775098, a: 5.5}
+    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 15}
+    - _DiffuseRemapScale2: {r: 0.5276344, g: 0.6698113, b: 0.6192961, a: 5.5}
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HT_distance: {r: 11.569182, g: 18.569183, b: 0, a: 25}
-    - _Intersection: {r: -0.4584416, g: 0.6415584, b: -2, a: 2}
+    - _HT_distance: {r: 17.999983, g: 25, b: 0, a: 25}
+    - _Intersection: {r: -1.2058823, g: 1.3205884, b: -2, a: 2}
     - _Intersection2: {r: 0.3, g: 0.6, b: 0, a: 1}
     - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}
-    - _MaskMapRemapOffset: {r: 0, g: 0, b: 0.95224714, a: 0}
+    - _MaskMapRemapOffset: {r: 0, g: 0, b: 0.6666667, a: 0}
     - _MaskMapRemapOffset0: {r: 0, g: 0, b: 0, a: 0}
     - _MaskMapRemapOffset1: {r: 0, g: 0, b: 0, a: 0}
     - _MaskMapRemapOffset2: {r: 0, g: 0, b: 0, a: 0}
     - _MaskMapRemapOffset3: {r: 0, g: 0, b: 0, a: 0}
-    - _MaskMapRemapScale: {r: 1, g: 1, b: 0.047752857, a: 1}
+    - _MaskMapRemapScale: {r: 1, g: 1, b: 0.29218107, a: 1}
     - _MaskMapRemapScale0: {r: 1, g: 1, b: 1, a: 1}
     - _MaskMapRemapScale1: {r: 1, g: 1, b: 1, a: 1}
     - _MaskMapRemapScale2: {r: 1, g: 1, b: 1, a: 1}

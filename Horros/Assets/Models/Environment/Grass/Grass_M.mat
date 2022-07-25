@@ -88,6 +88,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ColorVariationScale: 0.45
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -108,8 +109,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 5
     - _Surface: 1
-    - _WindScale: 1.35
-    - _WindSpeed: 2.24
+    - _WindScale: 1.26
+    - _WindSpeed: 0.73
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
@@ -118,6 +119,10 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GrassColor: {r: 0.09433961, g: 0.052984945, b: 0.0129049495, a: 0}
     - _GrassColor2: {r: 0.23529413, g: 0.2509804, b: 0.16470589, a: 1}
+    - _GrassColorBottom: {r: 0.18383543, g: 0.2264151, b: 0.16553934, a: 0}
+    - _GrassColorShadowBottom: {r: 0.084905684, g: 0.07597867, b: 0.07168923, a: 0}
+    - _GrassColorShadowTop: {r: 0.54936373, g: 0.5849056, b: 0.18485224, a: 0}
+    - _GrassColorTop: {r: 0.37206298, g: 0.509434, b: 0.28595588, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &9215269821939627679
