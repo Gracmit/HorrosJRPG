@@ -119,7 +119,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GrassColor: {r: 0.09433961, g: 0.052984945, b: 0.0129049495, a: 0}
     - _GrassColor2: {r: 0.23529413, g: 0.2509804, b: 0.16470589, a: 1}
-    - _GrassColorBottom: {r: 0.41571736, g: 0.509434, b: 0.42388892, a: 0}
+    - _GrassColorBottom: {r: 0.41960788, g: 0.47058827, b: 0.20000002, a: 1}
     - _GrassColorShadowBottom: {r: 0.084905684, g: 0.07597867, b: 0.07168923, a: 0}
     - _GrassColorShadowTop: {r: 0.29122007, g: 0.3773585, b: 0.26877892, a: 0}
     - _GrassColorTop: {r: 0.37206298, g: 0.509434, b: 0.28595588, a: 0}

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterTest_M
-  m_Shader: {fileID: -6465566751694194690, guid: 0bf68b6b4e790fb48a01393c93021bd2,
+  m_Shader: {fileID: -6465566751694194690, guid: a048cf5f08aa0604f80225bb5b5b3211,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -104,6 +104,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TroubleshootValue: -0.06
+    - _TroubleshootValue2: -1.25
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
