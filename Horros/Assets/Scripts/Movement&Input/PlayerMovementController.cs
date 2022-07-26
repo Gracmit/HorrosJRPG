@@ -7,13 +7,13 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private float _movementSpeed = 5;
     [SerializeField] private float turnSmoothTime = 0.1f;
+    [SerializeField] private float _offset = 0.1f;
 
     private CharacterController _controller;
     private Animator _animator;
     private float _turnSmoothVelocity;
     private bool _frozen;
     private static readonly int Speed = Animator.StringToHash("Speed");
-
 
     private void Awake()
     {
@@ -34,10 +34,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private void CameraRelativeMovement()
     {
-
         Vector2 input = InputHandler.Instance.Controls.Player.Move.ReadValue<Vector2>().normalized;
         Vector3 direction = new Vector3(input.x, 0, input.y);
-        var gravity = 2f;
+        var gravity = 1.5f;
         if (_controller.isGrounded) gravity = 0f;
 
         if (direction.magnitude >= 0.1f)
@@ -48,6 +47,7 @@ public class PlayerMovementController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            moveDir.x -= _offset;
             
             _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime) + new Vector3(0, -gravity, 0));
         }
