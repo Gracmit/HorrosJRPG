@@ -151,7 +151,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distance_HeightTransition: 44.5
+    - _Distance_HeightTransition: 30.9
     - _DstBlend: 0
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
@@ -160,7 +160,7 @@ Material:
     - _Glossiness: 0.5
     - _HT_cover: 0.721
     - _HT_distance_scale: 0.185
-    - _HeightTransition: 60
+    - _HeightTransition: 42.1
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
