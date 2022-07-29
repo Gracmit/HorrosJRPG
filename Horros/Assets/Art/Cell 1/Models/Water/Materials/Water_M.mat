@@ -113,18 +113,21 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorBlend: 0.26
+    - _ColorBlend: 1.16
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth_Distance: 5.77
-    - _Depth_Stenght: 0.05
+    - _Depth: 14.2
+    - _Depth_Distance: 1.98
+    - _Depth_Stenght: 0.09
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Displace_Strenght: 0.01
+    - _Displace_Strenght: 0.001
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FadeDistance: 1.01
+    - _FadeDistance: 1
     - _FadeSmoothness: 37.37
+    - _FarFadeDistance: 10.6
+    - _FarFadeSmoothness: 7.43
     - _Flow_Speed: 0.06
     - _FoamDistance: 0.87
     - _FoamFloatSpeed: 0.31
@@ -135,24 +138,25 @@ Material:
     - _Index_of_Refraction: -0.018
     - _IndexofRefraction: 0.01
     - _Metallic: 0
-    - _Normal_Strenght: 0.299
+    - _Normal_Strenght: 0.096
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Refract_Strenght: 1.54
-    - _RemapHigh: 0.19
-    - _RemapLow: 1.56
-    - _SceneDepthMultiplier: 102.9
+    - _RemapHigh: 0.03
+    - _RemapLow: 0.8
+    - _SceneDepthMultiplier: 19.98
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TestValue: 21.79
     - _TilingAmount: 4.79
     - _TilingAmountFar: 7.88
-    - _Tiling_Amount: 26.3
+    - _Tiling_Amount: 64.27
     - _WaterFlow_1_or_1: 1
     - _WaveDirection: 0
     - _WorkflowMode: 1
@@ -162,9 +166,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Other: {r: 0.009211446, g: 0.16322713, b: 0.6509434, a: 0}
     - _Color_Waves: {r: 0.22748311, g: 0.33590603, b: 0.6792453, a: 1}
-    - _DeepColor: {r: 0.20808114, g: 0.21886382, b: 0.26415092, a: 0}
+    - _DeepColor: {r: 0.13817196, g: 0.16439457, b: 0.254717, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 0}
-    - _ShallowColor: {r: 0.22227661, g: 0.31217512, b: 0.3490566, a: 0}
+    - _ShallowColor: {r: 0.2950338, g: 0.3207547, b: 0.3162815, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
