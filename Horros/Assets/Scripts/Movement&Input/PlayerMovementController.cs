@@ -37,7 +37,7 @@ public class PlayerMovementController : MonoBehaviour
         Vector2 input = InputHandler.Instance.Controls.Player.Move.ReadValue<Vector2>().normalized;
         Vector3 direction = new Vector3(input.x, 0, input.y);
         var gravity = 1.5f;
-        if (_controller.isGrounded) gravity = 0f;
+        if (_controller.isGrounded) gravity = 1.5f;
 
         if (direction.magnitude >= 0.1f)
         {
@@ -49,7 +49,7 @@ public class PlayerMovementController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             moveDir.x -= _offset;
             
-            _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime) + new Vector3(0, -gravity, 0));
+            _controller.Move(moveDir.normalized * (_movementSpeed * Time.deltaTime) + new Vector3(0, -gravity * Time.deltaTime, 0));
         }
         _animator.SetFloat(Speed, direction.magnitude);
     }
