@@ -15,6 +15,7 @@ Material:
   - _OBJECT_TRIPLANAR
   - _TERRAIN_BLEND_HEIGHT
   - _TERRAIN_DISTANCEBLEND
+  - _TERRAIN_MASK_MAPS
   - _TERRAIN_PARALLAX
   m_InvalidKeywords:
   - _METALLICSPECGLOSSMAP
@@ -70,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask1:
-        m_Texture: {fileID: 2800000, guid: 450b0dba983c68a46b3f08fa9a068d03, type: 3}
+        m_Texture: {fileID: 2800000, guid: 56aeb34bcf3a5914995fc302f39d2ed8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask2:
@@ -90,7 +91,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal1:
-        m_Texture: {fileID: 2800000, guid: 36dbdc1b15a1c424e866b1cc0c5bbc67, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9980cca177e4f1d4e9f955ed72c46867, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal2:
@@ -118,7 +119,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat1:
-        m_Texture: {fileID: 2800000, guid: 28e3e1749b219e348b897f2810ccb0dc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 763ffb5717fd6ce4e926372184f14af6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat2:
