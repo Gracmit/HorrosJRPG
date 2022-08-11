@@ -8,6 +8,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float _movementSpeed = 5;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float _offset = 0.1f;
+    [SerializeField] private float _gravity = 2f;
+    
 
     private CharacterController _controller;
     private Animator _animator;
@@ -36,8 +38,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector2 input = InputHandler.Instance.Controls.Player.Move.ReadValue<Vector2>().normalized;
         Vector3 direction = new Vector3(input.x, 0, input.y);
-        var gravity = 1.5f;
-        if (_controller.isGrounded) gravity = 1.5f;
+        var gravity = _gravity;
+        if (_controller.isGrounded) gravity = _gravity;
 
         if (direction.magnitude >= 0.1f)
         {
