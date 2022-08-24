@@ -29,12 +29,4 @@ public class GameManager : MonoBehaviour
         _inventory = GetComponent<Inventory>();
         DontDestroyOnLoad(gameObject);
     }
-
-    private void Update()
-    {
-        if (InputHandler.Instance.Controls.Player.Test.WasPressedThisFrame())
-        {
-            StartCoroutine(LevelLoader.Instance.LoadLevelWithName("Cell1-1"));
-        }
-    }
 }
