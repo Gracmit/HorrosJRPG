@@ -233,7 +233,7 @@ Material:
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HT_distance: {r: 34.577274, g: 43.88013, b: 0, a: 50}
-    - _Intersection: {r: -0.85522395, g: 1.5701492, b: -2, a: 2}
+    - _Intersection: {r: -1.0449473, g: 1.3804258, b: -2, a: 2}
     - _Intersection2: {r: 0.3, g: 0.6, b: 0, a: 1}
     - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}
     - _MaskMapRemapOffset: {r: 0, g: 0, b: 0, a: 0}
