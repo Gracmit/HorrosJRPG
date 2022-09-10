@@ -24,8 +24,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 4d4f6643a74264646a9026d271dae702,
     type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ALPHATEST_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -97,7 +96,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0.71
+    - _AlphaClip: 0.37
     - _BilboardSize: -0.53
     - _Blend: 0
     - _Boolean: 0
@@ -115,19 +114,24 @@ Material:
     - _GlossyReflections: 0
     - _Inflate: -0.1
     - _Metallic: 0
+    - _NormalInfluence: 1.05
     - _NormalScale: 0.55
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.09
+    - _SSSIntensity: 0.48
+    - _SSSPower: 2.26
+    - _Smoothness: -1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WindScale: 0.9
-    - _WindSpeed: 0.41
+    - _TestValue: 0
+    - _WindAmount: 0.82
+    - _WindScale: 3.1
+    - _WindSpeed: 1.58
     - _WorkflowMode: 1
     - _X: -1
     - _Y: 0
@@ -135,8 +139,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.1806248, g: 0.20754719, b: 0.17524031, a: 1}
-    - _ColorEdge: {r: 0.3490566, g: 0.33363113, b: 0.103729084, a: 0}
+    - _Color: {r: 0.2289516, g: 0.27113372, b: 0.3301887, a: 1}
+    - _ColorEdge: {r: 0.073407196, g: 0.07329123, b: 0.084905684, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SSSColor: {r: 0.37578765, g: 0.5188679, b: 0.3255162, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
