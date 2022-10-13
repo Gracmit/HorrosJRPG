@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StatusManager : MonoBehaviour
@@ -27,7 +28,8 @@ public class StatusManager : MonoBehaviour
         _statusData = data;
     }
 
-    public void SetBattleData(GameObject player, EnemyPool enemyPool, int spawnerId, EngageType engageType)
+    public void SetBattleData(GameObject player, EnemyPool enemyPool, int spawnerId, EngageType engageType,
+        List<GameEvent> gameEvents)
     {
         _statusData.EnemyGroup = enemyPool.Enemies;
         _statusData.PlayerPosition = player.transform.position;
@@ -35,5 +37,6 @@ public class StatusManager : MonoBehaviour
         _statusData.SceneName = SceneManager.GetActiveScene().name;
         _statusData.SpawnerID = spawnerId;
         _statusData.EngageType = engageType;
+        _statusData.Events = gameEvents;
     }
 }

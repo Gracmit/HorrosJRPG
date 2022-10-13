@@ -11,7 +11,7 @@ internal class SpawnStatus : ScriptableObject
     public void AddID(int id)
     {
         if (!IdExists(id))
-            //_defeatedIds.Add(id);
+            _defeatedIds.Add(id);
 
         StatusManager.Instance.StatusData.SpawnerID = 0;
     }

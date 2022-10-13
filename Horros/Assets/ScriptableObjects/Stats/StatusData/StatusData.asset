@@ -16,8 +16,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0798c03eaf9ad0b4ca50a1ef637fd295, type: 2}
   - {fileID: 11400000, guid: 898b2a3ae8f03b245b91245a613db792, type: 2}
   - {fileID: 11400000, guid: 5d366bc8650c946479e62f8c8592c072, type: 2}
-  SceneName: SampleScene
-  SpawnerID: 1
-  PlayerPosition: {x: 0, y: 0, z: 0}
-  PlayerRotation: {x: 0, y: 0.039802674, z: 0, w: -0.99920756}
+  SceneName: Cell1-2
+  SpawnerID: 0
+  PlayerPosition: {x: 26.484098, y: 0.9800048, z: 14.2750635}
+  PlayerRotation: {x: 0, y: 0.63315374, z: 0, w: 0.7740261}
   EngageType: 0
+  Events:
+  - {fileID: 11400000, guid: 7c5d0bcf7f8ec0d4a9528e7fb7d567f6, type: 2}
