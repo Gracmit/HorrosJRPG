@@ -221,19 +221,19 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8584906, g: 0.7439885, b: 0.62767, a: 0}
+    - _BaseColor: {r: 0.5729387, g: 0.6698113, b: 0.5465913, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseRemapOffset0: {r: 0, g: 0, b: 0, a: 20}
     - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 50}
     - _DiffuseRemapOffset2: {r: 0, g: 0, b: 0, a: 20}
     - _DiffuseRemapOffset3: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffuseRemapScale0: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 4.7}
+    - _DiffuseRemapScale0: {r: 0.5423853, g: 0.5943396, b: 0.52985936, a: 4.7}
     - _DiffuseRemapScale1: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 2.9}
-    - _DiffuseRemapScale2: {r: 0.47058824, g: 0.47058824, b: 0.47058824, a: 5.5}
+    - _DiffuseRemapScale2: {r: 0.7006583, g: 0.7075472, b: 0.67083484, a: 5.5}
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HT_distance: {r: 34.577274, g: 43.88013, b: 0, a: 50}
-    - _Intersection: {r: -0.85522395, g: 1.5701492, b: -2, a: 2}
+    - _Intersection: {r: -1.0449473, g: 1.3804258, b: -2, a: 2}
     - _Intersection2: {r: 0.3, g: 0.6, b: 0, a: 1}
     - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}
     - _MaskMapRemapOffset: {r: 0, g: 0, b: 0, a: 0}
@@ -249,9 +249,9 @@ Material:
     - _NormIntersect: {r: 0, g: 0.5, b: 0, a: 1}
     - _NormalScale: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SplatUV0: {r: 10, g: 10, b: 0, a: 0}
+    - _SplatUV0: {r: 5, g: 5, b: 0, a: 0}
     - _SplatUV1: {r: 4, g: 4, b: 0, a: 0}
-    - _SplatUV2: {r: 5, g: 5, b: 0, a: 0}
+    - _SplatUV2: {r: 3, g: 3, b: 0, a: 0}
     - _SplatUV3: {r: 1, g: 1, b: 0, a: 0}
     - _TerrainHeightmapScale: {r: 0.390625, g: 1200.0549, b: 0.390625, a: 600}
     - _TerrainMetallic: {r: 0, g: 0, b: 0, a: 0}

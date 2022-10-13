@@ -199,7 +199,11 @@
             {
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.lastMeshSelectMode",
+<<<<<<< HEAD
                 "value": "{\"m_Value\":8}"
+=======
+                "value": "{\"m_Value\":4}"
+>>>>>>> a8166637e30be1f2e83a0c70df3a0c1c133a90a1
             },
             {
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",

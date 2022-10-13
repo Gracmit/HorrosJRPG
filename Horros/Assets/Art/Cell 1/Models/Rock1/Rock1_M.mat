@@ -15,7 +15,7 @@ Material:
   - _OBJECT_TRIPLANAR
   - _TERRAIN_BLEND_HEIGHT
   - _TERRAIN_DISTANCEBLEND
-  - _TERRAIN_PARALLAX
+  - _TERRAIN_MASK_MAPS
   m_InvalidKeywords:
   - _EMISSION
   - _METALLICSPECGLOSSMAP
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask1:
-        m_Texture: {fileID: 2800000, guid: 450b0dba983c68a46b3f08fa9a068d03, type: 3}
+        m_Texture: {fileID: 2800000, guid: 56aeb34bcf3a5914995fc302f39d2ed8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask2:
@@ -90,7 +90,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal1:
-        m_Texture: {fileID: 2800000, guid: 36dbdc1b15a1c424e866b1cc0c5bbc67, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9980cca177e4f1d4e9f955ed72c46867, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal2:
@@ -118,7 +118,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat1:
-        m_Texture: {fileID: 2800000, guid: 28e3e1749b219e348b897f2810ccb0dc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 763ffb5717fd6ce4e926372184f14af6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Splat2:
@@ -202,8 +202,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HT_cover: 0.721
-    - _HT_distance_scale: 0.185
+    - _HT_cover: 0.542
+    - _HT_distance_scale: 0.134
     - _HasMask: 0
     - _HeightTransition: 42.1
     - _LayerIndex1: 0
@@ -258,13 +258,13 @@ Material:
     - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 50}
     - _DiffuseRemapOffset2: {r: 0, g: 0, b: 0, a: 20}
     - _DiffuseRemapOffset3: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 4.7}
-    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 2.9}
-    - _DiffuseRemapScale2: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 5.5}
+    - _DiffuseRemapScale0: {r: 0.5423853, g: 0.5943396, b: 0.52985936, a: 4.7}
+    - _DiffuseRemapScale1: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 2.9}
+    - _DiffuseRemapScale2: {r: 0.7006583, g: 0.7075472, b: 0.67083484, a: 5.5}
     - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HT_distance: {r: 17.999983, g: 25, b: 0, a: 25}
-    - _Intersection: {r: -0.34675336, g: 0.65974, b: -2, a: 2}
+    - _HT_distance: {r: 34.577274, g: 43.88013, b: 0, a: 50}
+    - _Intersection: {r: -0.8180909, g: 0.9782114, b: -2, a: 2}
     - _Intersection2: {r: 0.028571429, g: 0.17532471, b: 0, a: 1}
     - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}
     - _MaskMapRemapOffset: {r: 0, g: 0, b: 0, a: 0}
@@ -277,13 +277,13 @@ Material:
     - _MaskMapRemapScale1: {r: 1, g: 1, b: 1, a: 1}
     - _MaskMapRemapScale2: {r: 1, g: 1, b: 1, a: 1}
     - _MaskMapRemapScale3: {r: 0, g: 0, b: 0, a: 0}
-    - _NormIntersect: {r: 0.27272728, g: 0.45324647, b: 0, a: 1}
+    - _NormIntersect: {r: 0, g: 0.056315385, b: 0, a: 1}
     - _NormalScale: {r: 0, g: 0, b: 0, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SplatUV0: {r: 4, g: 4, b: 0, a: 0}
+    - _SplatUV0: {r: 5, g: 5, b: 0, a: 0}
     - _SplatUV1: {r: 4, g: 4, b: 0, a: 0}
-    - _SplatUV2: {r: 5, g: 5, b: 0, a: 0}
+    - _SplatUV2: {r: 3, g: 3, b: 0, a: 0}
     - _SplatUV3: {r: 1, g: 1, b: 0, a: 0}
     - _TerrainHeightmapScale: {r: 0.390625, g: 1200.0549, b: 0.390625, a: 600}
     - _TerrainMetallic: {r: 0, g: 0, b: 0, a: 0}
