@@ -7,7 +7,7 @@ public class Cauldron : MonoBehaviour
 {
     [SerializeField] private List<TimelineAsset> _timelines;
     
-    float _bloodAmount = 0;
+    float _bloodAmount;
     PlayableDirector _director;
     bool _firstAnimation = true;
     bool _done;
@@ -36,10 +36,15 @@ public class Cauldron : MonoBehaviour
             _firstAnimation = false;
         }
 
-        if (!_firstAnimation && _bloodAmount >= 2 && !_done)
+        if (!_firstAnimation && _bloodAmount >= 5 && !_done)
         {
             _director.playableAsset = _timelines[1];
             _director.Play();
         }
+    }
+
+    public void AddBlood(int amount)
+    {
+        _bloodAmount += amount;
     }
 }
