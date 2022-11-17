@@ -96,8 +96,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0.37
-    - _BilboardSize: -0.53
+    - _AlphaClip: 0.27
+    - _BilboardSize: -0.6
     - _Blend: 0
     - _Boolean: 0
     - _BumpScale: 1
@@ -112,7 +112,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Inflate: -0.1
+    - _Inflate: 0.11
     - _Metallic: 0
     - _NormalInfluence: 1.05
     - _NormalScale: 0.55
@@ -123,7 +123,7 @@ Material:
     - _ReceiveShadows: 1
     - _SSSIntensity: 0.48
     - _SSSPower: 2.26
-    - _Smoothness: -1
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -139,7 +139,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.2289516, g: 0.27113372, b: 0.3301887, a: 1}
+    - _Color: {r: 0.23829655, g: 0.3301887, b: 0.30245256, a: 1}
     - _ColorEdge: {r: 0.073407196, g: 0.07329123, b: 0.084905684, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SSSColor: {r: 0.37578765, g: 0.5188679, b: 0.3255162, a: 0}

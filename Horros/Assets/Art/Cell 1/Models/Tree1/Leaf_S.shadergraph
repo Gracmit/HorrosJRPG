@@ -1793,6 +1793,9 @@
             "m_Id": "1d8acd3f7fc244c4a5e04336d5cd27b3"
         },
         {
+            "m_Id": "62a6a1348e9347cba873f449365ac5c0"
+        },
+        {
             "m_Id": "dde56b89119b4c1e8703f116387b7728"
         }
     ],
@@ -1807,12 +1810,14 @@
     "m_PropertyGuids": [
         "e12d826a-af6a-488a-ac32-da14e67f6567",
         "50ddced4-332c-49c5-9a4b-9dd71dbece89",
-        "75a59809-7680-4209-a23c-754725dd577a"
+        "75a59809-7680-4209-a23c-754725dd577a",
+        "117a987d-9899-4fce-a359-245002376074"
     ],
     "m_PropertyIds": [
         -635936694,
         1196099711,
-        177082126
+        177082126,
+        2062577221
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -4136,6 +4141,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "62a6a1348e9347cba873f449365ac5c0",
+    "m_Id": 2062577221,
+    "m_DisplayName": "YAxisMultiplier",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_YAxisMultiplier",
+    "m_StageCapability": 3,
+    "m_Value": 1.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "62bef0a0312d4c4ba3d510e5d7a2893e",
     "m_Id": 0,
@@ -6279,7 +6299,7 @@
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
     "m_ZTestMode": 4,
-    "m_ZWriteControl": 0,
+    "m_ZWriteControl": 1,
     "m_AlphaMode": 0,
     "m_RenderFace": 0,
     "m_AlphaClip": true,

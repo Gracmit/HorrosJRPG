@@ -120,15 +120,17 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _Value: 1
-    - _WindScale: 0.9
+    - _WindAmount: 0.11
+    - _WindScale: 3.02
     - _WindScalex: 0
-    - _WindSpeed: 0.35
+    - _WindSpeed: 0.67
     - _WorkflowMode: 1
+    - _YAxisMultiplier: 0
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.09574136, g: 0.122641504, b: 0.06884122, a: 1}
-    - _Color2: {r: 0.3015616, g: 0.3490566, b: 0.22556959, a: 0}
+    - _Color: {r: 0.101782806, g: 0.103773594, b: 0.06608224, a: 1}
+    - _Color2: {r: 0.21698111, g: 0.21698111, b: 0.16682982, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MultiplyColor: {r: 0.31199673, g: 0.3207547, b: 0.30411178, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
