@@ -6,11 +6,10 @@ using UnityEngine.Timeline;
 public class Cauldron : MonoBehaviour
 {
     [SerializeField] private List<TimelineAsset> _timelines;
+    [SerializeField] private CauldronData _data;
+    [SerializeField] private int _requiredBloodAmount = 5;
     
-    float _bloodAmount;
     PlayableDirector _director;
-    bool _firstAnimation = true;
-    bool _done;
 
     void Awake()
     {
@@ -29,14 +28,14 @@ public class Cauldron : MonoBehaviour
 
     public void PlayAnimation()
     {
-        if (_firstAnimation && !_done)
+        if (_data.FirstAnimation && !_data.Done)
         {
             _director.playableAsset = _timelines[0];
             _director.Play();
-            _firstAnimation = false;
+            _data.FirstAnimation = false;
         }
 
-        if (!_firstAnimation && _bloodAmount >= 5 && !_done)
+        if (!_data.FirstAnimation && _data.BloodAmount >= _requiredBloodAmount && !_data.Done)
         {
             _director.playableAsset = _timelines[1];
             _director.Play();
@@ -45,6 +44,6 @@ public class Cauldron : MonoBehaviour
 
     public void AddBlood(int amount)
     {
-        _bloodAmount += amount;
+        _data.BloodAmount += amount;
     }
 }
