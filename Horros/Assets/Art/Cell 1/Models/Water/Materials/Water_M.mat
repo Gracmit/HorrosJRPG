@@ -156,7 +156,7 @@ Material:
     - _TestValue: 21.79
     - _TilingAmount: 4.79
     - _TilingAmountFar: 7.88
-    - _Tiling_Amount: 91.3
+    - _Tiling_Amount: 15
     - _WaterFlow_1_or_1: 1
     - _WaveDirection: 0
     - _WorkflowMode: 1
