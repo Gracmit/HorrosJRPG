@@ -18,8 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d366bc8650c946479e62f8c8592c072, type: 2}
   SceneName: Cell1-2
   SpawnerID: 0
-  PlayerPosition: {x: 32.25065, y: 0.9800024, z: 24.226562}
+  PlayerPosition: {x: 0, y: 0, z: 0}
   PlayerRotation: {x: 0, y: 0.0042427788, z: 0, w: 0.999991}
   EngageType: 0
-  Events:
-  - {fileID: 11400000, guid: fb14c4bae9415884c89071197902f5d6, type: 2}
+  Events: []
